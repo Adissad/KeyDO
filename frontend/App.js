@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import HomeScreen from './screens/HomeScreen'
 import StartScreen from './screens/StartScreen';
+import ConnexionScreen from './screens/ConnexionScreen';
 
 import { Ionicons } from '@expo/vector-icons'
 
@@ -44,9 +45,10 @@ const BottomNavigator = () => {
         }
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Match" component={ChooseMatchScreen} />
-      <Tab.Screen name="Conv" component={ConvScreen} />
+      {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
+      {/* <Tab.Screen name="Match" component={ChooseMatchScreen} /> */}
+      {/* <Tab.Screen name="Conv" component={ConvScreen} /> */}
+      <Tab.Screen name="Connexionn" component={ConnexionScreen} />
     </Tab.Navigator>
   );
  }
@@ -55,7 +57,7 @@ export default function App() {
   return (
     <NavigationContainer>
      <Stack.Navigator screenOptions={{headerShown: false}}>
-       <Stack.Screen name="Start" component={StartScreen} />
+       {/* <Stack.Screen name="Start" component={StartScreen} /> */}
        <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
      </Stack.Navigator>
    </NavigationContainer>
