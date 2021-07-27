@@ -13,15 +13,16 @@ export default function ConnexionScreen(props) {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={["#FF8ABD", "#EF7365"]}
+        colors={["#2464A2", "#693192"]}
         start={{
           x: 0,
-          y: 1,
+          y: 0.5,
         }}
         end={{
-          x: 0.25,
-          y: 0.25,
+          x: 0.5,
+          y: 0.8,
         }}
+        locations={[0, 0.7]}
         style={styles.box}
       >
 
