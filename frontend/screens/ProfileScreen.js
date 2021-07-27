@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, StyleSheet, Text, Dimensions, Image} from "react-native";
-import { FontAwesome, Ionicons, Fontisto } from "@expo/vector-icons";
-import { Input } from "react-native-elements";
+// import { FontAwesome, Ionicons, Fontisto } from "@expo/vector-icons";
+// import { Input } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 import {Dropdown, MultiSelect} from 'react-native-element-dropdown';
 
@@ -18,14 +18,12 @@ const data = [
     {label: 'Item 8', value: '8'},
 ];
 
-const DropdownScreen = _props => {
-    const [dropdown, setDropdown] = useState(null);
+const ProfileScreen = _props => {
+    const [dropdown, setDropdown] = useState('');
     const [selected, setSelected] = useState([]);
 
     const _renderItem = item => {
-
-
-export default function ConnexionScreen(props) {
+// export default function ConnexionScreen(props) {
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -44,7 +42,7 @@ export default function ConnexionScreen(props) {
 
             <View style={styles.item}>
                 <Text style={styles.textItem}>{item.label}</Text>
-                <Image style={styles.icon} source={require('./assets/tick.png')} />
+                <Image style={styles.icon} source={require('../assets/icon.png')} />
             </View>
             );
         
@@ -65,7 +63,7 @@ export default function ConnexionScreen(props) {
                         console.log('selected', item);
                     }}
                     renderLeftIcon={() => (
-                        <Image style={styles.icon} source={require('./assets/account.png')} />
+                        <Image style={styles.icon} source={require('../assets/icon.png')} />
                     )}
                     renderItem={item => _renderItem(item)}
                     textError="Error"
@@ -90,10 +88,14 @@ export default function ConnexionScreen(props) {
             </View>
       </LinearGradient>
       </View>
-    )}}};
+  )};
+};
+
+  
+  export default ProfileScreen;
 
   const styles = StyleSheet.create({
-    container: {
+    container: { 
       flex: 1,
       letterSpacing: 0,
       lineHeight: 1.2,
