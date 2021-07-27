@@ -55,7 +55,7 @@ export default function App() {
   return (
     <NavigationContainer>
      <Stack.Navigator screenOptions={{headerShown: false}}>
-       <Stack.Screen name="Start" component={StartScreen} />
+       {/* <Stack.Screen name="Start" component={StartScreen} /> */}
        <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
      </Stack.Navigator>
    </NavigationContainer>
