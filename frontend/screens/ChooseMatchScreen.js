@@ -1,5 +1,10 @@
-// import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { View } from 'react-native';
 
-// export default function ChooseMatchScreen(){
+export default function ChooseMatchScreen() {
 
-
+	return(
+		<View>
+		</View>	
+	);
+};

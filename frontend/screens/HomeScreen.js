@@ -1,27 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, Input, Text } from 'react-native-elements'
+import { View } from 'react-native';
 
-export default function HomeScreen(props) {
+export default function HomeScreen() {
 
   return (
-
-		<View style={styles.container} >
-			<Button
-				title="Go to Chat"
-				type="solid"
-				onPress={() => {
-					props.navigation.navigate('BottomNavigator', { screen: 'Chat' });
-				}}
-			/>
+		<View>
 		</View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
