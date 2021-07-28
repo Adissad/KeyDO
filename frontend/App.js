@@ -8,11 +8,35 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import HomeScreen from './screens/HomeScreen'
 import StartScreen from './screens/StartScreen';
+import HomeScreen from './screens/HomeScreen'
+import ChooseMatchScreen from './screens/ChooseMatchScreen';
+import ConvScreen from './screens/ConvScreen';
+import ProfilScreen from './screens/ProfilScreen';
 
-import { Ionicons } from '@expo/vector-icons'
+import DanceScreen from './screens/GenresMusic/DanceScreen';
+import RnBScreen from './screens/GenresMusic/RnBScreen';
+import HipHopScreen from './screens/GenresMusic/HipHopScreen';
+import LatinoScreen from './screens/GenresMusic/LatinoScreen';
+import JazzScreen from './screens/GenresMusic/JazzScreen';
+import SoulScreen from './screens/GenresMusic/SoulScreen';
+import RockScreen from './screens/GenresMusic/RockScreen';
+import ClassiqueScreen from './screens/GenresMusic/ClassiqueScreen';
+import ReggaeScreen from './screens/GenresMusic/ReggaeScreen';
+import PopScreen from './screens/GenresMusic/PopScreen';
+import FrenchScreen from './screens/GenresMusic/FrenchScreen';
+import KpopScreen from './screens/GenresMusic/KpopScreen';
+import MétalScreen from './screens/GenresMusic/MétalScreen';
+import FunkScreen from './screens/GenresMusic/FunkScreen';
+import FolkScreen from './screens/GenresMusic/FolkScreen';
+import BluesScreen from './screens/GenresMusic/BluesScreen';
+import CountryScreen from './screens/GenresMusic/CountryScreen';
+import AfroScreen from './screens/GenresMusic/AfroScreen';
+import DécenniesScreen from './screens/GenresMusic/DécenniesScreen';
+import GospelScreen from './screens/GenresMusic/GospelScreen';
 
+import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,42 +47,70 @@ const BottomNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
           let iconName;
- 
+
           if (route.name == 'Home') {
-            iconName = 'Home';
+            iconName = 'home-outline';
           } else if (route.name == 'Match') {
-            iconName = 'Heart';
+            iconName = 'heart-outline';
           }
           else if (route.name == 'Conv') {
-           iconName = 'chatbubbles-outline';
-         }
-  
+            iconName = 'chatbubbles-outline';
+          }
+          if (route.name == 'Profil') {
+            iconName = 'person-outline';
+          }
           return <Ionicons name={iconName} size={25} color={color} />;
         },
-        })}
+      })}
       tabBarOptions={{
+        showIcon: true,
+        showLabel: false,
         activeTintColor: '#FFFFFF',
         inactiveTintColor: '#66F',
         style: {
-          backgroundColor: '',
+          backgroundColor: 'transparent',
+          borderTopWidth: 0,
+          position: 'absolute',
+          elevation: 0
         }
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Match" component={ChooseMatchScreen} />
       <Tab.Screen name="Conv" component={ConvScreen} />
+      <Tab.Screen name="Profil" component={ProfilScreen} />
     </Tab.Navigator>
   );
- }
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-     <Stack.Navigator screenOptions={{headerShown: false}}>
-       <Stack.Screen name="Start" component={StartScreen} />
-       <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
-     </Stack.Navigator>
-   </NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Start" component={StartScreen} />
+        <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
+        <Stack.Screen name="Dance" component={DanceScreen} />
+        <Stack.Screen name="RnB" component={RnBScreen} />
+        <Stack.Screen name="HipHop" component={HipHopScreen} />
+        <Stack.Screen name="Latino" component={LatinoScreen} />
+        <Stack.Screen name="Jazz" component={JazzScreen} />
+        <Stack.Screen name="Soul" component={SoulScreen} />
+        <Stack.Screen name="Rock" component={RockScreen} />
+        <Stack.Screen name="Classique" component={ClassiqueScreen} />
+        <Stack.Screen name="Reggae/Dancehall" component={ReggaeScreen} />
+        <Stack.Screen name="Pop" component={PopScreen} />
+        <Stack.Screen name="French" component={FrenchScreen} />
+        <Stack.Screen name="Kpop" component={KpopScreen} />
+        <Stack.Screen name="Métal" component={MétalScreen} />
+        <Stack.Screen name="Funk" component={FunkScreen} />
+        <Stack.Screen name="Folk" component={FolkScreen} />
+        <Stack.Screen name="Blues" component={BluesScreen} />
+        <Stack.Screen name="Country" component={CountryScreen} />
+        <Stack.Screen name="Afro" component={AfroScreen} />
+        <Stack.Screen name="Décennies" component={DécenniesScreen} />
+        <Stack.Screen name="Gospel" component={GospelScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
