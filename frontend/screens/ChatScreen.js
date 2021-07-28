@@ -1,15 +1,19 @@
-/** 
-* TODO : Fix KeyboardAvoidingView + Scrolling 
-*/
 import React, {useState, useEffect} from 'react';
-import { View, ScrollView, KeyboardAvoidingView, StyleSheet, TextInput, Dimensions } from 'react-native';
-import { Button, ListItem, Input } from 'react-native-elements';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+
+import { 
+	View,
+	ScrollView,
+	KeyboardAvoidingView,
+	StyleSheet,
+	TextInput,
+	Dimensions 
+} from 'react-native';
+
+import { Button, ListItem } from 'react-native-elements';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
 import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
 
 import socketIOClient from 'socket.io-client';
-import { FlatList } from 'react-native-gesture-handler';
 
 // Pensez à changer l'adresse ci-dessous avec votre IP locale !
 let socket = socketIOClient("http://172.17.1.53:3000");
@@ -20,12 +24,12 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ChatScreen(props) {
-  
+
   const [currentMessage, setCurrentMessage] = useState();
   const [listMessage, setListMessage] = useState([]);
 
-  useEffect(() => { 
-    socket.on('sendMessageToAll', (newMessageData)=> {
+  useEffect(() => {
+    socket.on('sendMessageFromBack', (newMessageData)=> {
       setListMessage([...listMessage, newMessageData]);
     });
   }, [listMessage]);
@@ -53,7 +57,7 @@ export default function ChatScreen(props) {
 					/>
 				} 
 				type="clear"
-				onPress={()=> { props.navigation.navigate('Conv') }}
+				onPress={() => { props.navigation.navigate('Conv') }}
 			/>
 			<ScrollView style={{flex:1}}>
 
@@ -61,17 +65,22 @@ export default function ChatScreen(props) {
 
 			</ScrollView>
 
-			{/* <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}> */}
+			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+			</KeyboardAvoidingView>
+
 
 			<KeyboardAccessoryView alwaysVisible={true} androidAdjustResize>
 				{({ isKeyboardVisible }) => (
 					<View style={styles.inputView}>
 						<TextInput
 							placeholder="Message"
+							placeholderTextColor="#b2b2b2"
+							selectionColor="#b2b2b2"
 							onChangeText={(messageData)=>setCurrentMessage(messageData)}
 							value={currentMessage}
 							underlineColorAndroid="transparent"
 							style={styles.input}
+							keyboardAppearance="dark"
 							multiline={true}
 						/>
 						{isKeyboardVisible && (
@@ -80,7 +89,7 @@ export default function ChatScreen(props) {
 									<FontAwesome
 										name="send-o"
 										size={20}
-										color="#999999"
+										color="#b2b2b2"
 									/>
                 } 
 								style={styles.inputButton}
@@ -96,7 +105,6 @@ export default function ChatScreen(props) {
 					</View>
 				)}
 			</KeyboardAccessoryView>
-			{/* </KeyboardAvoidingView> */}
 		</View>
   );
 };
@@ -118,9 +126,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: "#0c0c0c",
     padding: 10,
     fontSize: 16,
+		color: "#b2b2b2",
     textAlignVertical: "top",
 		backgroundColor: "#0c0c0c"
   },
