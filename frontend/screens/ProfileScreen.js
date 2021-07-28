@@ -1,145 +1,238 @@
-import React, {useState} from 'react';
-import { View, StyleSheet, Text, Dimensions, Image} from "react-native";
-// import { FontAwesome, Ionicons, Fontisto } from "@expo/vector-icons";
-// import { Input } from "react-native-elements";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, Dimensions, Button, Image, ScrollView } from "react-native";
+import { Avatar } from "react-native-elements";
+import Modal from "react-native-modal";
+import DropDownPicker from "react-native-dropdown-picker";
 import { LinearGradient } from "expo-linear-gradient";
-import {Dropdown, MultiSelect} from 'react-native-element-dropdown';
+import { Input } from "react-native-elements/dist/input/Input";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-const data = [
-    {label: 'Item 1', value: '1'},
-    {label: 'Item 2', value: '2'},
-    {label: 'Item 3', value: '3'},
-    {label: 'Item 4', value: '4'},
-    {label: 'Item 5', value: '5'},
-    {label: 'Item 6', value: '6'},
-    {label: 'Item 7', value: '7'},
-    {label: 'Item 8', value: '8'},
-];
 
-const ProfileScreen = _props => {
-    const [dropdown, setDropdown] = useState('');
-    const [selected, setSelected] = useState([]);
+export default function ProfileScreen() {
+  const [isModalVisible, setModalVisible] = useState(false);
 
-    const _renderItem = item => {
-// export default function ConnexionScreen(props) {
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const [valueMusic, setValueMusic] = useState([]);
+  const [openMusic, setOpenMusic] = useState(false);
+  const [selectMusic, setSelectMusic] = useState([
+    { label: "Dance", value: "dance" },
+    { label: "RnB", value: "rnb" },
+    { label: "Hip-hop", value: "hip-hop" },
+    { label: "Latino", value: "latino" },
+    { label: "Jazz", value: "jazz" },
+    { label: "Soul", value: "soul" },
+    { label: "Rock", value: "rock" },
+    { label: "Classique", value: "classique" },
+    { label: "Reggae/ Dancehall", value: "reggae/ dancehall" },
+    { label: "Pop", value: "pop" },
+    { label: "Variété française", value: "variété française" },
+    { label: "Métal", value: "métal" },
+    { label: "Funk", value: "funk" },
+    { label: "Folk & Acoustique", value: "folk & acoustique" },
+    { label: "Blues", value: "blues" },
+    { label: "Country", value: "country" },
+    { label: "Afro beat", value: "afro beat" },
+    { label: "Décennies", value: "décennies" },
+    { label: "Gospel", value: "gospel" },
+  ]);
+
+  const [valueInterest, setValueInterest] = useState([]);
+  const [openInterest, setOpenInterest] = useState(false);
+  const [selectInterest, setselectInterest] = useState([
+    { label: "Voyager", value: "voyager" },
+    { label: "Musées", value: "musées" },
+    { label: "Sport", value: "Sport" },
+    { label: "Yoga", value: "yoga" },
+    { label: "Littérature", value: "littérature" },
+    { label: "Activités manuelles", value: "activités manuelles" },
+    { label: "Histoire", value: "histoire" },
+    { label: "Art", value: "art" },
+    { label: "Photographie", value: "photographie" },
+    { label: "Théâtre", value: "théâtre" },
+    { label: "Cuisine", value: "cuisine" },
+    { label: "Danse", value: "danse" },
+  ]);
+
+
   return (
     <View style={styles.container}>
       <LinearGradient
         colors={["#2464A2", "#693192"]}
         start={{
           x: 0,
-          y: 0.5,
+          y: 0.25,
         }}
         end={{
           x: 0.5,
-          y: 0.8,
+          y: 1,
         }}
         locations={[0, 0.7]}
         style={styles.box}
       >
 
-            <View style={styles.item}>
-                <Text style={styles.textItem}>{item.label}</Text>
-                <Image style={styles.icon} source={require('../assets/icon.png')} />
-            </View>
-            );
-        
-            <View style={styles.container}>
-                <Dropdown
-                    style={styles.dropdown}
-                    containerStyle={styles.shadow}
-                    data={data}
-                    search
-                    searchPlaceholder="Search"
-                    labelField="label"
-                    valueField="value"
-                    label="Dropdown"
-                    placeholder="Select item"
-                    value={dropdown}
-                    onChange={item => {
-                    setDropdown(item.value);
-                        console.log('selected', item);
-                    }}
-                    renderLeftIcon={() => (
-                        <Image style={styles.icon} source={require('../assets/icon.png')} />
-                    )}
-                    renderItem={item => _renderItem(item)}
-                    textError="Error"
-                />
+        <View
+          style={{
+            marginTop: (1 / 8) * windowHeight,
+            paddingRight: (1 / 2) * windowWidth,
+            flexDirection: "row",
+            justifyContent: "space-around",
+            width: "100%",
+            height: "auto",
+          }}
+        >
+          <Button buttonStyle={{backgroundColor:"#693192"}} title="Choose your avatar" onPress={toggleModal} />
 
-                <MultiSelect
-                    style={styles.dropdown}
-                    data={data}
-                    labelField="label"
-                    valueField="value"
-                    label="Multi Select"
-                    placeholder="Select item"
-                    search
-                    searchPlaceholder="Search"
-                    value={selected}
-                    onChange={item => {
-                    setSelected(item);
-                        console.log('selected', item);
-                    }}
-                    renderItem={item => _renderItem(item)}
-                />
-            </View>
+          <Modal isVisible={isModalVisible}>
+          <ScrollView style={styles.scrollView}>
+            <Image
+            rounded
+            source={require('../assets/woman.png')}
+            onPress={() => console.log("Works1!")}
+            activeOpacity={0.7}
+            width={20}
+            height={20}
+            />
+            <Image
+            rounded
+            source={require('../assets/man.png')}
+            onPress={() => console.log("Works2!")}
+            activeOpacity={0.7}
+            width={20}
+            height={20}
+            />
+            <Image
+            rounded
+            source={require('../assets/pinguin.png')}
+            onPress={() => console.log("Works3!")}
+            activeOpacity={0.7}
+            width={20}
+            height={20}
+            />
+            <Image
+            rounded
+            source={require('../assets/dog.png')}
+            onPress={() => console.log("Works4!")}
+            activeOpacity={0.7}
+            width={20}
+            height={20}
+            />
+            <Image
+            rounded
+            source={require('../assets/rabbit.png')}
+            onPress={() => console.log("Works6!")}
+            activeOpacity={0.7}
+            width={20}
+            height={20}
+            />
+            <Image
+            rounded
+            source={require('../assets/pinguin.png')}
+            onPress={() => console.log("Works6!")}
+            activeOpacity={0.7}
+            width={5}
+            height={5}
+            />            
+              <Button title="Done" onPress={toggleModal} />
+              </ScrollView>
+          </Modal>
+        </View>
+
+        <View>
+              <Input
+            //   style={{ paddingLeft: 20 }}
+              placeholder="Name"
+              placeholderTextColor="white"
+              />
+              <Input
+            //   style={{ paddingLeft: 20 }}
+              placeholder="Age"
+              placeholderTextColor="white"
+              />
+              <Input
+            //   style={{ paddingLeft: 20 }}
+              placeholder="Gender"
+              placeholderTextColor="white"
+              />
+              <Input
+            //   style={{ paddingLeft: 20 }}
+              placeholder="City"
+              placeholderTextColor="white"
+              />
+          </View>
+
+        <View
+          style={{
+            marginTop: (1 / 6) * windowHeight,
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            width: "100%",
+            height: "auto",
+          }}
+        >
+          <DropDownPicker
+            multiple={true}
+            min={0}
+            max={5}
+            open={openMusic}
+            value={valueMusic}
+            items={selectMusic}
+            setOpen={() => setOpenMusic(!openMusic)}
+            setValue={setValueMusic}
+            setItems={setSelectMusic}
+          />
+        </View>
+
+        <View
+          style={{
+            marginTop: (1 / 4) * windowHeight,
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            width: "100%",
+            height: "auto",
+          }}
+        >
+          <DropDownPicker
+            multiple={true}
+            min={0}
+            max={3}
+            open={openInterest}
+            value={valueInterest}
+            items={selectInterest}
+            setOpen={() => setOpenInterest(!openInterest)}
+            setValue={setValueInterest}
+            setItems={setselectInterest}
+          />
+        </View>
       </LinearGradient>
-      </View>
-  )};
-};
+    </View>
+  );
+}
 
-  
-  export default ProfileScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    letterSpacing: 0,
+    lineHeight: 1.2,
+    justifyContent: "center",
 
-  const styles = StyleSheet.create({
-    container: { 
-      flex: 1,
-      letterSpacing: 0,
-      lineHeight: 1.2,
-      justifyContent: "center",
-  
-      // fontFamily: ,
-    },
-  
-    box: {
-      flex:1,
-      justifyContent: "flex-start",
-      width: Dimensions.get("window").width,
-      height: Dimensions.get("window").height,
-    },
-        dropdown: {
-            backgroundColor: 'white',
-            borderBottomColor: 'gray',
-            borderBottomWidth: 0.5,
-            marginTop: 20,
-        },
-        icon: {
-            marginRight: 5,
-            width: 18,
-            height: 18,
-        },
-        item: {
-            paddingVertical: 17,
-            paddingHorizontal: 4,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        },
-        textItem: {
-            flex: 1,
-            fontSize: 16,
-        },
-        shadow: {
-            shadowColor: '#000',
-            shadowOffset: {
-            width: 0,
-            height: 1,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 1.41,
-            elevation: 2,
-        },
-    });
+    // fontFamily: ,
+  },
+
+  box: {
+    flex: 1,
+    justifyContent: "flex-start",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+
+  scrollView: {
+    backgroundColor: '#693192',
+    marginHorizontal: 20,
+  },
+});
