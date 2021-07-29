@@ -48,12 +48,14 @@ export default function ConnexionScreen(props) {
           style={{ paddingLeft: 20 }}
           placeholder="Name"
           placeholderTextColor="white"
+          color="white"
         />
 
         <Input
           style={{ paddingLeft: 20 }}
           placeholder="Email"
           placeholderTextColor="white"
+          color="white"
         />
 
         <Input
@@ -61,6 +63,7 @@ export default function ConnexionScreen(props) {
           placeholder="Password"
           secureTextEntry={true}
           placeholderTextColor="white"
+          color="white"
         />
         </View>
 

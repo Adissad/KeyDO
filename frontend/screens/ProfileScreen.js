@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, Dimensions, Button, Image, ScrollView } from "react-native";
+import { View, StyleSheet, Text, Dimensions, Button, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Avatar } from "react-native-elements";
 import Modal from "react-native-modal";
 import DropDownPicker from "react-native-dropdown-picker";
 import { LinearGradient } from "expo-linear-gradient";
 import { Input } from "react-native-elements/dist/input/Input";
+
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -43,7 +44,7 @@ export default function ProfileScreen() {
   const [valueInterest, setValueInterest] = useState([]);
   const [openInterest, setOpenInterest] = useState(false);
   const [selectInterest, setselectInterest] = useState([
-    { label: "Voyager", value: "voyager" },
+    { label: "Voyages", value: "voyages" },
     { label: "Musées", value: "musées" },
     { label: "Sport", value: "Sport" },
     { label: "Yoga", value: "yoga" },
@@ -88,6 +89,8 @@ export default function ProfileScreen() {
 
           <Modal isVisible={isModalVisible}>
           <ScrollView style={styles.scrollView}>
+
+            <TouchableOpacity>
             <Image
             rounded
             source={require('../assets/woman.png')}
@@ -96,6 +99,9 @@ export default function ProfileScreen() {
             width={20}
             height={20}
             />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
             <Image
             rounded
             source={require('../assets/man.png')}
@@ -104,6 +110,9 @@ export default function ProfileScreen() {
             width={20}
             height={20}
             />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
             <Image
             rounded
             source={require('../assets/pinguin.png')}
@@ -112,6 +121,9 @@ export default function ProfileScreen() {
             width={20}
             height={20}
             />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
             <Image
             rounded
             source={require('../assets/dog.png')}
@@ -120,6 +132,9 @@ export default function ProfileScreen() {
             width={20}
             height={20}
             />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
             <Image
             rounded
             source={require('../assets/rabbit.png')}
@@ -128,6 +143,9 @@ export default function ProfileScreen() {
             width={20}
             height={20}
             />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
             <Image
             rounded
             source={require('../assets/pinguin.png')}
@@ -135,38 +153,44 @@ export default function ProfileScreen() {
             activeOpacity={0.7}
             width={5}
             height={5}
-            />            
+            />      
+            </TouchableOpacity>
+
               <Button title="Done" onPress={toggleModal} />
               </ScrollView>
           </Modal>
         </View>
 
         <View>
-              <Input
+          <Input
             //   style={{ paddingLeft: 20 }}
               placeholder="Name"
               placeholderTextColor="white"
+              color="white"
               />
               <Input
             //   style={{ paddingLeft: 20 }}
               placeholder="Age"
               placeholderTextColor="white"
+              color="white"
               />
               <Input
             //   style={{ paddingLeft: 20 }}
               placeholder="Gender"
               placeholderTextColor="white"
+              color="white"
               />
               <Input
             //   style={{ paddingLeft: 20 }}
               placeholder="City"
               placeholderTextColor="white"
+              color="white"
               />
-          </View>
+        </View>
 
         <View
           style={{
-            marginTop: (1 / 6) * windowHeight,
+            marginTop: (1 / 12) * windowHeight,
             flexDirection: "row",
             justifyContent: "space-around",
             alignItems: "center",
@@ -189,7 +213,7 @@ export default function ProfileScreen() {
 
         <View
           style={{
-            marginTop: (1 / 4) * windowHeight,
+            marginTop: (1 / 10) * windowHeight,
             flexDirection: "row",
             justifyContent: "space-around",
             alignItems: "center",
