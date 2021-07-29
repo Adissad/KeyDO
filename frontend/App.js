@@ -92,6 +92,9 @@ export default function App() {
    <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Start" component={StartScreen} />
+        <Stack.Screen name="Connexion" component={ConnexionScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
         <Stack.Screen name="Dance" component={DanceScreen} />
         <Stack.Screen name="RnB" component={RnBScreen} />
@@ -113,7 +116,8 @@ export default function App() {
         <Stack.Screen name="Afro" component={AfroScreen} />
         <Stack.Screen name="Décennies" component={DécenniesScreen} />
         <Stack.Screen name="Gospel" component={GospelScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Spotify" component={SpotifyRedirectionScreen} />
+        <Stack.Screen name="Apple" component={AppleRedirectionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

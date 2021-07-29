@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, StyleSheet, Text, Dimensions} from "react-native";
 import { FontAwesome, Ionicons, Fontisto } from "@expo/vector-icons";
 import { Input, Button } from "react-native-elements";
@@ -10,6 +10,37 @@ const windowHeight = Dimensions.get("window").height;
 
 
 export default function ConnexionScreen(props) {
+  const [signUpUsername, setSignUpUsername] = useState('')
+  const [signUpEmail, setSignUpEmail] = useState('')
+  const [signUpPassword, setSignUpPassword] = useState('')
+
+  const [signInEmail, setSignInEmail] = useState('')
+  const [signInPassword, setSignInPassword] = useState('')
+
+  const [userExists, setUserExists] = useState(false)
+
+  const [listErrorsSignin, setErrorsSignin] = useState([])
+  const [listErrorsSignup, setErrorsSignup] = useState([])
+
+  var handleSubmitSignup = async () => {
+    
+    const data = await fetch('http://172.17.1.106:3000/users/signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}`
+    })
+
+    const body = await data.json()
+
+    if(body.result == true){
+      props.addToken(body.token)
+      setUserExists(true)
+      
+    } else {
+      setErrorsSignup(body.error)
+    }
+  }
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -31,9 +62,9 @@ export default function ConnexionScreen(props) {
 
         <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
           <FontAwesome name="spotify" size={60} color="#1DB954" 
-          onPress={() => {props.navigation.navigate("BottomNavigator", {screen: 'SpotifyRedirectionScreen' })}} /> 
+          onPress={() => {props.navigation.navigate('Spotify')}} /> 
           <Fontisto name="applemusic" size={50} color="#FC3C44"
-          onPress={() => {props.navigation.navigate("BottomNavigator", {screen: 'AppleRedirectionScreen' })}} />
+          onPress={() => {props.navigation.navigate('Apple')}} />
         </View>
 
         <View style={{marginTop:1/8*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
@@ -45,6 +76,7 @@ export default function ConnexionScreen(props) {
 
         <View style={{marginTop:1/10*windowHeight, justifyContent:"center" ,flexDirection:"column" }} >
         <Input
+        onChange={(e) => setSignUpUsername(e.target.value)}
           style={{ paddingLeft: 20 }}
           placeholder="Name"
           placeholderTextColor="white"
@@ -52,6 +84,7 @@ export default function ConnexionScreen(props) {
         />
 
         <Input
+        onChange={(e) => setSignUpEmail(e.target.value)}
           style={{ paddingLeft: 20 }}
           placeholder="Email"
           placeholderTextColor="white"
@@ -59,6 +92,7 @@ export default function ConnexionScreen(props) {
         />
 
         <Input
+        onChange={(e) => setSignUpPassword(e.target.value)}
           style={{ paddingLeft: 20 }}
           placeholder="Password"
           secureTextEntry={true}
@@ -68,7 +102,7 @@ export default function ConnexionScreen(props) {
         </View>
 
         <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
-        <Button buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" onPress={() => {props.navigation.navigate("Profile")}} />
+        <Button onPress={() => handleSubmitSignup ()} buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" />
         </View>
 
       </LinearGradient>

@@ -75,6 +75,21 @@ export default function ProfileScreen() {
         style={styles.box}
       >
 
+        
+        <TouchableOpacity>
+        <View style={{
+            marginTop: (1 /10) * windowHeight}}>
+          <Avatar
+          rounded
+          onPress={toggleModal}
+          source={require('../assets/woman.png')}
+          width={20}
+          height={20}
+          />
+          </View>
+        </TouchableOpacity>
+
+        
         <View
           style={{
             marginTop: (1 / 8) * windowHeight,
