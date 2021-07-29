@@ -40,7 +40,6 @@ import DécenniesScreen from './screens/GenresMusic/DécenniesScreen';
 import GospelScreen from './screens/GenresMusic/GospelScreen';
 
 import { Ionicons } from '@expo/vector-icons';
-import { StatusBar } from 'expo-status-bar';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
