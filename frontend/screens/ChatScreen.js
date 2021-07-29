@@ -6,7 +6,8 @@ import {
 	KeyboardAvoidingView,
 	StyleSheet,
 	TextInput,
-	Dimensions 
+	Text,
+	Dimensions
 } from 'react-native';
 
 import { Button, ListItem } from 'react-native-elements';
@@ -16,8 +17,8 @@ import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
 import socketIOClient from 'socket.io-client';
 
 // Pensez à changer l'adresse ci-dessous avec votre IP locale !
-let socket = socketIOClient("http://172.17.1.53:3000");
-// 192.168.1.15 (home IP)
+let socket = socketIOClient("http://192.168.1.56:3000");
+// 192.168.1.56 (home IP)
 // 172.17.1.53 (LaCapsule IP)
 
 const windowWidth = Dimensions.get('window').width;
@@ -28,18 +29,22 @@ export default function ChatScreen(props) {
   const [currentMessage, setCurrentMessage] = useState();
   const [listMessage, setListMessage] = useState([]);
 
+	socket.on("connect", () => {
+  	console.log("socket id :", socket.id);
+	});
+
   useEffect(() => {
-    socket.on('sendMessageFromBack', (newMessageData)=> {
-      setListMessage([...listMessage, newMessageData]);
+    socket.on('privateMessageFromBack', (newMsgData)=> {
+      setListMessage([...listMessage, newMsgData]);
     });
   }, [listMessage]);
 
-  let listMessageItem = listMessage.map((messageData, i)=>{
+  let listMessageItem = listMessage.map((msgData, i)=>{
 
     return (
       <ListItem key={i}>
         <ListItem.Content>
-          <ListItem.Subtitle>{messageData}</ListItem.Subtitle>
+          <ListItem.Subtitle>{msgData}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
     );
@@ -59,6 +64,7 @@ export default function ChatScreen(props) {
 				type="clear"
 				onPress={() => { props.navigation.navigate('Conv') }}
 			/>
+
 			<ScrollView style={{flex:1}}>
 
 				{listMessageItem}
@@ -67,7 +73,6 @@ export default function ChatScreen(props) {
 
 			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
 			</KeyboardAvoidingView>
-
 
 			<KeyboardAccessoryView alwaysVisible={true} androidAdjustResize>
 				{({ isKeyboardVisible }) => (
@@ -96,7 +101,7 @@ export default function ChatScreen(props) {
 								type= 'clear'
 								onPress={()=> {
 									if(currentMessage) {
-										socket.emit("sendMessage", currentMessage); 
+										socket.emit("sendPrivateMessage", currentMessage); 
 										setCurrentMessage('');
 									}
 								}}
@@ -112,7 +117,7 @@ export default function ChatScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-		backgroundColor: 'orange'
+		backgroundColor: 'orange',
   },
   inputView: {
 		paddingTop: '2%',

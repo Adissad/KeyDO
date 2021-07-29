@@ -15,6 +15,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ConvScreen(props) {
+
 	// const [listChatRooms, setListChatRooms] = useState([]);
 
 	// let listChatItem = listChatRooms.map((username, i)=>{

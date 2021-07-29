@@ -23,15 +23,20 @@ var server = http.createServer(app);
 
 var io = require('socket.io')(server);
 
-io.on('connection', function(socket){
+io.on('connection', function(socket) {
 
-	console.log('new user connected');
-	console.log('------------------');
+	const socketId = socket.id
 
-	socket.on('sendMessage', function(messageData) {
-    console.log('Message received :', messageData);
-    console.log('------------------');
-    socket.emit('sendMessageFromBack', messageData);
+	console.log('new client connected');
+	console.log('socket id :', socketId);
+	// const userId = await fetchUserId(socket)
+	// socket.join(userId);
+
+	socket.on('sendPrivateMessage', function(socketId, msgData) {
+
+		console.log('Message received :', msgData);
+
+    io.to(socketId).emit('privateMessageFromBack', socketId, msgData);
   });
 });
 
