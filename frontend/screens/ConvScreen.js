@@ -20,9 +20,15 @@ const windowHeight = Dimensions.get('window').height;
 export default function ConvScreen(props) {
 
 	const usersData = [
-		{ id: '123', title: 'Yendze', avatar: 'avatar 1' },
-		{ id: '456', title: 'Mathias', avatar: 'avatar 2' },
-		{ id: '789', title: 'Adissa', avatar: 'avatar 3' },
+		{ id: '0', title: 'Aurélie', avatar: '../assets/Aurélie.jpg' },
+		{ id: '1', title: 'Jack', avatar: '../assets/Aurélie.jpg' },
+		{ id: '2', title: 'Carol', avatar: '../assets/Aurélie.jpg' },
+		{ id: '3', title: 'Christophe', avatar: '../assets/Aurélie.jpg' },
+		{ id: '4', title: 'Jason', avatar: '../assets/Aurélie.jpg' },
+		{ id: '5', title: 'Jay', avatar: '../assets/Aurélie.jpg' },
+		{ id: '6', title: 'Jean', avatar: '../assets/Aurélie.jpg' },
+		{ id: '7', title: 'Jonathan', avatar: '../assets/Aurélie.jpg' },
+		{ id: '8', title: 'Josette', avatar: '../assets/Aurélie.jpg' },
 	];
 
 	const Item = ({ title }) => (
@@ -31,13 +37,13 @@ export default function ConvScreen(props) {
 
 				<TouchableOpacity onPress={() => { props.navigation.navigate('Chat') }} >
 
-					<View>
+					<View style={styles.itemContent} >
 
-						<Avatar 
+						<Avatar
 							rounded
 							size= "medium"
 							// source= {{uri: "http://172.17.1.53:3000/avatar.jpg" }} TO GET IT FROM BACKEND
-							source= {require("../assets/avatar.jpg" ) }
+							source= {require("../assets/Avatar.jpg")}
 						/>
 
 						<Text style={styles.title}>
@@ -72,25 +78,38 @@ const styles = StyleSheet.create({
 
 	container: {
 		flex: 1,
-		backgroundColor: "orange"
+		backgroundColor: "#666666"
 	},
 
 	screenTitle: {
 		textAlign: "center",
-		fontSize: 20,
-		fontWeight: "bold"
+		fontSize: 18,
+		fontWeight: "bold",
+		marginTop: "2%",
+		marginBottom: "2%",
+		color: "white"
 	},
 
 	item: {
-		borderRadius: 10,
-		backgroundColor: "white",
-		padding: 6,
-		marginVertical: 1/200 * windowHeight,
-		marginHorizontal: 1/40 * windowWidth,
+		borderRadius: 30,
+		backgroundColor: "#d8d8d8",
+		padding: 4,
+		marginVertical: 1/100 * windowHeight,
+		marginHorizontal: 1/30 * windowWidth,
+	},
+
+	itemContent: {
+		flex: 1,
+		flexDirection: "row",
+		alignContent: "space-around",
+		alignItems: "center",
+
 	},
 
 	title: {
-		backgroundColor: "red",
+		flex: 1,
+		textAlign: "center",
+		marginRight: "10%",
 		fontSize: 20,
 		fontStyle: "italic"
 	},
