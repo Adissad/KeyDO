@@ -16,7 +16,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import HomeScreen from './screens/HomeScreen'
 import ChooseMatchScreen from './screens/ChooseMatchScreen';
 import ConvScreen from './screens/ConvScreen';
-import ProfilScreen from './screens/ProfilScreen';
+
 
 import DanceScreen from './screens/GenresMusic/DanceScreen';
 import RnBScreen from './screens/GenresMusic/RnBScreen';
@@ -82,7 +82,7 @@ const BottomNavigator = () => {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Match" component={ChooseMatchScreen} />
       <Tab.Screen name="Conv" component={ConvScreen} />
-      <Tab.Screen name="Profil" component={ProfilScreen} />
+      <Tab.Screen name="Profil" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
