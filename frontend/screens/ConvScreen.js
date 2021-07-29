@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import {
 	View,
 	Dimensions,
@@ -11,25 +12,14 @@ import {
 import { Avatar } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
 
+// import { connect } from 'react-redux';
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ConvScreen(props) {
 
-	// const [listChatRooms, setListChatRooms] = useState([]);
-
-	// let listChatItem = listChatRooms.map((username, i)=>{
-
-	// 	return (
-	// 		<ListItem key={i}>
-	// 			<ListItem.Content>
-	// 				<ListItem.Title>{username}</ListItem.Title>
-	// 			</ListItem.Content>
-	// 		</ListItem>
-	// 	);
-	// });
-
-	const data = [
+	const usersData = [
 		{ id: '123', title: 'Yendze', avatar: 'avatar 1' },
 		{ id: '456', title: 'Mathias', avatar: 'avatar 2' },
 		{ id: '789', title: 'Adissa', avatar: 'avatar 3' },
@@ -69,7 +59,7 @@ export default function ConvScreen(props) {
 			</Text>
 
 			<FlatList
-				data={data}
+				data={usersData}
 				renderItem={renderItem}
 				keyExtractor={(item) => item.id}
 			/>
@@ -77,6 +67,7 @@ export default function ConvScreen(props) {
 	);
 }
 
+// STYLE
 const styles = StyleSheet.create({
 
 	container: {

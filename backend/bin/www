@@ -21,25 +21,6 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-var io = require('socket.io')(server);
-
-io.on('connection', function(socket) {
-
-	const socketId = socket.id
-
-	console.log('new client connected');
-	console.log('socket id :', socketId);
-	// const userId = await fetchUserId(socket)
-	// socket.join(userId);
-
-	socket.on('sendPrivateMessage', function(socketId, msgData) {
-
-		console.log('Message received :', msgData);
-
-    io.to(socketId).emit('privateMessageFromBack', socketId, msgData);
-  });
-});
-
 /**
  * Listen on provided port, on all network interfaces.
  */

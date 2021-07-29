@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import { 
+import {
 	View,
 	ScrollView,
 	KeyboardAvoidingView,
@@ -14,41 +14,30 @@ import { Button, ListItem } from 'react-native-elements';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
 import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
 
-import socketIOClient from 'socket.io-client';
-
-// Pensez à changer l'adresse ci-dessous avec votre IP locale !
-let socket = socketIOClient("http://192.168.1.56:3000");
-// 192.168.1.56 (home IP)
-// 172.17.1.53 (LaCapsule IP)
-
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ChatScreen(props) {
 
-  const [currentMessage, setCurrentMessage] = useState();
-  const [listMessage, setListMessage] = useState([]);
+  // const [currentMessage, setCurrentMessage] = useState();
+  // const [listMessage, setListMessage] = useState([]);
 
-	socket.on("connect", () => {
-  	console.log("socket id :", socket.id);
-	});
+  // useEffect(() => {
 
-  useEffect(() => {
-    socket.on('privateMessageFromBack', (newMsgData)=> {
-      setListMessage([...listMessage, newMsgData]);
-    });
-  }, [listMessage]);
+  //   setListMessage([...listMessage, newMsgData]);
 
-  let listMessageItem = listMessage.map((msgData, i)=>{
+  // }, [listMessage]);
 
-    return (
-      <ListItem key={i}>
-        <ListItem.Content>
-          <ListItem.Subtitle>{msgData}</ListItem.Subtitle>
-        </ListItem.Content>
-      </ListItem>
-    );
-  });
+  // let listMessageItem = listMessage.map((msgData, i)=>{
+
+  //   return (
+  //     <ListItem key={i}>
+  //       <ListItem.Content>
+  //         <ListItem.Subtitle>{msgData}</ListItem.Subtitle>
+  //       </ListItem.Content>
+  //     </ListItem>
+  //   );
+  // });
 
   return (
 
@@ -60,14 +49,14 @@ export default function ChatScreen(props) {
 						name="arrow-back"
 						size= {25}
 					/>
-				} 
+				}
 				type="clear"
 				onPress={() => { props.navigation.navigate('Conv') }}
 			/>
 
 			<ScrollView style={{flex:1}}>
 
-				{listMessageItem}
+				{/* {listMessageItem} */}
 
 			</ScrollView>
 
@@ -81,8 +70,8 @@ export default function ChatScreen(props) {
 							placeholder="Message"
 							placeholderTextColor="#b2b2b2"
 							selectionColor="#b2b2b2"
-							onChangeText={(messageData)=>setCurrentMessage(messageData)}
-							value={currentMessage}
+							// onChangeText={(messageData)=>setCurrentMessage(messageData)}
+							// value={currentMessage}
 							underlineColorAndroid="transparent"
 							style={styles.input}
 							keyboardAppearance="dark"
@@ -99,12 +88,10 @@ export default function ChatScreen(props) {
                 } 
 								style={styles.inputButton}
 								type= 'clear'
-								onPress={()=> {
-									if(currentMessage) {
-										socket.emit("sendPrivateMessage", currentMessage); 
-										setCurrentMessage('');
-									}
-								}}
+								// onPress={()=> {
+								// 	if(currentMessage) {
+								// 	}
+								// }}
 							/>
 						)}
 					</View>
@@ -114,6 +101,7 @@ export default function ChatScreen(props) {
   );
 };
 
+// STYLE
 const styles = StyleSheet.create({
   container: {
     flex: 1,
