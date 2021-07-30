@@ -31,9 +31,9 @@ export default function ConnexionScreen(props) {
 
         <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
           <FontAwesome name="spotify" size={60} color="#1DB954" 
-          onPress={() => {props.navigation.navigate("BottomNavigator", {screen: 'SpotifyRedirectionScreen' })}} /> 
+          onPress={() => {props.navigation.navigate('Spotify')}} /> 
           <Fontisto name="applemusic" size={50} color="#FC3C44"
-          onPress={() => {props.navigation.navigate("BottomNavigator", {screen: 'AppleRedirectionScreen' })}} />
+          onPress={() => {props.navigation.navigate('Apple')}} />
         </View>
 
         <View style={{marginTop:1/8*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>

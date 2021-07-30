@@ -14,7 +14,7 @@ export default function RnBScreen(props) {
 
 
   const data = [
-    { id: '123', title: 'Yendze', avatar: 'avatar 1',},
+    { id: '123', title: 'Lucy', avatar: 'avatar 1',},
     { id: '456', title: 'Mathias', avatar: 'avatar 2' },
     { id: '789', title: 'Adissa', avatar: 'avatar 3' },
     { id: '780', title: 'Clothilde', avatar: 'avatar 4' },
