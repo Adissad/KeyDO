@@ -2,7 +2,7 @@ import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']);
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
