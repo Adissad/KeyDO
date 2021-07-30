@@ -11,6 +11,7 @@ import {
 
 import { Avatar } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
+import { LinearGradient } from 'expo-linear-gradient';
 
 // import { connect } from 'react-redux';
 
@@ -46,6 +47,10 @@ export default function ConvScreen(props) {
 							source= {require("../assets/Avatar.jpg")}
 						/>
 
+						{/* <Image borderRadius="50%">
+
+						</Image> */}
+
 						<Text style={styles.title}>
 							{title}
 						</Text>
@@ -58,41 +63,65 @@ export default function ConvScreen(props) {
 	const renderItem = ({ item }) => <Item title={item.title} />;
 
 	return (
-		<SafeAreaView style={styles.container}>
 
-			<Text style={styles.screenTitle}>
-				Contacts
-			</Text>
+		<View style={styles.container}>
+			<LinearGradient
+				colors={['#FF8ABD', '#EF7365']}
+				start={{
+					x: 0,
+					y: 0
+				}}
+				end={{
+					x: 1,
+					y: 1
+				}}
+				style={styles.box}>
 
-			<FlatList
-				data={usersData}
-				renderItem={renderItem}
-				keyExtractor={(item) => item.id}
-			/>
-		</SafeAreaView>
+			<View>
+				<Text style={styles.screenTitle}>
+					Conversations
+				</Text>
+			</View>
+
+				<FlatList
+					data={usersData}
+					renderItem={renderItem}
+					keyExtractor={(item) => item.id}
+				/>
+			</LinearGradient>
+		</View>
 	);
-}
+};
 
 // STYLE
 const styles = StyleSheet.create({
 
 	container: {
-		flex: 1,
-		backgroundColor: "#666666"
+    flex: 1,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+
+  box: {
+    flex: 1,
+    justifyContent: "flex-start",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
 	},
 
 	screenTitle: {
 		textAlign: "center",
 		fontSize: 18,
 		fontWeight: "bold",
-		marginTop: "2%",
-		marginBottom: "2%",
-		color: "white"
+		color: "white",
+		marginBottom: 10,
+		marginTop: 1/20 * windowHeight
 	},
 
 	item: {
-		borderRadius: 30,
-		backgroundColor: "#d8d8d8",
+		borderRadius: 15,
+		borderColor: "white",
+		borderWidth: 0.5,
 		padding: 4,
 		marginVertical: 1/100 * windowHeight,
 		marginHorizontal: 1/30 * windowWidth,
@@ -103,7 +132,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignContent: "space-around",
 		alignItems: "center",
-
+		padding: 4
 	},
 
 	title: {
@@ -111,6 +140,7 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		marginRight: "10%",
 		fontSize: 20,
+		color: "white",
 		fontStyle: "italic"
 	},
 });

@@ -8,10 +8,12 @@ import {
 	TextInput,
 	Text,
 	Dimensions,
-	SafeAreaView
+	SafeAreaView,
+	TouchableOpacity
 } from 'react-native';
 
 import { Button, ListItem } from 'react-native-elements';
+import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
 import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
 
@@ -20,16 +22,16 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function ChatScreen(props) {
 
-  // const [currentMessage, setCurrentMessage] = useState();
+  const [userList, setUserList] = useState([]);
   // const [listMessage, setListMessage] = useState([]);
 
   // useEffect(() => {
 
-  //   setListMessage([...listMessage, newMsgData]);
+  //   setUserList([...userList, newMsgData]);
 
   // }, [listMessage]);
 
-  // let listMessageItem = listMessage.map((msgData, i)=>{
+  // let listUserItem = userList.map((msgData, i)=>{
 
   //   return (
   //     <ListItem key={i}>
@@ -42,22 +44,45 @@ export default function ChatScreen(props) {
 
   return (
 
-    <View style={styles.container}>
-			<Button
-				style={{
-					marginRight: 1/1.2 * windowWidth,
-					marginTop: 1/25 * windowHeight
-				}}
-				icon={
+		<View style={styles.container}>
+      <LinearGradient
+        colors={['#FF8ABD', '#EF7365']}
+        start={{
+          x: 0,
+          y: 0
+        }}
+        end={{
+          x: 1,
+          y: 1
+        }}
+        style={styles.box}>
+
+			<View style={{marginLeft: 1/25 * windowWidth, marginTop: 1/20 * windowHeight}} >
+				<TouchableOpacity onPress={() => { props.navigation.navigate('Conv') }} >
 					<Ionicons
 						name= "arrow-back"
 						size= {25}
 						color= "white"
 					/>
-				}
-				type="clear"
-				onPress={() => { props.navigation.navigate('Conv') }}
-			/>
+				</TouchableOpacity>
+			</View>
+
+			<View style={{marginHorizontal: 1/8 * windowWidth, marginTop: -1/24 * windowHeight}}>
+				<Text style={{textAlign: "center", fontSize:20, color:"white"}}>Lucy</Text>
+			</View>
+
+			<View style={{marginHorizontal: 1/8 * windowWidth}}>
+				<Text 
+					style={{
+						textAlign: "center",
+						fontSize:12,
+						color:"white",
+						marginTop: 1/75 * windowHeight
+					}}
+				>
+					Album disponible depuis le 30/07/21
+				</Text>
+			</View>
 
 			<ScrollView>
 
@@ -120,6 +145,8 @@ export default function ChatScreen(props) {
 
 			</ScrollView>
 
+			</LinearGradient>
+
 			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
 			</KeyboardAvoidingView>
 
@@ -148,10 +175,6 @@ export default function ChatScreen(props) {
                 } 
 								style={styles.inputButton}
 								type= 'clear'
-								// onPress={()=> {
-								// 	if(currentMessage) {
-								// 	}
-								// }}
 							/>
 						)}
 					</View>
@@ -164,10 +187,18 @@ export default function ChatScreen(props) {
 // STYLE
 const styles = StyleSheet.create({
 
-  container: {
+	container: {
     flex: 1,
-		backgroundColor: '#808080',
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
+
+  box: {
+    flex: 1,
+    justifyContent: "flex-start",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+	},
 
   inputView: {
 		paddingTop: '2%',
@@ -208,7 +239,7 @@ const styles = StyleSheet.create({
 	},
 
 	senderBubbleContent: {
-		backgroundColor: '#4ca64c',
+		backgroundColor: '#2464A2',
 		borderTopLeftRadius: 15,
 		borderTopRightRadius: 15,
 		borderBottomLeftRadius: 15,
@@ -216,11 +247,10 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 15,
 		paddingVertical: 10,
 		marginRight: 1/30 * windowWidth,
-		
 	},
 
 	receiverBubbleContent: {
-		backgroundColor: '#b2b2b2',
+		backgroundColor: '#693192',
 		borderTopLeftRadius: 15,
 		borderTopRightRadius: 15,
 		borderBottomRightRadius: 15,
@@ -232,9 +262,11 @@ const styles = StyleSheet.create({
 
 	bubbleTitle: {
 		fontWeight: "bold",
+		color: "white"
 	},
 
 	bubbleSubtitle: {
-		marginTop: 5
+		marginTop: 5,
+		color: "white"
 	},
 });
