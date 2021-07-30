@@ -13,15 +13,16 @@ export default function DanceScreen(props) {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#FF8ABD', '#EF7365']}
+        colors={['#2464A2', '#693192']}
         start={{
           x: 0,
-          y: 0
+          y: 0.25
         }}
         end={{
-          x: 1,
+          x: 0.5,
           y: 1
         }}
+        locations={[0, 0.7]}
         style={styles.box}>
           <Ionicons style={styles.notif} name='ios-arrow-back' onPress={() => { props.navigation.navigate('Home') }}/>
         <Text style={{ marginLeft: 1 / 20 * windowWidth, marginTop: 4 / 8 * windowHeight }}></Text>

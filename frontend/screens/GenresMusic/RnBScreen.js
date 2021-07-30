@@ -48,7 +48,7 @@ export default function RnBScreen(props) {
             rounded
             size="medium"
             // source= {{uri: "http://172.17.1.53:3000/avatar.jpg" }} TO GET IT FROM BACKEND
-            source={require("./assets/IMG_0429.jpg")}
+            source={require("./assets/fachry-zella-devandra-Lu35w8qGrQU-unsplash.jpg")}
           />
 
           <Text style={styles.title}>
@@ -65,15 +65,16 @@ export default function RnBScreen(props) {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#FF8ABD', '#EF7365']}
+        colors={['#2464A2', '#693192']}
         start={{
           x: 0,
-          y: 0
+          y: 0.25
         }}
         end={{
-          x: 1,
+          x: 0.5,
           y: 1
         }}
+        locations={[0, 0.7]}
         style={styles.box}>
         <Ionicons style={styles.back} name='ios-arrow-back' onPress={() => { props.navigation.navigate('Home') }} />
 

@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
 
     title: {
         paddingLeft: 1 / 2.6 * windowWidth,
-        paddingTop: 1 / 600 * windowHeight,
+        paddingTop: 1 / 800 * windowHeight,
         paddingBottom: 1 / 50 * windowHeight,
         color: '#FFFFFF',
         fontSize: 40,
@@ -215,8 +215,7 @@ const styles = StyleSheet.create({
         height: 1 / 5.5 * windowHeight,
         alignContent: 'space-around',
         borderRadius: 50,
-        overflow: 'hidden'
-        
+        overflow: 'hidden',
     },
 
 });
