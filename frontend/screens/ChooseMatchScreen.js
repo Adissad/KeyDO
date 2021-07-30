@@ -3,8 +3,7 @@ import { Text } from 'react-native';
 
 export default function ChooseMatchScreen() {
 
-    return(
-        <Text>Hello</Text>
-    )
-
-}
+	return(
+		<Text>Hello</Text>
+	);
+};

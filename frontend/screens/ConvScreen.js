@@ -43,7 +43,6 @@ export default function ConvScreen(props) {
 						<Avatar
 							rounded
 							size= "medium"
-							// source= {{uri: "http://172.17.1.53:3000/avatar.jpg" }} TO GET IT FROM BACKEND
 							source= {require("../assets/avatar.jpg")}
 						/>
 
@@ -63,7 +62,6 @@ export default function ConvScreen(props) {
 	const renderItem = ({ item }) => <Item title={item.title} />;
 
 	return (
-
 		<View style={styles.container}>
 			<LinearGradient
 				colors={['#FF8ABD', '#EF7365']}

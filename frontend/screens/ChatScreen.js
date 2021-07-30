@@ -43,7 +43,6 @@ export default function ChatScreen(props) {
   // });
 
   return (
-
 		<View style={styles.container}>
       <LinearGradient
         colors={['#FF8ABD', '#EF7365']}

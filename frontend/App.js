@@ -98,10 +98,7 @@ export default function App() {
 				<Stack.Screen name='Soul' component={SoulScreen} />
 				<Stack.Screen name='Rock' component={RockScreen} />
 				<Stack.Screen name='Classique' component={ClassiqueScreen} />
-				<Stack.Screen
-					name='Reggae/Dancehall'
-					component={ReggaeScreen}
-				/>
+				<Stack.Screen	name='Reggae/Dancehall' component={ReggaeScreen} />
 				<Stack.Screen name='Pop' component={PopScreen} />
 				<Stack.Screen name='French' component={FrenchScreen} />
 				<Stack.Screen name='Kpop' component={KpopScreen} />
@@ -117,13 +114,4 @@ export default function App() {
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
-}
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+};
