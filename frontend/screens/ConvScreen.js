@@ -6,7 +6,7 @@ import {
 	Text,
 	StyleSheet,
 	TouchableOpacity,
-	SafeAreaView
+	ListItem
 } from 'react-native';
 
 import { Avatar } from 'react-native-elements';
@@ -21,42 +21,77 @@ const windowHeight = Dimensions.get('window').height;
 export default function ConvScreen(props) {
 
 	const usersData = [
-		{ id: '0', title: 'Lucy' },
-		{ id: '1', title: 'Jack' },
-		{ id: '2', title: 'Carol' },
-		{ id: '3', title: 'Christophe' },
-		{ id: '4', title: 'Jason' },
-		{ id: '5', title: 'Jay'},
-		{ id: '6', title: 'Jean' },
-		{ id: '7', title: 'Jonathan' },
-		{ id: '8', title: 'Josette'},
+		{ id: '0', title: 'Lucy', avatar: "../assets/Lucy.jpg"},
+		{ id: '1', title: 'Jack', avatar: "../assets/Jack.jpg"},
+		{ id: '2', title: 'Carol', avatar: "../assets/Carol.jpg"},
+		{ id: '3', title: 'Christophe', avatar: "../assets/Christophe.jpg"},
+		{ id: '4', title: 'Jason', avatar: "../assets/Jason.jpg"},
+		{ id: '5', title: 'Jay', avatar: "../assets/Jay.jpg"},
+		{ id: '6', title: 'Jean', avatar: "../assets/Jean.jpg"},
+		{ id: '7', title: 'Jonathan', avatar: "../assets/Jonathan.jpg"},
+		{ id: '8', title: 'Josette', avatar: "../assets/Josette.jpg"},
 	];
+
+	let usersList = usersData.map((i)=>{
+
+    // var msg = messageData.message.replace(/:\)/g, '\u263A');
+    // msg = msg.replace(/:\(/g, '\u2639');
+    // msg = msg.replace(/:p/g, '\uD83D\uDE1B');
+
+    // var msg = msg.replace(/[a-z]*fuck[a-z]*/gi, '\u2022\u2022\u2022');
+
+		return (
+      // <ListItem key={i}>
+      //   <ListItem.Content>
+      //     <ListItem.Title>{title}</ListItem.Title>
+      //     <ListItem.Subtitle>{messageData.pseudo}</ListItem.Subtitle>
+      //   </ListItem.Content>
+      // </ListItem>
+
+		<View style={styles.item} >
+
+			<TouchableOpacity onPress={() => { props.navigation.navigate('Chat') }} >
+
+				<View style={styles.itemContent} >
+
+					<Avatar
+						rounded
+						size= "medium"
+						source= {require("../assets/Jack.jpg")}
+					/>
+
+					<Text style={styles.title}>
+						{title}
+					</Text>
+
+				</View>
+			</TouchableOpacity>
+		</View>
+
+    );
+  });
 
 	const Item = ({ title }) => (
 
-			<View style={styles.item} >
+		<View style={styles.item} >
 
-				<TouchableOpacity onPress={() => { props.navigation.navigate('Chat') }} >
+			<TouchableOpacity onPress={() => { props.navigation.navigate('Chat') }} >
 
-					<View style={styles.itemContent} >
+				<View style={styles.itemContent} >
 
-						<Avatar
-							rounded
-							size= "medium"
-							source= {require("../assets/avatar.jpg")}
-						/>
+					<Avatar
+						rounded
+						size= "medium"
+						source= {require("../assets/Jack.jpg")}
+					/>
 
-						{/* <Image borderRadius="50%">
+					<Text style={styles.title}>
+						{title}
+					</Text>
 
-						</Image> */}
-
-						<Text style={styles.title}>
-							{title}
-						</Text>
-
-					</View>
-				</TouchableOpacity>
-			</View>
+				</View>
+			</TouchableOpacity>
+		</View>
 	);
 
 	const renderItem = ({ item }) => <Item title={item.title} />;
@@ -95,16 +130,16 @@ export default function ConvScreen(props) {
 const styles = StyleSheet.create({
 
 	container: {
-    flex: 1,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
+		flex: 1,
+		width: Dimensions.get("window").width,
+		height: Dimensions.get("window").height,
+	},
 
-  box: {
-    flex: 1,
-    justifyContent: "flex-start",
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+	box: {
+		flex: 1,
+		justifyContent: "flex-start",
+		width: Dimensions.get("window").width,
+		height: Dimensions.get("window").height,
 	},
 
 	screenTitle: {
@@ -140,5 +175,5 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		color: "white",
 		fontStyle: "italic"
-	},
+	}
 });
