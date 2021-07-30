@@ -21,15 +21,15 @@ const windowHeight = Dimensions.get('window').height;
 export default function ConvScreen(props) {
 
 	const usersData = [
-		{ id: '0', title: 'Aurélie', avatar: '../assets/Aurélie.jpg' },
-		{ id: '1', title: 'Jack', avatar: '../assets/Aurélie.jpg' },
-		{ id: '2', title: 'Carol', avatar: '../assets/Aurélie.jpg' },
-		{ id: '3', title: 'Christophe', avatar: '../assets/Aurélie.jpg' },
-		{ id: '4', title: 'Jason', avatar: '../assets/Aurélie.jpg' },
-		{ id: '5', title: 'Jay', avatar: '../assets/Aurélie.jpg' },
-		{ id: '6', title: 'Jean', avatar: '../assets/Aurélie.jpg' },
-		{ id: '7', title: 'Jonathan', avatar: '../assets/Aurélie.jpg' },
-		{ id: '8', title: 'Josette', avatar: '../assets/Aurélie.jpg' },
+		{ id: '0', title: 'Lucy' },
+		{ id: '1', title: 'Jack' },
+		{ id: '2', title: 'Carol' },
+		{ id: '3', title: 'Christophe' },
+		{ id: '4', title: 'Jason' },
+		{ id: '5', title: 'Jay'},
+		{ id: '6', title: 'Jean' },
+		{ id: '7', title: 'Jonathan' },
+		{ id: '8', title: 'Josette'},
 	];
 
 	const Item = ({ title }) => (
@@ -44,7 +44,7 @@ export default function ConvScreen(props) {
 							rounded
 							size= "medium"
 							// source= {{uri: "http://172.17.1.53:3000/avatar.jpg" }} TO GET IT FROM BACKEND
-							source= {require("../assets/Avatar.jpg")}
+							source= {require("../assets/avatar.jpg")}
 						/>
 
 						{/* <Image borderRadius="50%">

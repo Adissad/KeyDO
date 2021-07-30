@@ -1,11 +1,10 @@
-import React from 'react';
-import { View } from 'react-native';
-import { BackgroundImage } from 'react-native-elements/dist/config';
+import React, { useEffect, useState } from 'react';
+import { Text } from 'react-native';
 
 export default function ChooseMatchScreen() {
 
-	return(
-		<View style={{flex: 1, backgroundColor: "orange"}} >
-		</View>	
-	);
-};
+    return(
+        <Text>Hello</Text>
+    )
+
+}
