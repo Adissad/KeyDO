@@ -85,107 +85,107 @@ export default function ProfileScreen() {
             height: "auto",
           }}
         >
-          <Button buttonStyle={{backgroundColor:"#693192"}} title="Choose your avatar" onPress={toggleModal} />
+          <Button buttonStyle={{ backgroundColor: "#693192", }} title="Choose your avatar" onPress={toggleModal} />
 
           <Modal isVisible={isModalVisible}>
-          <ScrollView style={styles.scrollView}>
+            <ScrollView style={styles.scrollView}>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/woman.png')}
-            onPress={() => console.log("Works1!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require('../assets/woman.png')}
+                  onPress={() => console.log("Works1!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/man.png')}
-            onPress={() => console.log("Works2!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require('../assets/man.png')}
+                  onPress={() => console.log("Works2!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/pinguin.png')}
-            onPress={() => console.log("Works3!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require('../assets/pinguin.png')}
+                  onPress={() => console.log("Works3!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/dog.png')}
-            onPress={() => console.log("Works4!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require('../assets/dog.png')}
+                  onPress={() => console.log("Works4!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/rabbit.png')}
-            onPress={() => console.log("Works6!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require('../assets/rabbit.png')}
+                  onPress={() => console.log("Works6!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/pinguin.png')}
-            onPress={() => console.log("Works6!")}
-            activeOpacity={0.7}
-            width={5}
-            height={5}
-            />      
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require('../assets/pinguin.png')}
+                  onPress={() => console.log("Works6!")}
+                  activeOpacity={0.7}
+                  width={5}
+                  height={5}
+                />
+              </TouchableOpacity>
 
               <Button title="Done" onPress={toggleModal} />
-              </ScrollView>
+            </ScrollView>
           </Modal>
         </View>
 
         <View>
           <Input
             //   style={{ paddingLeft: 20 }}
-              placeholder="Name"
-              placeholderTextColor="white"
-              color="white"
-              />
-              <Input
+            placeholder="Name"
+            placeholderTextColor="white"
+            color="white"
+          />
+          <Input
             //   style={{ paddingLeft: 20 }}
-              placeholder="Age"
-              placeholderTextColor="white"
-              color="white"
-              />
-              <Input
+            placeholder="Age"
+            placeholderTextColor="white"
+            color="white"
+          />
+          <Input
             //   style={{ paddingLeft: 20 }}
-              placeholder="Gender"
-              placeholderTextColor="white"
-              color="white"
-              />
-              <Input
+            placeholder="Gender"
+            placeholderTextColor="white"
+            color="white"
+          />
+          <Input
             //   style={{ paddingLeft: 20 }}
-              placeholder="City"
-              placeholderTextColor="white"
-              color="white"
-              />
+            placeholder="City"
+            placeholderTextColor="white"
+            color="white"
+          />
         </View>
 
         <View
