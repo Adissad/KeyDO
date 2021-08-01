@@ -8,39 +8,69 @@ import {
 	TextInput,
 	Text,
 	Dimensions,
-	SafeAreaView,
 	TouchableOpacity
 } from 'react-native';
 
-import { Button, ListItem } from 'react-native-elements';
+import { Button, ListItem, Input } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
-import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
+import { KeyboardAccessoryView } from 'react-native-keyboard-accessory';
+
+import { connect } from 'react-redux';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function ChatScreen(props) {
+function ChatScreen(props) {
 
-  const [userList, setUserList] = useState([]);
-  // const [listMessage, setListMessage] = useState([]);
+	const [currentMessage, setCurrentMessage] = useState('');
+  const [messagesList, setMessagesList] = useState([]);
+	const [messageCounter, setMessageCounter] = useState('');
 
-  // useEffect(() => {
+	// Fetch messages from DB on component mount
+  useEffect(() => {
+    const findMessagesDB = async() => {
+			/**
+			*! IP adress required or network request will fail
+			*/
+			const rawDataDB = await fetch('http://192.168.1.56:3000/messages');
+			const jsonDataDB = await rawDataDB.json();
 
-  //   setUserList([...userList, newMsgData]);
+			setMessagesList([...messagesList, jsonDataDB]);
+			console.log('Messages fetched from DB :', jsonDataDB);
+			console.log('messagesList :', messagesList);
+		};
+		findMessagesDB();
+  }, []);
 
-  // }, [listMessage]);
+	// Send & save message to DB
+	let saveMessage = async (currentMessage) => {
+		if(currentMessage) {
+			props.saveNewMessage(currentMessage);
+			setMessagesList([...messagesList, currentMessage]);
+			/**
+			*! IP adress required or network request will fail
+			*/
+			const response = await fetch('http://192.168.1.56:3000/messages', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				body: `content=${currentMessage}`
+			});
+		};
+		console.log(messagesList)
+	};
 
-  // let listUserItem = userList.map((msgData, i)=>{
-
-  //   return (
-  //     <ListItem key={i}>
-  //       <ListItem.Content>
-  //         <ListItem.Subtitle>{msgData}</ListItem.Subtitle>
-  //       </ListItem.Content>
-  //     </ListItem>
-  //   );
-  // });
+	// Map to display message in component
+	// let currentMessagesList = messagesList.map((currentMessage, i) => {
+	// 	return(
+	// 		<View style={styles.senderBubble}>
+	// 			<ListItem.Content style={styles.senderBubbleContent}>
+	// 				<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+	// 				<ListItem.Subtitle style={styles.bubbleSubtitle}> {currentMessage} </ListItem.Subtitle>
+	// 			</ListItem.Content>
+	// 		</View>
+	// 	);
+	// });
 
   return (
 		<View style={styles.container}>
@@ -67,27 +97,29 @@ export default function ChatScreen(props) {
 			</View>
 
 			<View style={{marginHorizontal: 1/8 * windowWidth, marginTop: -1/24 * windowHeight}}>
-				<Text style={{textAlign: "center", fontSize:20, color:"white"}}>Lucy</Text>
+				<Text style={{textAlign: "center", fontSize:20, color:"white"}}>
+					Lucy
+				</Text>
 			</View>
 
-			<View style={{marginHorizontal: 1/8 * windowWidth}}>
-				<Text 
-					style={{
-						textAlign: "center",
-						fontSize:12,
-						color:"white",
-						marginTop: 1/75 * windowHeight
-					}}
-				>
+			<View>
+				<Text style={styles.conversationTitle}>
 					Album disponible depuis le 30/07/21
+				</Text>
+			</View>
+
+			<View style={styles.msgCounter}>
+				<Text style={{fontSize: 12, textAlign: "center", color: "white"}}>
+					Plus que 10 messages avant de pouvoir échanger une photo !
 				</Text>
 			</View>
 
 			<ScrollView>
 
-				{/* {listMessageItem} */}
-				<View style={styles.senderBubble}>
-					<ListItem.Content style={styles.senderBubbleContent} >
+			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+
+				{/* <View style={styles.senderBubble}>
+					<ListItem.Content style={styles.senderBubbleContent}>
 						<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
 						<ListItem.Subtitle style={styles.bubbleSubtitle}>Hey, how are you ?</ListItem.Subtitle>
 					</ListItem.Content>
@@ -140,14 +172,11 @@ export default function ChatScreen(props) {
 						<ListItem.Title style={styles.bubbleTitle}>Lucy</ListItem.Title>
 						<ListItem.Subtitle style={styles.bubbleSubtitle}>Huh</ListItem.Subtitle>
 					</ListItem.Content>
-				</View>
+				</View> */}
 
-			</ScrollView>
-
-			</LinearGradient>
-
-			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
 			</KeyboardAvoidingView>
+			</ScrollView>
+			</LinearGradient>
 
 			<KeyboardAccessoryView alwaysVisible={true} androidAdjustResize>
 				{({ isKeyboardVisible }) => (
@@ -156,8 +185,8 @@ export default function ChatScreen(props) {
 							placeholder="Message"
 							placeholderTextColor="#b2b2b2"
 							selectionColor="#b2b2b2"
-							// onChangeText={(messageData)=>setCurrentMessage(messageData)}
-							// value={currentMessage}
+							onChangeText={(currentMessage)=>setCurrentMessage(currentMessage)}
+							value={currentMessage}
 							underlineColorAndroid="transparent"
 							style={styles.input}
 							keyboardAppearance="dark"
@@ -171,9 +200,10 @@ export default function ChatScreen(props) {
 										size={20}
 										color="#f2f2f2"
 									/>
-                } 
+                }
 								style={styles.inputButton}
 								type= 'clear'
+								onPress={() => {saveMessage(currentMessage), setCurrentMessage('')}}
 							/>
 						)}
 					</View>
@@ -182,6 +212,28 @@ export default function ChatScreen(props) {
 		</View>
   );
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// STORE
+function mapStateToProps(state){
+  return {messageList: state.messageList}
+};
+
+function mapDispatchToProps(dispatch){
+  return {
+    saveNewMessage: function(currentMessage){
+      dispatch({ type: 'saveMessage', message: currentMessage })
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ChatScreen);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // STYLE
 const styles = StyleSheet.create({
@@ -197,6 +249,21 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
+	},
+
+	conversationTitle: {
+		textAlign: "center",
+		fontSize:12,
+		color:"white",
+		marginTop: 1/75 * windowHeight
+	},
+
+	msgCounter: {
+		backgroundColor: "green",
+		marginHorizontal: 1/5 * windowWidth,
+		borderRadius: 15,
+		marginTop: 1/75 * windowHeight,
+		padding: 4
 	},
 
   inputView: {

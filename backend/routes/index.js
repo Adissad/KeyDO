@@ -1,54 +1,53 @@
 let express = require('express');
-let request = require('sync-request');
 let router = express.Router();
 
-let userModel = require('../models/user');
 let messageModel = require('../models/messages');
 
 /**
 * * POST NEW MESSAGE
 */
-router.post('/add-message', async function(req, res, next) {
+router.post('/messages', async function(req, res, next) {
+
+  let result = false;
+  let message = null;
 
   let newMessage = new messageModel({
 		type: req.body.type,
 		content: req.body.content,
-		senderId : req.body.senderId,
-		receiverId : req.body.receiverId,
-		sendingDate : req.body.date,
-		read : req.body.read
+		senderId: req.body.senderId,
+		receiverId: req.body.receiverId,
+		sendingDate: req.body.date,
+		read: req.body.read
   })
 
-  let messageSave = await newMessage.save()
+  message = await newMessage.save()
 
-  let result = false
-  if(messageSave.content){
+  if(message.content) {
     result = true
   }
-
-  res.json({result})
+	console.log('new message saved to DB :', message);
+  res.json({result, message})
 });
 
+/**
+* * GET SAVED MESSAGES FROM DB
+*/
+router.get('/messages', async function(req,res,next){
+
+  let messagesDB = await messageModel.find();
+
+	console.log('saved messages received from DB :', messagesDB);
+  res.json(messagesDB);
+});
 
 /**
-* TODO if enough time left
-* * UPDATE MESSAGE
+* TODO
+UPDATE MESSAGE
 */
 
 /**
-* TODO if enough time left
-* * DELETE MESSAGE
+* TODO
+DELETE MESSAGE
 */
-// router.delete('/delete-message/:name', async function(req, res, next) {
-
-//   var returnDb = await movieModel.deleteOne({ movieName: req.params.name})
-
-//   var result = false
-//   if(returnDb.deletedCount == 1){
-//     result = true
-//   }
-
-//   res.json({result})
-// });
 
 module.exports = router;
