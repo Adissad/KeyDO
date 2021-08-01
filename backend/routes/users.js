@@ -12,12 +12,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/signup', async function(req, res, next) {
+  console.log(req.body);
   const cost = 10;
   const hash = bcrypt.hashSync(req.body.password, cost);
 
   var alreadyExist = await userModel.findOne(
     { email: req.body.email })
-    if(alreadyExist != null){
+    if(alreadyExist){
       res.json({result:false, Message: "Email déjà existant"})
     } else {
 
@@ -33,6 +34,7 @@ router.post('/signup', async function(req, res, next) {
   // if(userSave) {
   //   token = userSave.token
   // }
+  
 
   res.json({result:true, token:userSave.token});
 }});

@@ -1,17 +1,29 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, Dimensions, Button, Image, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Dimensions,
+  Button,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { Avatar } from "react-native-elements";
 import Modal from "react-native-modal";
 import DropDownPicker from "react-native-dropdown-picker";
+import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
 import { Input } from "react-native-elements/dist/input/Input";
-
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function ProfileScreen() {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [myAvatar, setMyAvatar] = useState(false);
+  const [selectedAge, setSelectedAge] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -58,7 +70,6 @@ export default function ProfileScreen() {
     { label: "Danse", value: "danse" },
   ]);
 
-
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -74,25 +85,23 @@ export default function ProfileScreen() {
         locations={[0, 0.7]}
         style={styles.box}
       >
-
-        
         <TouchableOpacity>
-        <View style={{
-            marginTop: (1 /10) * windowHeight}}>
-          <Avatar
-          rounded
-          onPress={toggleModal}
-          source={require('../assets/woman.png')}
-          width={20}
-          height={20}
-          />
+          <View
+            style={{
+              marginTop: (1 / 10) * windowHeight,
+            }}
+          >
+            <Avatar
+            onPress={() => {
+              setMyAvatar(true);
+                }}
+            />
           </View>
         </TouchableOpacity>
 
-        
         <View
           style={{
-            marginTop: (1 / 8) * windowHeight,
+            marginTop: (1 / 18) * windowHeight,
             paddingRight: (1 / 2) * windowWidth,
             flexDirection: "row",
             justifyContent: "space-around",
@@ -100,107 +109,144 @@ export default function ProfileScreen() {
             height: "auto",
           }}
         >
-          <Button buttonStyle={{backgroundColor:"#693192"}} title="Choose your avatar" onPress={toggleModal} />
+          <Button
+            buttonStyle={{ backgroundColor: "#693192" }}
+            title="Choisi ton avatar"
+            onPress={toggleModal}
+          />
 
           <Modal isVisible={isModalVisible}>
-          <ScrollView style={styles.scrollView}>
+            <ScrollView style={styles.scrollView}>
+              <TouchableOpacity>
+              <Image
+                  rounded
+                  source={require("../assets/woman.png")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/woman.png')}
-            onPress={() => console.log("Works1!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require("../assets/man.png")}
+                  onPress={() => console.log("Works2!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/man.png')}
-            onPress={() => console.log("Works2!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require("../assets/pinguin.png")}
+                  onPress={() => console.log("Works3!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/pinguin.png')}
-            onPress={() => console.log("Works3!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require("../assets/dog.png")}
+                  onPress={() => console.log("Works4!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/dog.png')}
-            onPress={() => console.log("Works4!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require("../assets/rabbit.png")}
+                  onPress={() => console.log("Works6!")}
+                  activeOpacity={0.7}
+                  width={20}
+                  height={20}
+                />
+              </TouchableOpacity>
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/rabbit.png')}
-            onPress={() => console.log("Works6!")}
-            activeOpacity={0.7}
-            width={20}
-            height={20}
-            />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  rounded
+                  source={require("../assets/pinguin.png")}
+                  onPress={() => console.log("Works6!")}
+                  activeOpacity={0.7}
+                  width={5}
+                  height={5}
+                />
+              </TouchableOpacity>
+              
 
-            <TouchableOpacity>
-            <Image
-            rounded
-            source={require('../assets/pinguin.png')}
-            onPress={() => console.log("Works6!")}
-            activeOpacity={0.7}
-            width={5}
-            height={5}
-            />      
-            </TouchableOpacity>
-
-              <Button title="Done" onPress={toggleModal} />
-              </ScrollView>
+              <Button title="Terminé" onPress={toggleModal} />
+            </ScrollView>
           </Modal>
         </View>
 
         <View>
           <Input
             //   style={{ paddingLeft: 20 }}
-              placeholder="Name"
-              placeholderTextColor="white"
-              color="white"
-              />
-              <Input
+            placeholder="Name"
+            placeholderTextColor="white"
+            color="white"
+          />
+
+          <Picker
+            selectedValue={selectedAge}
+            style={{ height: 50, width: 150, color:"#FFFFFF" }}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedAge(itemValue) 
+            }
+          >
+            <Picker.Item label="Age" value="age" />
+            <Picker.Item label="18 ans" value="18 ans" />
+            <Picker.Item label="19 ans" value="19 ans" />
+            <Picker.Item label="20 ans" value="20 ans" />
+            <Picker.Item label="21 ans" value="21 ans" />
+            <Picker.Item label="22 ans" value="22 ans" />
+            <Picker.Item label="23 ans" value="23 ans" />
+            <Picker.Item label="24 ans" value="24 ans" />
+            <Picker.Item label="25 ans" value="25 ans" />
+            <Picker.Item label="26 ans" value="26 ans" />
+            <Picker.Item label="27 ans" value="27 ans" />
+            <Picker.Item label="28 ans" value="28 ans" />
+            <Picker.Item label="29 ans" value="29 ans" />
+            <Picker.Item label="30 ans" value="30 ans" />
+            <Picker.Item label="31 ans" value="31 ans" />
+            <Picker.Item label="32 ans" value="32 ans" />
+            <Picker.Item label="33 ans" value="33 ans" />
+            <Picker.Item label="34 ans" value="34 ans" />
+            <Picker.Item label="35 ans" value="35 ans" />
+            <Picker.Item label="36 ans" value="36 ans" />
+            <Picker.Item label="37 ans" value="37 ans" />
+            <Picker.Item label="38 ans" value="38 ans" />
+            <Picker.Item label="39 ans" value="39 ans" />
+            <Picker.Item label="40 ans" value="40 ans" />
+          </Picker>
+
+          <Picker
+            selectedValue={selectedGender}
+            style={{ height: 50, width: 150, color:"#FFFFFF" }}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedGender(itemValue) 
+            }
+          >
+            <Picker.Item label="Genre" value="genre" />
+            <Picker.Item label="Femme" value="femme" />
+            <Picker.Item label="Homme" value="homme" />
+          </Picker>
+
+          <Input
             //   style={{ paddingLeft: 20 }}
-              placeholder="Age"
-              placeholderTextColor="white"
-              color="white"
-              />
-              <Input
-            //   style={{ paddingLeft: 20 }}
-              placeholder="Gender"
-              placeholderTextColor="white"
-              color="white"
-              />
-              <Input
-            //   style={{ paddingLeft: 20 }}
-              placeholder="City"
-              placeholderTextColor="white"
-              color="white"
-              />
+            placeholder="City"
+            placeholderTextColor="white"
+            color="white"
+          />
         </View>
 
         <View
@@ -271,7 +317,7 @@ const styles = StyleSheet.create({
   },
 
   scrollView: {
-    backgroundColor: '#693192',
+    backgroundColor: "#693192",
     marginHorizontal: 20,
   },
 });

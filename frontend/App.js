@@ -40,7 +40,12 @@ import DécenniesScreen from './screens/GenresMusic/DécenniesScreen';
 import GospelScreen from './screens/GenresMusic/GospelScreen';
 
 import { Ionicons } from '@expo/vector-icons';
-import { StatusBar } from 'expo-status-bar';
+
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import token from './reducers/token';
+
+const store = createStore(combineReducers({token}));
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -89,6 +94,7 @@ const BottomNavigator = () => {
 
 export default function App() {
   return (
+  <Provider store={store}>  
    <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Start" component={StartScreen} />
@@ -120,6 +126,7 @@ export default function App() {
         <Stack.Screen name="Apple" component={AppleRedirectionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+  </Provider>
   );
 }
 

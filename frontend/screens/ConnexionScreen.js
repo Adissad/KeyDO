@@ -3,13 +3,18 @@ import { View, StyleSheet, Text, Dimensions} from "react-native";
 import { FontAwesome, Ionicons, Fontisto } from "@expo/vector-icons";
 import { Input, Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
+// import { Redirect } from 'react-router';
+
+import {connect} from 'react-redux';
+import HomeScreen from './HomeScreen';
+
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 
 
-export default function ConnexionScreen(props) {
+function ConnexionScreen(props) {
   const [signUpUsername, setSignUpUsername] = useState('')
   const [signUpEmail, setSignUpEmail] = useState('')
   const [signUpPassword, setSignUpPassword] = useState('')
@@ -32,14 +37,20 @@ export default function ConnexionScreen(props) {
 
     const body = await data.json()
 
-    if(body.result == true){
-      props.addToken(body.token)
-      setUserExists(true)
-      
-    } else {
-      setErrorsSignup(body.error)
-    }
-  }
+  if(body.result == true){
+    props.addToken(body.token)
+    setUserExists(true)}
+    props.navigation.navigate('Profile')
+  } 
+  // }  else {
+  //   setErrorsSignin(body.error)
+  // }
+
+
+// if(userExists){
+//   return <Redirect to='Home' />
+// }
+
 
   return (
     <View style={styles.container}>
@@ -76,7 +87,8 @@ export default function ConnexionScreen(props) {
 
         <View style={{marginTop:1/10*windowHeight, justifyContent:"center" ,flexDirection:"column" }} >
         <Input
-        onChange={(e) => setSignUpUsername(e.target.value)}
+          onChangeText={(value) => setSignUpUsername(value)}
+          value={signUpUsername}
           style={{ paddingLeft: 20 }}
           placeholder="Name"
           placeholderTextColor="white"
@@ -84,7 +96,8 @@ export default function ConnexionScreen(props) {
         />
 
         <Input
-        onChange={(e) => setSignUpEmail(e.target.value)}
+          onChangeText={(value) => setSignUpEmail(value)}
+          value={signUpEmail}
           style={{ paddingLeft: 20 }}
           placeholder="Email"
           placeholderTextColor="white"
@@ -92,7 +105,8 @@ export default function ConnexionScreen(props) {
         />
 
         <Input
-        onChange={(e) => setSignUpPassword(e.target.value)}
+          onChangeText={(value) => setSignUpPassword(value)}
+          value={signUpPassword}
           style={{ paddingLeft: 20 }}
           placeholder="Password"
           secureTextEntry={true}
@@ -102,7 +116,7 @@ export default function ConnexionScreen(props) {
         </View>
 
         <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
-        <Button onPress={() => handleSubmitSignup ()} buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" />
+        <Button onPress={() => {handleSubmitSignup ()}} buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" />
         </View>
 
       </LinearGradient>
@@ -133,3 +147,23 @@ const styles = StyleSheet.create({
       backgroundColor: "black",
   }
 });
+
+function mapStateToProps(state) {
+  // console.log('hi', state);
+  return { addToken : state.userToken }
+  }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addToken: function(token) {
+      dispatch( {type: 'addToken',
+            addToken: token
+                              })
+    }
+  }
+ }
+
+ export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnexionScreen);
