@@ -76,7 +76,7 @@ export default function RnBScreen(props) {
         }}
         locations={[0, 0.7]}
         style={styles.box}>
-        <Ionicons style={styles.back} name='ios-arrow-back' onPress={() => { props.navigation.navigate('Home') }} />
+        <Ionicons style={styles.back} name='ios-arrow-back' onPress={() => { props.navigation.navigate('BottomNavigator',('Home')) }} />
 
         <Text style={styles.screenTitle}>
           RnB

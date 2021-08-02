@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function AccMathcScreen(){
+export default function AccMathcScreen(props){
 
     
 
