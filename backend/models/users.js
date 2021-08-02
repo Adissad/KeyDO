@@ -3,7 +3,14 @@ let mongoose = require('mongoose');
 let userSchema = mongoose.Schema({
 	name: String,
 	email: String,
-	picture: String
+	password: String,
+	birthdayDate: Date,
+	gender: String,
+	city: String,
+	avatar: String,
+	picture: String,
+	token: String,
+	inscriptionDate: Date
 });
 
 let userModel = mongoose.model('users', userSchema);

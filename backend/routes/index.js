@@ -2,6 +2,35 @@ let express = require('express');
 let router = express.Router();
 
 let messageModel = require('../models/messages');
+let userModel	= require('../models/users');
+/**
+* * POST USER
+*/
+router.post('/user', async function(req, res, next) {
+
+  let result = false;
+  let userSaved = null;
+
+  let newUser = new userModel({
+		name: req.body.name,
+		email: req.body.email,
+		password: req.body.password,
+		birthdayDate: req.body.birthdayDate,
+		gender: req.body.gender,
+		city: req.body.city,
+		avatar: req.body.avatar,
+		picture: req.body.picture,
+		token: req.body.token,
+		inscriptionDate: req.body.inscriptionDate
+  });
+
+  userSaved = await newUser.save()
+
+  if(userSaved.name) {
+    result = true
+  }
+  res.json({result, userSaved});
+});
 
 /**
 * * POST NEW MESSAGE
@@ -9,7 +38,7 @@ let messageModel = require('../models/messages');
 router.post('/messages', async function(req, res, next) {
 
   let result = false;
-  let message = null;
+  let messageSaved = null;
 
   let newMessage = new messageModel({
 		type: req.body.type,
@@ -18,15 +47,15 @@ router.post('/messages', async function(req, res, next) {
 		receiverId: req.body.receiverId,
 		sendingDate: req.body.date,
 		read: req.body.read
-  })
+  });
 
-  message = await newMessage.save()
+  messageSaved = await newMessage.save()
 
-  if(message.content) {
+  if(messageSaved.content) {
     result = true
   }
-	console.log('new message saved to DB :', message);
-  res.json({result, message})
+	console.log('new message saved to DB :', messageSaved);
+  res.json({result});
 });
 
 /**
@@ -34,10 +63,10 @@ router.post('/messages', async function(req, res, next) {
 */
 router.get('/messages', async function(req,res,next){
 
-  let messagesDB = await messageModel.find();
+  let messages = await messageModel.find();
 
-	console.log('saved messages received from DB :', messagesDB);
-  res.json(messagesDB);
+	console.log('Messages from DB :', messages);
+  res.json(messages);
 });
 
 /**

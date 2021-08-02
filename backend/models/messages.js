@@ -3,8 +3,8 @@ let mongoose = require('mongoose');
 let messageSchema = mongoose.Schema({
 	type: String,
 	content: String,
-	senderId : String,
-	receiverId : String,
+	senderId : {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+	receiverId : {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
 	sendingDate : Date,
 	read : Boolean
 });

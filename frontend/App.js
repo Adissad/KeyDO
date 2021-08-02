@@ -3,10 +3,8 @@ LogBox.ignoreLogs(['Warning: ...']);
 
 import React from 'react';
 
-import { Provider } from 'react-redux'
-import { createStore, combineReducers }  from 'redux';
-
-import message from './reducers/message';
+// import { Provider } from 'react-redux'
+// import { createStore, combineReducers }  from 'redux';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -44,10 +42,9 @@ import AfroScreen from './screens/GenresMusic/AfroScreen';
 import DécenniesScreen from './screens/GenresMusic/DécenniesScreen';
 import GospelScreen from './screens/GenresMusic/GospelScreen';
 
-
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const store = createStore(combineReducers({message}))
+// const store = createStore(combineReducers({}))
 
 const BottomNavigator = () => {
 	return (
@@ -91,7 +88,7 @@ const BottomNavigator = () => {
 
 export default function App() {
 	return (
-		<Provider store={store}>
+		// <Provider store={store}>
 			<NavigationContainer>
 				<Stack.Navigator screenOptions={{ headerShown: false }}>
 					<Stack.Screen name='Start' component={StartScreen} />
@@ -120,6 +117,6 @@ export default function App() {
 					<Stack.Screen name='Profile' component={ProfileScreen} />
 				</Stack.Navigator>
 			</NavigationContainer>
-		</Provider>
+		// </Provider>
 	);
 };

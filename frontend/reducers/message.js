@@ -1,12 +1,12 @@
-export default function(messageList = [], action){
+// export default function(messagesList = [], action){
 
-	if(action.type == 'saveMessage') {
+// 	if(action.type == 'saveMessage') {
 
-			let messageListCopy = [...messageList];
-			messageListCopy.push(action.currentMessage);
-			return messageListCopy;
+// 			let messagesListCopy = [...messagesList];
+// 			messagesListCopy.push(action.currentMessage);
+// 			return messagesListCopy;
 
-	} else {
-			return messageList;
-	}
-};
+// 	} else {
+// 			return messagesList;
+// 	}
+// };
