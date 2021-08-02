@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/signup', async function(req, res, next) {
-  console.log(req.body);
+  // console.log(req.body);
   const cost = 10;
   const hash = bcrypt.hashSync(req.body.password, cost);
 
@@ -53,6 +53,43 @@ router.post('/signup', async function(req, res, next) {
 //   }
 
 // });
+
+router.put('/profile', async function(req, res, next) {
+  // console.log(req.body);
+  var userExist = await userModel.updateOne(
+    { token: uid2(32) },
+    { age: req.body.age },
+    { gender: req.body.gender},
+    { city: req.body.city}
+  );
+  //   if(userExist){
+  //     res.json({result:false, Message: "Prénom non existant"})
+  //   } else {
+
+  // var sameUser = new userModel({   
+  //   name: req.body.name,
+  //   email: req.body.email,
+  //   password: hash,
+  //   age: req.body.age,
+  //   gender: req.body.gender,
+  //   city: req.body.city,
+  //   token: uid2(32)
+  // }) 
+
+  // var userSave = await sameUser.save()
+  
+
+  res.json({userExist});
+});
+
+router.get('/profile', async function(req, res, next) {
+console.log('ok update', req.query)
+  var updateUser = await userModel.findOne(
+    { token: uid2(32) }
+  );
+ 
+  res.json({updateUser});
+});
 
 module.exports = router;
 

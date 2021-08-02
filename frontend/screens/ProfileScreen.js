@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -21,9 +21,14 @@ const windowHeight = Dimensions.get("window").height;
 
 export default function ProfileScreen() {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [userExists, setUserExists] = useState(false)
+  const [signUpUsername, setSignUpUsername] = useState('')
+  const [signUpEmail, setSignUpEmail] = useState('')
+  const [signUpPassword, setSignUpPassword] = useState('')
   const [myAvatar, setMyAvatar] = useState(false);
   const [selectedAge, setSelectedAge] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
+  const [userCity, setUserCity] = useState('')
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -70,6 +75,27 @@ export default function ProfileScreen() {
     { label: "Danse", value: "danse" },
   ]);
 
+  var selection = async () => {
+    
+    const data = await fetch('http://172.17.1.106:3000/users/profile', {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}`
+    })
+
+  const body = await data.json()
+  // if(body.result == true){
+  //   props.addToken(body.token)
+  //   setUserExists(true)}
+  }
+
+  var updatedInfo = async () => {
+    const newData = await fetch('http://172.17.1.106:3000/users/profile')
+    const dataClean = await newData.json();
+    console.log("hello", dataClean);
+  };
+
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -93,8 +119,9 @@ export default function ProfileScreen() {
           >
             <Avatar
             onPress={() => {
+              if (myAvatar) {
               setMyAvatar(true);
-                }}
+                }}}
             />
           </View>
         </TouchableOpacity>
@@ -131,7 +158,7 @@ export default function ProfileScreen() {
                 <Image
                   rounded
                   source={require("../assets/man.png")}
-                  onPress={() => console.log("Works2!")}
+                  onPress={() => setMyAvatar(true)}
                   activeOpacity={0.7}
                   width={20}
                   height={20}
@@ -246,6 +273,8 @@ export default function ProfileScreen() {
             placeholder="City"
             placeholderTextColor="white"
             color="white"
+            onChangeText={(value) => setUserCity(value)}
+            value={userCity}
           />
         </View>
 
@@ -294,6 +323,11 @@ export default function ProfileScreen() {
             setItems={setselectInterest}
           />
         </View>
+
+        <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
+        <Button onPress={() => {updatedInfo ()}} buttonStyle={{backgroundColor:"#CF779E"}} title="Valider" />
+        </View>
+
       </LinearGradient>
     </View>
   );

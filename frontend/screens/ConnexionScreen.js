@@ -18,6 +18,9 @@ function ConnexionScreen(props) {
   const [signUpUsername, setSignUpUsername] = useState('')
   const [signUpEmail, setSignUpEmail] = useState('')
   const [signUpPassword, setSignUpPassword] = useState('')
+  const [selectedAge, setSelectedAge] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
+  const [userCity, setUserCity] = useState('')
 
   const [signInEmail, setSignInEmail] = useState('')
   const [signInPassword, setSignInPassword] = useState('')
@@ -32,7 +35,7 @@ function ConnexionScreen(props) {
     const data = await fetch('http://172.17.1.106:3000/users/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}`
+      body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}`
     })
 
     const body = await data.json()

@@ -32,10 +32,10 @@ export default function StartScreen(props) {
                         size={45}
                         color="#FFFFFF"
                     />
-                }
+                } 
                     type='clear'
                     title="Let's Begin"
-                    onPress={() => { props.navigation.navigate('BottomNavigator', {Screen:'Connexion'})}}
+                    onPress={() => { props.navigation.navigate('Connexion')}}
                 />
             </LinearGradient>
         </View>
