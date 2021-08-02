@@ -72,7 +72,7 @@ const BottomNavigator = () => {
         inactiveTintColor: '#66F',
         style: {
           backgroundColor: '#693192',
-		  opacity: 0.9,
+		      opacity: 0.9,
           borderTopWidth: 0,
           position: 'absolute',
           elevation: 0
