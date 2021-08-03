@@ -1,15 +1,14 @@
 let express = require('express');
 let router = express.Router();
 
-let messageModel = require('../models/messages');
 let userModel	= require('../models/users');
+let conversationModel = require('../models/conversations');
+let messageModel = require('../models/messages');
+
 /**
-* * POST USER
+* * POST NEW USER
 */
 router.post('/user', async function(req, res, next) {
-
-  let result = false;
-  let userSaved = null;
 
   let newUser = new userModel({
 		name: req.body.name,
@@ -24,7 +23,8 @@ router.post('/user', async function(req, res, next) {
 		inscriptionDate: req.body.inscriptionDate
   });
 
-  userSaved = await newUser.save()
+  let userSaved = await newUser.save()
+  let result = false;
 
   if(userSaved.name) {
     result = true
@@ -33,39 +33,57 @@ router.post('/user', async function(req, res, next) {
 });
 
 /**
+* * POST NEW CONVERSATION
+*/
+router.post('/conversation', async function(req, res, next) {
+
+  let newConversation = new conversationModel({
+		senderId : userSaved.id,
+		receiverId : userSaved.id,
+		messagesList : messageSaved.id
+  });
+
+  let conversationSaved = await newConversation.save()
+  let result = false;
+
+  if(conversationSaved.name) {
+    result = true
+  }
+  res.json({result, conversationSaved});
+});
+
+/**
 * * POST NEW MESSAGE
 */
-router.post('/messages', async function(req, res, next) {
-
-  let result = false;
-  let messageSaved = null;
+router.post('/message', async function(req, res, next) {
 
   let newMessage = new messageModel({
 		type: req.body.type,
 		content: req.body.content,
-		senderId: req.body.senderId,
-		receiverId: req.body.receiverId,
+		senderId: userSaved.id,
+		receiverId: userSaved.id,
 		sendingDate: req.body.date,
 		read: req.body.read
   });
 
-  messageSaved = await newMessage.save()
+  let messageSaved = await newMessage.save()
+  let result = false;
 
   if(messageSaved.content) {
     result = true
   }
-	console.log('new message saved to DB :', messageSaved);
+	console.log('[BACKEND] NEW CONVERSATION SAVED IN DB :', messageSaved);
   res.json({result});
 });
 
 /**
 * * GET SAVED MESSAGES FROM DB
 */
-router.get('/messages', async function(req,res,next){
+router.get('/message', async function(req,res,next){
 
   let messages = await messageModel.find();
 
-	console.log('Messages from DB :', messages);
+	console.log('[BACKEND] MESSAGES FROM DB :', messages);
   res.json(messages);
 });
 

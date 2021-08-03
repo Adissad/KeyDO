@@ -8,14 +8,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import {connect} from 'react-redux';
 import HomeScreen from './HomeScreen';
 
-
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-
-<<<<<<< HEAD
-export default function ConnexionScreen(props) {
-=======
-
 
 function ConnexionScreen(props) {
   const [signUpUsername, setSignUpUsername] = useState('')
@@ -47,17 +41,7 @@ function ConnexionScreen(props) {
     props.addToken(body.token)
     setUserExists(true)}
     props.navigation.navigate('Profile')
-  } 
-  // }  else {
-  //   setErrorsSignin(body.error)
-  // }
-
-
-// if(userExists){
-//   return <Redirect to='Home' />
-// }
-
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
+  };
 
   return (
     <View style={styles.container}>
@@ -78,17 +62,9 @@ function ConnexionScreen(props) {
 				<Text style={{color:"#FFFFFF", fontSize:20}}>Create an account</Text>
 			</View>
 
-<<<<<<< HEAD
-			<View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
-				<FontAwesome name="spotify" size={60} color="#1DB954" 
-				onPress={() => {props.navigation.navigate("BottomNavigator", {screen: 'SpotifyRedirectionScreen' })}} /> 
-				<Fontisto name="applemusic" size={50} color="#FC3C44"
-				onPress={() => {props.navigation.navigate("BottomNavigator", {screen: 'AppleRedirectionScreen' })}} />
-			</View>
-=======
         <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
           <FontAwesome name="spotify" size={60} color="#1DB954" 
-          onPress={() => {props.navigation.navigate('Spotify')}} /> 
+          onPress={() => {props.navigation.navigate('BottomNavigator')}} /> 
           <Fontisto name="applemusic" size={50} color="#FC3C44"
           onPress={() => {props.navigation.navigate('Apple')}} />
         </View>
@@ -98,42 +74,8 @@ function ConnexionScreen(props) {
         <Text> OR </Text>
             <View style={styles.separator}></View>
         </View>
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
-
-			<View style={{marginTop:1/8*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
-				<View style={styles.separator}></View>
-			<Text> OR </Text>
-				<View style={styles.separator}></View>
-			</View>
 
         <View style={{marginTop:1/10*windowHeight, justifyContent:"center" ,flexDirection:"column" }} >
-<<<<<<< HEAD
-					<Input
-						style={{ paddingLeft: 20 }}
-						placeholder="Name"
-						placeholderTextColor="white"
-						color="white"
-					/>
-
-					<Input
-						style={{ paddingLeft: 20 }}
-						placeholder="Email"
-						placeholderTextColor="white"
-						color="white"
-					/>
-
-					<Input
-						style={{ paddingLeft: 20 }}
-						placeholder="Password"
-						secureTextEntry={true}
-						placeholderTextColor="white"
-						color="white"
-					/>
-        </View>
-
-        <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
-        	<Button buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" onPress={() => {props.navigation.navigate("Profile")}} />
-=======
         <Input
           onChangeText={(value) => setSignUpUsername(value)}
           value={signUpUsername}
@@ -165,7 +107,6 @@ function ConnexionScreen(props) {
 
         <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
         <Button onPress={() => {handleSubmitSignup ()}} buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" />
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
         </View>
 
       </LinearGradient>
@@ -194,9 +135,6 @@ const styles = StyleSheet.create({
       width:1/5*(Dimensions.get("window").width),
       backgroundColor: "black",
   }
-<<<<<<< HEAD
-});
-=======
 });
 
 function mapStateToProps(state) {
@@ -218,4 +156,3 @@ function mapDispatchToProps(dispatch) {
   mapStateToProps,
   mapDispatchToProps
 )(ConnexionScreen);
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f

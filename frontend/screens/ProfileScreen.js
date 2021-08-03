@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-
-import {
-	View,
-	StyleSheet,
-	Dimensions,
-	Button,
-	Image,
-	ScrollView,
-	TouchableOpacity 
-} from "react-native";
-
-=======
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -24,7 +10,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Avatar } from "react-native-elements";
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
 import Modal from "react-native-modal";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Picker } from "@react-native-picker/picker";
@@ -34,11 +19,6 @@ import { Input } from "react-native-elements/dist/input/Input";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-<<<<<<< HEAD
-export default function ProfileScreen() {
-
-	const [isModalVisible, setModalVisible] = useState(false);
-=======
 export default function ProfileScreen(props) {
   const [isModalVisible, setModalVisible] = useState(false);
   const [userExists, setUserExists] = useState(false)
@@ -49,7 +29,6 @@ export default function ProfileScreen(props) {
   const [selectedAge, setSelectedAge] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [userCity, setUserCity] = useState('')
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -96,8 +75,6 @@ export default function ProfileScreen(props) {
     { label: "Danse", value: "danse" },
   ]);
 
-<<<<<<< HEAD
-=======
   var selection = async () => {
     
     const data = await fetch('http://172.17.1.106:3000/users/profile', {
@@ -119,7 +96,6 @@ export default function ProfileScreen(props) {
   };
 
 
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -150,120 +126,6 @@ export default function ProfileScreen(props) {
           </View>
         </TouchableOpacity>
 
-<<<<<<< HEAD
-			<View
-				style={{
-					marginTop: (1 / 8) * windowHeight,
-					paddingRight: (1 / 2) * windowWidth,
-					flexDirection: "row",
-					justifyContent: "space-around",
-					width: "100%",
-					height: "auto",
-				}}
-			>
-				<Button buttonStyle={{backgroundColor:"#693192"}} title="Choose your avatar" onPress={toggleModal} />
-
-				<Modal isVisible={isModalVisible}>
-				<ScrollView style={styles.scrollView}>
-
-					<TouchableOpacity>
-					<Image
-					rounded
-					source={require('../assets/woman.png')}
-					onPress={() => console.log("Works1!")}
-					activeOpacity={0.7}
-					width={20}
-					height={20}
-					/>
-					</TouchableOpacity>
-
-					<TouchableOpacity>
-					<Image
-					rounded
-					source={require('../assets/man.png')}
-					onPress={() => console.log("Works2!")}
-					activeOpacity={0.7}
-					width={20}
-					height={20}
-					/>
-					</TouchableOpacity>
-
-					<TouchableOpacity>
-					<Image
-					rounded
-					source={require('../assets/pinguin.png')}
-					onPress={() => console.log("Works3!")}
-					activeOpacity={0.7}
-					width={20}
-					height={20}
-					/>
-					</TouchableOpacity>
-
-					<TouchableOpacity>
-					<Image
-					rounded
-					source={require('../assets/dog.png')}
-					onPress={() => console.log("Works4!")}
-					activeOpacity={0.7}
-					width={20}
-					height={20}
-					/>
-					</TouchableOpacity>
-
-					<TouchableOpacity>
-					<Image
-					rounded
-					source={require('../assets/rabbit.png')}
-					onPress={() => console.log("Works6!")}
-					activeOpacity={0.7}
-					width={20}
-					height={20}
-					/>
-					</TouchableOpacity>
-
-					<TouchableOpacity>
-					<Image
-					rounded
-					source={require('../assets/pinguin.png')}
-					onPress={() => console.log("Works6!")}
-					activeOpacity={0.7}
-					width={5}
-					height={5}
-					/>      
-					</TouchableOpacity>
-
-						<Button title="Done" onPress={toggleModal} />
-						</ScrollView>
-				</Modal>
-			</View>
-
-			<View>
-				<Input
-					//   style={{ paddingLeft: 20 }}
-						placeholder="Name"
-						placeholderTextColor="white"
-						color="white"
-						/>
-						<Input
-					//   style={{ paddingLeft: 20 }}
-						placeholder="Age"
-						placeholderTextColor="white"
-						color="white"
-						/>
-						<Input
-					//   style={{ paddingLeft: 20 }}
-						placeholder="Gender"
-						placeholderTextColor="white"
-						color="white"
-						/>
-						<Input
-					//   style={{ paddingLeft: 20 }}
-						placeholder="City"
-						placeholderTextColor="white"
-						color="white"
-						/>
-			</View>
-=======
         <View
           style={{
             marginTop: (1 / 18) * windowHeight,
@@ -415,7 +277,6 @@ export default function ProfileScreen(props) {
             value={userCity}
           />
         </View>
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
 
 			<View
 				style={{
@@ -440,30 +301,6 @@ export default function ProfileScreen(props) {
 				/>
 			</View>
 
-<<<<<<< HEAD
-			<View
-				style={{
-					marginTop: (1 / 10) * windowHeight,
-					flexDirection: "row",
-					justifyContent: "space-around",
-					alignItems: "center",
-					width: "100%",
-					height: "auto",
-				}}
-			>
-				<DropDownPicker
-					multiple={true}
-					min={0}
-					max={3}
-					open={openInterest}
-					value={valueInterest}
-					items={selectInterest}
-					setOpen={() => setOpenInterest(!openInterest)}
-					setValue={setValueInterest}
-					setItems={setselectInterest}
-				/>
-			</View>
-=======
         <View
           style={{
             marginTop: (1 / 10) * windowHeight,
@@ -491,7 +328,6 @@ export default function ProfileScreen(props) {
         <Button onPress={() => {updatedInfo, props.navigation.navigate('Home')}} buttonStyle={{backgroundColor:"#CF779E"}} title="Valider" />
         </View>
 
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
       </LinearGradient>
     </View>
   );

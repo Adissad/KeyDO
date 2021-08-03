@@ -41,19 +41,19 @@ export default function ChatScreen(props) {
 			// if(isFocused) {
 
 				//	IP adress required or network request will fail
-				const rawData = await fetch('http://172.17.1.53:3000/messages');
+				const rawData = await fetch('http://172.17.1.53:3000/message');
 				const jsonData = await rawData.json();
 				setMessagesList(jsonData);
 
 			// } else {
 			// 	clearInterval(fetchInterval);
 			// };
-			console.log('Messages fetched from DB :', jsonData);
+			console.log('[FRONTEND] MESSAGES FETCHED FROM BACKEND :', jsonData);
 		};
 		loadDataDB();
   }, []);
 
-	console.log('messages list :', messagesList);
+	// console.log('messages list :', messagesList);
 
 	// POST message to DB
 	let saveMessage = async (msg) => {
@@ -63,15 +63,16 @@ export default function ChatScreen(props) {
 			setMessagesList([...messagesList, {content: msg}]);
 
 			// IP adress required or network request will fail
-			const response = await fetch('http://172.17.1.53:3000/messages', {
+			const postMsgData = await fetch('http://172.17.1.53:3000/message', {
 				method: 'POST',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 				body: `content=${msg}&senderToken={}&senderName`
 			});
 		};
-		console.log('messages list Front :', messagesList)
 		setCurrentMessage('');
 	};
+		
+	// console.log('[FRONTEND] MESSAGES LIST SENT TO BACKEND :', messagesList)
 
 	// .map() to display messages
 	let currentMessagesList = messagesList.map((element, i) => {

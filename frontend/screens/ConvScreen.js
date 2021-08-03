@@ -35,7 +35,7 @@ export default function ConvScreen(props) {
 	let conversationsList = usersData.map((element, i) => {
 		return(
 			<View key={i} style={styles.item}>
-				<TouchableOpacity onPress={() => { props.navigation.navigate("Chat") }}>
+				<TouchableOpacity onPress={() => { props.navigation.navigate('Chat') }}>
 					<ListItem.Content style={styles.itemContent}>
 						<Avatar rounded size="medium" source={{uri: element.avatar}} />
 						<ListItem.Title style={styles.title}> {element.name} </ListItem.Title>

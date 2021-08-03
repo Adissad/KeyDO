@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-require('./models/connection');
+require('./models/connexion');
 
-=======
-var mongoose = require('./models/connexion');
->>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
