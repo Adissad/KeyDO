@@ -2,7 +2,6 @@ import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']);
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,10 +12,10 @@ import ConnexionScreen from './screens/ConnexionScreen';
 import SpotifyRedirectionScreen from './screens/SpotifyRedirectionScreen';
 import AppleRedirectionScreen from './screens/AppleRedirectionScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import HomeScreen from './screens/HomeScreen'
+import HomeScreen from './screens/HomeScreen';
 import ChooseMatchScreen from './screens/ChooseMatchScreen';
 import ConvScreen from './screens/ConvScreen';
-
+import ChatScreen from './screens/ChatScreen';
 
 import DanceScreen from './screens/GenresMusic/DanceScreen';
 import RnBScreen from './screens/GenresMusic/RnBScreen';
@@ -51,46 +50,44 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color }) => {
-          let iconName;
+	return (
+		<Tab.Navigator
+			screenOptions={({ route }) => ({
+				tabBarIcon: ({ color }) => {
+					let iconName;
 
-          if (route.name == 'Home') {
-            iconName = 'home-outline';
-          } else if (route.name == 'Match') {
-            iconName = 'heart-outline';
-          }
-          else if (route.name == 'Conv') {
-            iconName = 'chatbubbles-outline';
-          }
-          if (route.name == 'Profil') {
-            iconName = 'person-outline';
-          }
-          return <Ionicons name={iconName} size={25} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        showIcon: true,
-        showLabel: false,
-        activeTintColor: '#FFFFFF',
-        inactiveTintColor: '#66F',
-        style: {
-          backgroundColor: 'transparent',
-          borderTopWidth: 0,
-          position: 'absolute',
-          elevation: 0
-        }
-      }}
-    >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Match" component={ChooseMatchScreen} />
-      <Tab.Screen name="Conv" component={ConvScreen} />
-      <Tab.Screen name="Profil" component={ProfileScreen} />
-    </Tab.Navigator>
-  );
-}
+					if (route.name == 'Home') {
+						iconName = 'home-outline';
+					} else if (route.name == 'Match') {
+						iconName = 'heart-outline';
+					} else if (route.name == 'Conv') {
+						iconName = 'chatbubbles-outline';
+					}
+					if (route.name == 'Profil') {
+						iconName = 'person-outline';
+					}
+					return <Ionicons name={iconName} size={25} color={color} />;
+				},
+			})}
+			tabBarOptions={{
+				showIcon: true,
+				showLabel: false,
+				activeTintColor: '#FFFFFF',
+				inactiveTintColor: '#66F',
+				style: {
+					backgroundColor: 'transparent',
+					borderTopWidth: 0,
+					position: 'absolute',
+					elevation: 0,
+				},
+			}}>
+			<Tab.Screen name='Home' component={HomeScreen} />
+			<Tab.Screen name='Match' component={ChooseMatchScreen} />
+			<Tab.Screen name='Conv' component={ConvScreen} />
+			<Tab.Screen name='Profil' component={ProfileScreen} />
+		</Tab.Navigator>
+	);
+};
 
 export default function App() {
   return (
@@ -130,11 +127,11 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });

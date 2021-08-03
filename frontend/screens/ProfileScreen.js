@@ -19,7 +19,7 @@ import { Input } from "react-native-elements/dist/input/Input";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function ProfileScreen() {
+export default function ProfileScreen(props) {
   const [isModalVisible, setModalVisible] = useState(false);
   const [userExists, setUserExists] = useState(false)
   const [signUpUsername, setSignUpUsername] = useState('')
@@ -325,7 +325,7 @@ export default function ProfileScreen() {
         </View>
 
         <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
-        <Button onPress={() => {updatedInfo ()}} buttonStyle={{backgroundColor:"#CF779E"}} title="Valider" />
+        <Button onPress={() => {updatedInfo, props.navigation.navigate('Home')}} buttonStyle={{backgroundColor:"#CF779E"}} title="Valider" />
         </View>
 
       </LinearGradient>
@@ -352,6 +352,7 @@ const styles = StyleSheet.create({
 
   scrollView: {
     backgroundColor: "#693192",
+
     marginHorizontal: 20,
   },
 });
