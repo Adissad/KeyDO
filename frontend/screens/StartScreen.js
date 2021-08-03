@@ -10,6 +10,7 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function StartScreen(props) {
 
+<<<<<<< HEAD
 	return (
 		<View style={styles.container}>
 			<LinearGradient
@@ -23,6 +24,39 @@ export default function StartScreen(props) {
 						y: 1
 				}}
 				style={styles.box}>
+=======
+    return (
+        <View style={styles.container}>
+            <LinearGradient
+                colors={['#FF8ABD', '#EF7365']}
+                start={{
+                    x: 0,
+                    y: 0
+                }}
+                end={{
+                    x: 1,
+                    y: 1
+                }}
+                style={styles.box}>
+                    
+                <Text h4 style={styles.text}>KeyDO</Text>
+                
+                <Button style={{paddingTop : 3 / 4.5 * windowWidth,}} icon={
+                    <Ionicons
+                        name="play-circle-outline"
+                        size={45}
+                        color="#FFFFFF"
+                    />
+                } 
+                    type='clear'
+                    title="Let's Begin"
+                    onPress={() => { props.navigation.navigate('Connexion')}}
+                />
+            </LinearGradient>
+        </View>
+    )
+}
+>>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
 
 				<Text h4 style={styles.text}>KeyDO</Text>
 

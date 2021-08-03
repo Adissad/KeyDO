@@ -42,6 +42,17 @@ import AfroScreen from './screens/GenresMusic/AfroScreen';
 import DécenniesScreen from './screens/GenresMusic/DécenniesScreen';
 import GospelScreen from './screens/GenresMusic/GospelScreen';
 
+<<<<<<< HEAD
+=======
+import { Ionicons } from '@expo/vector-icons';
+
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import token from './reducers/token';
+
+const store = createStore(combineReducers({token}));
+
+>>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 // const store = createStore(combineReducers({}))
@@ -87,6 +98,7 @@ const BottomNavigator = () => {
 };
 
 export default function App() {
+<<<<<<< HEAD
 	return (
 		// <Provider store={store}>
 			<NavigationContainer>
@@ -120,3 +132,50 @@ export default function App() {
 		// </Provider>
 	);
 };
+=======
+  return (
+  <Provider store={store}>  
+   <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Start" component={StartScreen} />
+        <Stack.Screen name="Connexion" component={ConnexionScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
+        <Stack.Screen name="Dance" component={DanceScreen} />
+        <Stack.Screen name="RnB" component={RnBScreen} />
+        <Stack.Screen name="HipHop" component={HipHopScreen} />
+        <Stack.Screen name="Latino" component={LatinoScreen} />
+        <Stack.Screen name="Jazz" component={JazzScreen} />
+        <Stack.Screen name="Soul" component={SoulScreen} />
+        <Stack.Screen name="Rock" component={RockScreen} />
+        <Stack.Screen name="Classique" component={ClassiqueScreen} />
+        <Stack.Screen name="Reggae/Dancehall" component={ReggaeScreen} />
+        <Stack.Screen name="Pop" component={PopScreen} />
+        <Stack.Screen name="French" component={FrenchScreen} />
+        <Stack.Screen name="Kpop" component={KpopScreen} />
+        <Stack.Screen name="Métal" component={MétalScreen} />
+        <Stack.Screen name="Funk" component={FunkScreen} />
+        <Stack.Screen name="Folk" component={FolkScreen} />
+        <Stack.Screen name="Blues" component={BluesScreen} />
+        <Stack.Screen name="Country" component={CountryScreen} />
+        <Stack.Screen name="Afro" component={AfroScreen} />
+        <Stack.Screen name="Décennies" component={DécenniesScreen} />
+        <Stack.Screen name="Gospel" component={GospelScreen} />
+        <Stack.Screen name="Spotify" component={SpotifyRedirectionScreen} />
+        <Stack.Screen name="Apple" component={AppleRedirectionScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </Provider>
+  );
+}
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
+>>>>>>> d0189c0fce98fef61faf7b4c108197ae72e9184f
