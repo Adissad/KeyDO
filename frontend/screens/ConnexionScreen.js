@@ -3,7 +3,6 @@ import { View, StyleSheet, Text, Dimensions} from "react-native";
 import { FontAwesome, Ionicons, Fontisto } from "@expo/vector-icons";
 import { Input, Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
-// import { Redirect } from 'react-router';
 
 import {connect} from 'react-redux';
 import HomeScreen from './HomeScreen';
@@ -42,6 +41,7 @@ function ConnexionScreen(props) {
 
   if(body.result == true){
     props.addToken(body.token)
+    console.log("sign up token", body.token);
     setUserExists(true)}
     props.navigation.navigate('Profile')
   } 
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   // console.log('hi', state);
-  return { addToken : state.userToken }
+  return { token : state.token }
   }
 
 function mapDispatchToProps(dispatch) {
