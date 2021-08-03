@@ -41,7 +41,7 @@ export default function ChatScreen(props) {
 			// if(isFocused) {
 
 				//	IP adress required or network request will fail
-				const rawData = await fetch('http://192.168.1.56:3000/messages');
+				const rawData = await fetch('http://172.17.1.53:3000/messages');
 				const jsonData = await rawData.json();
 				setMessagesList(jsonData);
 
@@ -63,7 +63,7 @@ export default function ChatScreen(props) {
 			setMessagesList([...messagesList, {content: msg}]);
 
 			// IP adress required or network request will fail
-			const response = await fetch('http://192.168.1.56:3000/messages', {
+			const response = await fetch('http://172.17.1.53:3000/messages', {
 				method: 'POST',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 				body: `content=${msg}&senderToken={}&senderName`
@@ -132,13 +132,6 @@ export default function ChatScreen(props) {
 				<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
 
 					{currentMessagesList}
-
-					{/* <View style={styles.senderBubble}>
-						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Hey, how are you ?</ListItem.Subtitle>
-						</ListItem.Content>
-					</View>*/}
 
 				</KeyboardAvoidingView>
 			</ScrollView>

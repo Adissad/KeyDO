@@ -1,6 +1,7 @@
 let mongoose = require('mongoose');
 
 let messageSchema = mongoose.Schema({
+	// username: String,
 	type: String,
 	content: String,
 	senderId : {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
