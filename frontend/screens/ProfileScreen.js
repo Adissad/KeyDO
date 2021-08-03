@@ -15,11 +15,12 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
 import { Input } from "react-native-elements/dist/input/Input";
+import {connect} from 'react-redux';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function ProfileScreen(props) {
+function ProfileScreen(props) {
   const [isModalVisible, setModalVisible] = useState(false);
   const [userExists, setUserExists] = useState(false)
   const [signUpUsername, setSignUpUsername] = useState('')
@@ -75,12 +76,13 @@ export default function ProfileScreen(props) {
     { label: "Danse", value: "danse" },
   ]);
 
-  var selection = async () => {
-    
+  // console.log("token ok props",props.token);
+  var selection = async (token) => {
+    // console.log("funtion token", token)
     const data = await fetch('http://172.17.1.106:3000/users/profile', {
       method: 'PUT',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}`
+      body: `token=${token}&name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}`
     })
 
   const body = await data.json()
@@ -88,12 +90,6 @@ export default function ProfileScreen(props) {
   //   props.addToken(body.token)
   //   setUserExists(true)}
   }
-
-  var updatedInfo = async () => {
-    const newData = await fetch('http://172.17.1.106:3000/users/profile')
-    const dataClean = await newData.json();
-    console.log("hello", dataClean);
-  };
 
 
   return (
@@ -325,7 +321,7 @@ export default function ProfileScreen(props) {
         </View>
 
         <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
-        <Button onPress={() => {updatedInfo, props.navigation.navigate('Home')}} buttonStyle={{backgroundColor:"#CF779E"}} title="Valider" />
+        <Button onPress={() => {selection(props.token)}} buttonStyle={{backgroundColor:"#CF779E"}} title="Valider" />
         </View>
 
       </LinearGradient>
@@ -355,3 +351,23 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
 });
+
+function mapStateToProps(state) {
+  //console.log('hi', state);
+  return { token : state.token }
+  }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addToken: function(token) {
+      dispatch( {type: 'addToken',
+            addToken: token
+                              })
+    }
+  }
+ }
+
+ export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileScreen);
