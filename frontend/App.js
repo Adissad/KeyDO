@@ -16,6 +16,7 @@ import HomeScreen from './screens/HomeScreen';
 import ChooseMatchScreen from './screens/ChooseMatchScreen';
 import ConvScreen from './screens/ConvScreen';
 import ChatScreen from './screens/ChatScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 import DanceScreen from './screens/GenresMusic/DanceScreen';
 import RnBScreen from './screens/GenresMusic/RnBScreen';
@@ -121,6 +122,7 @@ export default function App() {
         <Stack.Screen name="Gospel" component={GospelScreen} />
         <Stack.Screen name="Spotify" component={SpotifyRedirectionScreen} />
         <Stack.Screen name="Apple" component={AppleRedirectionScreen} />
+		<Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   </Provider>

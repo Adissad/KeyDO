@@ -10,7 +10,9 @@ var userSchema = mongoose.Schema({
     avatar : String,
     picture : String,
     token : String,
-    inscriptionDate : Date
+    inscriptionDate : Date,
+    music: Array,
+    interest: Array,
 })
 
 var userModel = mongoose.model('users', userSchema)

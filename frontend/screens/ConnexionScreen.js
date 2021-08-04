@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, Text, Dimensions} from "react-native";
+import { View, StyleSheet, Text, Dimensions, KeyboardAvoidingView, Platform} from "react-native";
 import { FontAwesome, Ionicons, Fontisto } from "@expo/vector-icons";
 import { Input, Button } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 
 import {connect} from 'react-redux';
-import HomeScreen from './HomeScreen';
 
 
 const windowWidth = Dimensions.get("window").width;
@@ -20,9 +19,12 @@ function ConnexionScreen(props) {
   const [selectedAge, setSelectedAge] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [userCity, setUserCity] = useState('')
+  const [selectMusic, setSelectMusic] = useState([])
+  const [selectInterest, setselectInterest] = useState([])
 
   const [signInEmail, setSignInEmail] = useState('')
   const [signInPassword, setSignInPassword] = useState('')
+  const [errorList, setErrorList] = useState([])
 
   const [userExists, setUserExists] = useState(false)
 
@@ -34,17 +36,21 @@ function ConnexionScreen(props) {
     const data = await fetch('http://172.17.1.106:3000/users/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}`
+      body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}&music=${selectMusic}&interest=${selectInterest}`
     })
 
     const body = await data.json()
+    console.log("1: ", body);
 
   if(body.result == true){
     props.addToken(body.token)
     console.log("sign up token", body.token);
-    setUserExists(true)}
+    setUserExists(true)
     props.navigation.navigate('Profile')
-  } 
+  } else if (body.result == false) {
+      setErrorList(body.error)
+    }
+  }
   // }  else {
   //   setErrorsSignin(body.error)
   // }
@@ -54,6 +60,9 @@ function ConnexionScreen(props) {
 //   return <Redirect to='Home' />
 // }
 
+// var erreurs = errorList.map((error, i) => {
+//   return <Text key={error${i}}>{error}</Text>;
+// });
 
   return (
     <View style={styles.container}>
@@ -81,14 +90,17 @@ function ConnexionScreen(props) {
           onPress={() => {props.navigation.navigate('Apple')}} />
         </View>
 
+
         <View style={{marginTop:1/8*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
             <View style={styles.separator}></View>
         <Text> OR </Text>
             <View style={styles.separator}></View>
         </View>
 
-
+       
         <View style={{marginTop:1/10*windowHeight, justifyContent:"center" ,flexDirection:"column" }} >
+        <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <Input
           onChangeText={(value) => setSignUpUsername(value)}
           value={signUpUsername}
@@ -97,7 +109,10 @@ function ConnexionScreen(props) {
           placeholderTextColor="white"
           color="white"
         />
+        </KeyboardAvoidingView>
 
+<KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <Input
           onChangeText={(value) => setSignUpEmail(value)}
           value={signUpEmail}
@@ -106,7 +121,11 @@ function ConnexionScreen(props) {
           placeholderTextColor="white"
           color="white"
         />
+</KeyboardAvoidingView>
 
+
+<KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <Input
           onChangeText={(value) => setSignUpPassword(value)}
           value={signUpPassword}
@@ -116,14 +135,17 @@ function ConnexionScreen(props) {
           placeholderTextColor="white"
           color="white"
         />
+        </KeyboardAvoidingView>
         </View>
-
+        
+        {/* {erreurs} */}
         <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
         <Button onPress={() => {handleSubmitSignup ()}} buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" />
         </View>
 
       </LinearGradient>
     </View>
+    
   );
 }
 
@@ -133,7 +155,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     lineHeight: 1.2,
     justifyContent: "center",
-
     // fontFamily: ,
   },
 
