@@ -13,7 +13,7 @@ import SpotifyRedirectionScreen from './screens/SpotifyRedirectionScreen';
 import AppleRedirectionScreen from './screens/AppleRedirectionScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import HomeScreen from './screens/HomeScreen';
-import ChooseMatchScreen from './screens/ChooseMatchScreen';
+import MatchScreen from './screens/MatchScreen';
 import ConvScreen from './screens/ConvScreen';
 import ChatScreen from './screens/ChatScreen';
 
@@ -79,7 +79,7 @@ const BottomNavigator = () => {
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Match" component={ChooseMatchScreen} />
+      <Tab.Screen name="Match" component={MatchScreen} />
       <Tab.Screen name="Conv" component={ConvScreen} />
       <Tab.Screen name="Profil" component={ProfileScreen} />
     </Tab.Navigator>
