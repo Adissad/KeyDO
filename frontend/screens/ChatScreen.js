@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-// import { useIsFocused } from '@react-navigation/native';
 
 import {
 	View,
@@ -17,75 +16,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
 import { KeyboardAccessoryView } from 'react-native-keyboard-accessory';
 
-import { connect } from 'react-redux';
-
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ChatScreen(props) {
-
-	const [currentMessage, setCurrentMessage] = useState('');
-  const [messagesList, setMessagesList] = useState([]);
-	const [messageCounter, setMessageCounter] = useState('');
-	const [senderId, setSenderId] = useState('');
-	const [receiverId, setReceiverId] = useState('');
-
-	const [myInterval, setMyInterval] = useState('');
-
-	// Fetch messages from DB on component mount
-  useEffect(() => {
-    const loadDataDB = async() => {
-
-			// let fetchInterval = setInterval(myInterval);
-			// const isFocused = useIsFocused();
-			// if(isFocused) {
-
-				//	IP adress required or network request will fail
-				const rawData = await fetch('http://172.17.1.53:3000/message');
-				const jsonData = await rawData.json();
-				setMessagesList(jsonData);
-
-			// } else {
-			// 	clearInterval(fetchInterval);
-			// };
-			console.log('[FRONTEND] MESSAGES FETCHED FROM BACKEND :', jsonData);
-		};
-		loadDataDB();
-  }, []);
-
-	// console.log('messages list :', messagesList);
-
-	// POST message to DB
-	let saveMessage = async (msg) => {
-
-		if(msg) {
-
-			setMessagesList([...messagesList, {content: msg}]);
-
-			// IP adress required or network request will fail
-			const postMsgData = await fetch('http://172.17.1.53:3000/message', {
-				method: 'POST',
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: `content=${msg}&senderToken={}&senderName`
-			});
-		};
-		setCurrentMessage('');
-	};
-		
-	// console.log('[FRONTEND] MESSAGES LIST SENT TO BACKEND :', messagesList)
-
-	// .map() to display messages
-	let currentMessagesList = messagesList.map((element, i) => {
-		return(
-			<View key={i} style={styles.senderBubble}>
-			{/* <View key={i} style={element.token === props.token(store) ? styles.senderBubble : styles.receiverBubble}> */}
-				<ListItem.Content style={styles.senderBubbleContent}>
-					<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-					<ListItem.Subtitle style={styles.bubbleSubtitle}> {element.content} </ListItem.Subtitle>
-				</ListItem.Content>
-			</View>
-		);
-	});
 
   return (
 		<View style={styles.container}>
@@ -132,7 +66,72 @@ export default function ChatScreen(props) {
 			<ScrollView>
 				<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
 
-					{currentMessagesList}
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
 
 				</KeyboardAvoidingView>
 			</ScrollView>
@@ -163,7 +162,6 @@ export default function ChatScreen(props) {
                 }
 								style={styles.inputButton}
 								type= 'clear'
-								onPress={() => {saveMessage(currentMessage)}}
 							/>
 						)}
 					</View>
@@ -173,31 +171,6 @@ export default function ChatScreen(props) {
   );
 };
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// /**
-// *! PROPS & STORE
-// */ 
-// function mapStateToProps(state){
-//   return {messageList: state.messageList}
-// };
-
-// function mapDispatchToProps(dispatch){
-//   return {
-//     saveNewMessage: function(currentMessage){
-//       dispatch({ type: 'saveMessage', currentMessage })
-//     }
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(ChatScreen);
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/** 
-*! STYLE
-*/
 const styles = StyleSheet.create({
 
 	container: {
