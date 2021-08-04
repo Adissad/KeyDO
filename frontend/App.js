@@ -50,39 +50,41 @@ const BottomNavigator = () => {
 				tabBarIcon: ({ color }) => {
 					let iconName;
 
-					if (route.name == 'Home') {
-						iconName = 'home-outline';
-					} else if (route.name == 'Match') {
-						iconName = 'heart-outline';
-					} else if (route.name == 'Conv') {
-						iconName = 'chatbubbles-outline';
-					}
-					if (route.name == 'Profil') {
-						iconName = 'person-outline';
-					}
-					return <Ionicons name={iconName} size={25} color={color} />;
-				},
-			})}
-			tabBarOptions={{
-				showIcon: true,
-				showLabel: false,
-				activeTintColor: '#FFFFFF',
-				inactiveTintColor: '#66F',
-				style: {
-					backgroundColor: '#693192',
+          if (route.name == 'Home') {
+            iconName = 'home-outline';
+          } else if (route.name == 'Match') {
+            iconName = 'heart-outline';
+          }
+          else if (route.name == 'Conv') {
+            iconName = 'chatbubbles-outline';
+          }
+          if (route.name == 'Profil') {
+            iconName = 'person-outline';
+          }
+          return <Ionicons name={iconName} size={25} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        showIcon: true,
+        showLabel: false,
+        activeTintColor: '#FFFFFF',
+        inactiveTintColor: '#66F',
+        style: {
+          backgroundColor: '#693192',
 		      opacity: 0.9,
-					borderTopWidth: 0,
-					position: 'absolute',
-					elevation: 0,
-				},
-			}}>
-			<Tab.Screen name='Home' component={HomeScreen} />
-			<Tab.Screen name='Match' component={ChooseMatchScreen} />
-			<Tab.Screen name='Conv' component={ConvScreen} />
-			<Tab.Screen name='Profil' component={ProfileScreen} />
-		</Tab.Navigator>
-	);
-};
+          borderTopWidth: 0,
+          position: 'absolute',
+          elevation: 0
+        }
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Match" component={ChooseMatchScreen} />
+      <Tab.Screen name="Conv" component={ConvScreen} />
+      <Tab.Screen name="Profil" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
 	return (

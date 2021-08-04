@@ -8,8 +8,9 @@ import { Ionicons } from '@expo/vector-icons';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function StartScreen(props) {
 
+export default function StartScreen(props) {
+    
     return (
         <View style={styles.container}>
             <LinearGradient
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
         paddingTop: 1/3*windowHeight,
         color: '#FFFFFF',
         fontSize: 78,
-        fontFamily: 'Arial',
+        fontFamily:"Arial"
     },
 
     box: {
