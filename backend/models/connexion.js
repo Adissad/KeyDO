@@ -11,7 +11,7 @@ mongoose.connect('mongodb+srv://Admin:admin@cluster0.n05jq.mongodb.net/KeyDo?ret
     options,
     function(err){
         if (!err) {
-            console.log('Connexion à la base de données:'+ dbname +' est OK');
+            console.log('Connexion à la base de données '+ dbname +' est OK');
         } else {
         console.log(err);
     }

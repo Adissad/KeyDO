@@ -1,4 +1,4 @@
-var mongoose = require('mongoose')
+let mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
     name : String,
@@ -15,6 +15,6 @@ var userSchema = mongoose.Schema({
     interest: Array,
 })
 
-var userModel = mongoose.model('users', userSchema)
+let userModel = mongoose.model('users', userSchema);
 
 module.exports = userModel;

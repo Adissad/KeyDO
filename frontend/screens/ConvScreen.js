@@ -62,7 +62,6 @@ export default function ConvScreen(props) {
 	});
 
 	return (
-
 		<View style={styles.container}>
 			<LinearGradient
 				colors={['#FF8ABD', '#EF7365']}

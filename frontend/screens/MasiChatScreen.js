@@ -1,21 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import {
 	View,
 	ScrollView,
 	KeyboardAvoidingView,
 	StyleSheet,
+	Image,
 	TextInput,
 	Text,
 	Dimensions,
-	SafeAreaView,
 	TouchableOpacity
 } from 'react-native';
 
 import { Button, ListItem } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
-import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
+import { KeyboardAccessoryView } from 'react-native-keyboard-accessory';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -40,7 +40,7 @@ export default function ChatScreen(props) {
 
 			<View style={{backgroundColor: "#FF8ABD", zIndex: 1}}>
 				<View style={{marginLeft: 1/25 * windowWidth, marginTop: 1/20 * windowHeight}} >
-					<TouchableOpacity onPress={() => { props.navigation.navigate('Conv') }} >
+					<TouchableOpacity onPress={() => { props.navigation.navigate('Match') }} >
 						<Ionicons
 							name= "arrow-back"
 							size= {25}
@@ -51,13 +51,13 @@ export default function ChatScreen(props) {
 
 				<View style={{marginHorizontal: 1/8 * windowWidth, marginTop: -1/24 * windowHeight}}>
 					<Text style={{textAlign: "center", fontSize:20, color:"white"}}>
-						Christophe
+						Masinissa
 					</Text>
 				</View>
 
 				<View>
 					<Text style={styles.conversationTitle}>
-						Album disponible depuis le 30/07/21
+						Album disponible depuis le 20/07/21
 					</Text>
 				</View>
 			</View>
@@ -68,120 +68,108 @@ export default function ChatScreen(props) {
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Hey Christophe, on a un match presque parfait !</ListItem.Subtitle>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Hey Masinissa, on a un match presque parfait !</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut, ouai j'ai rarement eu un match aussi précis. Ravi de faire ta connaissance !</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>De même, t'as un genre coup de coeur que tu aimes par dessus tout ?</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>J'avais la même question ! Moi c'est plutôt électro au quotidien, j'en écoute vraiment tous les jours pendant mes activités.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Ouai j'en écoute aussi, mais au quotidien je suis plutôt RnB.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>J'aime bien le RnB, mais plutôt en soirée !</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Oui c'est vrai que je trouve ça idéal en soirée. Sinon tu as d'autres préférences particulières ? Genres ou artistes ?</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>J'adore écouter du Jazz pendant mes jours de repos, je pourrais en écouter une journée entière...</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Je comprend, j'ai plein de vinyles de Jazz à la maison, il y en a toujours un qui tourne.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Oh tu as une platine vinyle ? Je suis fan !</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Oui, cadeau de mon père. C'est un fin connaisseur qui m'a transmis sa passion.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Quelle chance ! J'aimerais beaucoup en acheter une mais j'ai besoin de bons conseils...</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Je peux te donner quelques conseils et t'aider à choisir si tu veux.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Merci, ça m'aiderait beaucoup franchement. T'aimes les concerts ?</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
 							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
 							<ListItem.Subtitle style={styles.bubbleSubtitle}>Ouai et encore plus les festivals, je préfère être en plein air.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-
-					<View style={styles.msgCounter}>
-						<ListItem.Content>
-							<ListItem.Subtitle style={{fontSize: 14, textAlign: "center", color: "black"}}>
-								Plus que 20 messages avant de pouvoir échanger une photo !
-							</ListItem.Subtitle>
-						</ListItem.Content>
-					</View>
-
 					<View style={styles.receiverBubble}>
 						<ListItem.Content style={styles.receiverBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Ha je comprend complètement... moi j'aime aussi les raves justement parce que c'est en plein air ou dans des endroits insolites.</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Masinissa</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>On vient de débloquer les photos !</ListItem.Subtitle>
+							<Image 
+								style={{marginVertical: 6, borderRadius: 20}}
+        				source={require('../assets/masi.png')}/>
+						</ListItem.Content>
+					</View>
+					<View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<Image 
+								style={{marginVertical: 6, borderRadius: 20}}
+        				source={require('../assets/mathias.png')}/>
 						</ListItem.Content>
 					</View>
 
@@ -246,13 +234,11 @@ const styles = StyleSheet.create({
 	},
 
 	msgCounter: {
-		flex: 1,
-		alignItems: "center",
-		backgroundColor: "#e59400",
+		backgroundColor: "green",
 		marginHorizontal: 1/5 * windowWidth,
 		borderRadius: 15,
-		marginBottom: 20,
-		padding: 10
+		marginTop: 1/75 * windowHeight,
+		padding: 4
 	},
 
   inputView: {
@@ -321,7 +307,7 @@ const styles = StyleSheet.create({
 	},
 
 	bubbleSubtitle: {
-		marginTop: 5,
+		marginVertical: 5,
 		color: "white"
 	},
 });

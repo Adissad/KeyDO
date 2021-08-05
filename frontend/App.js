@@ -16,6 +16,8 @@ import HomeScreen from './screens/HomeScreen';
 import MatchScreen from './screens/MatchScreen';
 import ConvScreen from './screens/ConvScreen';
 import ChatScreen from './screens/ChatScreen';
+import RemyChatScreen from './screens/RemyChatScreen';
+import MasiChatScreen from './screens/MasiChatScreen';
 import SettingsScreen from './screens/SettingsScreen';
 
 import DanceScreen from './screens/GenresMusic/DanceScreen';
@@ -91,45 +93,46 @@ const BottomNavigator = () => {
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
-}
+};
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='Start' component={StartScreen} />
-          <Stack.Screen name='Home' component={HomeScreen} />
-          <Stack.Screen name='BottomNavigator' component={BottomNavigator} />
-          <Stack.Screen name='Chat' component={ChatScreen} />
-          <Stack.Screen name='Connexion' component={ConnexionScreen} />
-          <Stack.Screen name='Spotify' component={SpotifyRedirectionScreen} />
-          <Stack.Screen name='Apple' component={AppleRedirectionScreen} />
-          <Stack.Screen name='Dance' component={DanceScreen} />
-          <Stack.Screen name='RnB' component={RnBScreen} />
-          <Stack.Screen name='HipHop' component={HipHopScreen} />
-          <Stack.Screen name='Latino' component={LatinoScreen} />
-          <Stack.Screen name='Jazz' component={JazzScreen} />
-          <Stack.Screen name='Soul' component={SoulScreen} />
-          <Stack.Screen name='Rock' component={RockScreen} />
-          <Stack.Screen name='Classique' component={ClassiqueScreen} />
-          <Stack.Screen name='Reggae/Dancehall' component={ReggaeScreen} />
-          <Stack.Screen name='Pop' component={PopScreen} />
-          <Stack.Screen name='French' component={FrenchScreen} />
-          <Stack.Screen name='Kpop' component={KpopScreen} />
-          <Stack.Screen name='Métal' component={MétalScreen} />
-          <Stack.Screen name='Funk' component={FunkScreen} />
-          <Stack.Screen name='Folk' component={FolkScreen} />
-          <Stack.Screen name='Blues' component={BluesScreen} />
-          <Stack.Screen name='Country' component={CountryScreen} />
-          <Stack.Screen name='Afro' component={AfroScreen} />
-          <Stack.Screen name='Décennies' component={DécenniesScreen} />
-          <Stack.Screen name='Gospel' component={GospelScreen} />
-          <Stack.Screen name='Profile' component={ProfileScreen} />
-          <Stack.Screen name="Settings" component={SettingsScreen} />
-
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+		<Provider store={store}>
+			<NavigationContainer>
+				<Stack.Navigator screenOptions={{ headerShown: false }}>
+					<Stack.Screen name="Start" component={StartScreen} />
+					<Stack.Screen name="Connexion" component={ConnexionScreen} />
+					<Stack.Screen name="Spotify" component={SpotifyRedirectionScreen} />
+					<Stack.Screen name="Apple" component={AppleRedirectionScreen} />
+					<Stack.Screen name="Profile" component={ProfileScreen} />
+					<Stack.Screen name="Home" component={HomeScreen} />
+					<Stack.Screen name="Chat" component={ChatScreen} />
+					<Stack.Screen name="BottomNavigator" component={BottomNavigator} />
+					<Stack.Screen name="Masi" component={MasiChatScreen} />
+					<Stack.Screen name="Remy" component={RemyChatScreen} />
+					<Stack.Screen name="Dance" component={DanceScreen} />
+					<Stack.Screen name="RnB" component={RnBScreen} />
+					<Stack.Screen name="HipHop" component={HipHopScreen} />
+					<Stack.Screen name="Latino" component={LatinoScreen} />
+					<Stack.Screen name="Jazz" component={JazzScreen} />
+					<Stack.Screen name="Soul" component={SoulScreen} />
+					<Stack.Screen name="Rock" component={RockScreen} />
+					<Stack.Screen name="Classique" component={ClassiqueScreen} />
+					<Stack.Screen name="Reggae/Dancehall" component={ReggaeScreen} />
+					<Stack.Screen name="Pop" component={PopScreen} />
+					<Stack.Screen name="French" component={FrenchScreen} />
+					<Stack.Screen name="Kpop" component={KpopScreen} />
+					<Stack.Screen name="Métal" component={MétalScreen} />
+					<Stack.Screen name="Funk" component={FunkScreen} />
+					<Stack.Screen name="Folk" component={FolkScreen} />
+					<Stack.Screen name="Blues" component={BluesScreen} />
+					<Stack.Screen name="Country" component={CountryScreen} />
+					<Stack.Screen name="Afro" component={AfroScreen} />
+					<Stack.Screen name="Décennies" component={DécenniesScreen} />
+					<Stack.Screen name="Gospel" component={GospelScreen} />
+					<Stack.Screen name="Settings" component={SettingsScreen} />
+				</Stack.Navigator>
+			</NavigationContainer>
+		</Provider>
   );
-}
+};

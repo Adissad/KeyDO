@@ -6,11 +6,8 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import {connect} from 'react-redux';
 
-
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-
-
 
 function ConnexionScreen(props) {
   const [signUpUsername, setSignUpUsername] = useState('')
@@ -32,8 +29,8 @@ function ConnexionScreen(props) {
   const [listErrorsSignup, setErrorsSignup] = useState([])
 
   var handleSubmitSignup = async () => {
-    
-    const data = await fetch('http://172.17.1.106:3000/users/signup', {
+
+    const data = await fetch('http://172.17.1.53:3000/users/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}&music=${selectMusic}&interest=${selectInterest}`
@@ -91,7 +88,7 @@ function ConnexionScreen(props) {
 
         <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
           <FontAwesome name="spotify" size={60} color="#1DB954" 
-          onPress={() => {props.navigation.navigate('Spotify')}} /> 
+          onPress={() => {props.navigation.navigate('BottomNavigator')}} /> 
           <Fontisto name="applemusic" size={50} color="#FC3C44"
           onPress={() => {props.navigation.navigate('Apple')}} />
         </View>
@@ -148,9 +145,10 @@ function ConnexionScreen(props) {
     </LinearGradient>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     letterSpacing: 0,

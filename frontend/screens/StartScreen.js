@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View, Dimensions, Image,} from 'react-native';
+import { Text, StyleSheet, View, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -43,27 +43,45 @@ export default function StartScreen(props) {
     )
 }
 
+// 				<Text h4 style={styles.text}>KeyDO</Text>
+
+// 				<Button style={{paddingTop : 3 / 4.5 * windowWidth,}} 
+// 					icon={
+// 						<Ionicons
+// 							name="play-circle-outline"
+// 							size={45}
+// 							color="#FFFFFF"
+// 						/>
+// 					}
+// 					type='clear'
+// 					title="Let's Begin"
+// 					onPress={() => { props.navigation.navigate('BottomNavigator', { screen: 'Home' }) }}
+// 				/>
+// 			</LinearGradient>
+// 		</View>
+// 	);
+// };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        textAlign: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+	container: {
+		flex: 1,
+		textAlign: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 
-    text: {
-        paddingLeft: 1/10.5*windowHeight,
-        paddingTop: 1/3*windowHeight,
-        color: '#FFFFFF',
-        fontSize: 78,
-        fontFamily:"Arial"
-    },
+	text: {
+		paddingLeft: 1/10.5*windowHeight,
+		paddingTop: 1/3*windowHeight,
+		color: '#FFFFFF',
+		fontSize: 78,
+		fontFamily: 'Arial',
+	},
 
-    box: {
-        flex: 1,
-        justifyContent: "flex-start",
-        width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
-    },
+	box: {
+		flex: 1,
+		justifyContent: "flex-start",
+		width: Dimensions.get("window").width,
+		height: Dimensions.get("window").height,
+	},
 });

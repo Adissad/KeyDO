@@ -240,7 +240,6 @@ const styles = StyleSheet.create({
         fontSize: 28,
         marginLeft: 7 / 8 * windowWidth,
         paddingTop: 1 / 15 * windowHeight,
-
     },
 
     box: {

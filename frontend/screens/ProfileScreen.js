@@ -397,13 +397,12 @@ function ProfileScreen(props) {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     letterSpacing: 0,
     lineHeight: 1.2,
-    justifyContent: "center",
-
-    // fontFamily: ,
+    justifyContent: "center"
   },
 
   box: {
