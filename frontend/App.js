@@ -65,7 +65,7 @@ const BottomNavigator = () => {
           else if (route.name == 'Conv') {
             iconName = 'chatbubbles-outline';
           }
-          if (route.name == 'Profil') {
+          if (route.name == 'Profile') {
             iconName = 'person-outline';
           }
           return <Ionicons name={iconName} size={25} color={color} />;
