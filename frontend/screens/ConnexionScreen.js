@@ -27,8 +27,8 @@ function ConnexionScreen(props) {
   const [listErrorsSignup, setErrorsSignup] = useState([])
 
   var handleSubmitSignup = async () => {
-    
-    const data = await fetch('http://172.17.1.106:3000/users/signup', {
+
+    const data = await fetch('http://172.17.1.53:3000/users/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: `name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}`

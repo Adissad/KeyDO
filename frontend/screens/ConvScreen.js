@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import {
 	View,
@@ -17,18 +17,28 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function ConvScreen(props) {
 
-	const [usersList, setUsersList] = useState([]);
-
 	const usersData = [
-		{ id: '0', name: 'Lucy', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911642/Lucy_dh3z09.jpg"},
-		{ id: '1', name: 'Jack', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911641/Avatar_rwljdc.jpg"},
-		{ id: '2', name: 'Carol', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911641/Carol_hhobdb.jpg"},
-		{ id: '3', name: 'Christophe', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911641/Christophe_b7v7eh.jpg"},
-		{ id: '4', name: 'Jason', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911641/Jason_xxiydz.jpg"},
-		{ id: '5', name: 'Jay', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911641/Jay_qpbkmk.jpg"},
-		{ id: '6', name: 'Jean', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911642/Jean_oikqtr.jpg"},
-		{ id: '7', name: 'Jonathan', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911642/Jonathan_xaw4n7.jpg"},
-		{ id: '8', name: 'Josette', avatar: "https://res.cloudinary.com/cloudinary-mewen/image/upload/v1627911641/Josette_sgrif2.jpg"},
+		{ name: 'Christophe', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png"},
+		{ name: 'Jack', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png"},
+		{ name: 'Carole', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png"},
+		{ name: 'Alicia', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png"},
+		{ name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png"},
+		{ name: 'Jay', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png"},
+		{ name: 'Jean', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png"},
+		{ name: 'Jonathan', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png"},
+		{ name: 'Cyprien', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png"},
+		{ name: 'Antoine', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png"},
+		{ name: 'Arnaud', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png"},
+		{ name: 'John', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png"},
+		{ name: 'Kyle', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png"},
+		{ name: 'Juliette', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png"},
+		{ name: 'Yann', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png"},
+		{ name: 'Méwen', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png"},
+		{ name: 'Masinissa', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png"},
+		{ name: 'Elton', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png"},
+		{ name: 'Clothilde', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png"},
+		{ name: 'Julie', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png"},
+		{ name: 'Willem', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png"},
 	];
 
 	// .map() to display conversation's list
@@ -74,10 +84,7 @@ export default function ConvScreen(props) {
 	);
 };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
-*! STYLE
-*/
+//STYLE
 const styles = StyleSheet.create({
 
 	container: {

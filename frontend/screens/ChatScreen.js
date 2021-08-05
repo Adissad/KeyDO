@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import {
 	View,
@@ -11,7 +11,7 @@ import {
 	TouchableOpacity
 } from 'react-native';
 
-import { Button, ListItem, Input } from 'react-native-elements';
+import { Button, ListItem } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
 import { KeyboardAccessoryView } from 'react-native-keyboard-accessory';
@@ -20,6 +20,8 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ChatScreen(props) {
+
+	const [currentMessage, setCurrentMessage] = useState('');
 
   return (
 		<View style={styles.container}>
@@ -47,7 +49,7 @@ export default function ChatScreen(props) {
 
 			<View style={{marginHorizontal: 1/8 * windowWidth, marginTop: -1/24 * windowHeight}}>
 				<Text style={{textAlign: "center", fontSize:20, color:"white"}}>
-					Lucy
+					Christophe
 				</Text>
 			</View>
 
@@ -59,7 +61,7 @@ export default function ChatScreen(props) {
 
 			<View style={styles.msgCounter}>
 				<Text style={{fontSize: 12, textAlign: "center", color: "white"}}>
-					Plus que 10 messages avant de pouvoir échanger une photo !
+					Plus que 20 messages avant de pouvoir échanger une photo !
 				</Text>
 			</View>
 
@@ -68,68 +70,98 @@ export default function ChatScreen(props) {
 
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Hey Christophe, on a un match presque parfait !</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut, ouai j'ai rarement eu un match aussi précis. Ravi de faire ta connaissance !</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>De même, t'as un genre coup de coeur que tu aimes par dessus tout ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>J'avais la même question ! Moi c'est plutôt électro au quotidien, j'en écoute vraiment tous les jours pendant mes activités.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Ouai j'en écoute aussi, mais au quotidien je suis plutôt RnB.</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>J'aime bien le RnB, mais plutôt en soirée !</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Oui c'est vrai que je trouve ça idéal en soirée. Sinon tu as d'autres préférences particulières ? Genres ou artistes ?</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>J'adore écouter du Jazz pendant mes jours de repos, je pourrais en écouter une journée entière...</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Je comprend, j'ai plein de vinyles de Jazz à la maison, il y en a toujours un qui tourne.</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Oh tu as une platine vinyle ? Je suis fan !</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Oui, cadeau de mon père. C'est un fin connaisseur qui m'a transmis sa passion.</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Quelle chance ! J'aimerais beaucoup en acheter une mais j'ai besoin de bons conseils...</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Je peux te donner quelques conseils et t'aider à choisir si tu veux.</ListItem.Subtitle>
+						</ListItem.Content>
+					</View>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Merci, ça m'aiderait beaucoup franchement. T'aimes les concerts ?</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 					<View style={styles.senderBubble}>
 						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Ouai et encore plus les festivals, je préfère être en plein air.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
-					<View style={styles.senderBubble}>
-						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
-						</ListItem.Content>
-					</View>
-					<View style={styles.senderBubble}>
-						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
-						</ListItem.Content>
-					</View>
-					<View style={styles.senderBubble}>
-						<ListItem.Content style={styles.senderBubbleContent}>
-							<ListItem.Title style={styles.bubbleTitle}>John</ListItem.Title>
-							<ListItem.Subtitle style={styles.bubbleSubtitle}>Salut Lucy ! Tu vas bien ?</ListItem.Subtitle>
+					<View style={styles.receiverBubble}>
+						<ListItem.Content style={styles.receiverBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Christophe</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Ha je comprend complètement... moi j'aime aussi les raves justement parce que c'est en plein air ou dans des endroits insolites.</ListItem.Subtitle>
 						</ListItem.Content>
 					</View>
 
@@ -137,11 +169,11 @@ export default function ChatScreen(props) {
 			</ScrollView>
 			</LinearGradient>
 
-			<KeyboardAccessoryView alwaysVisible={true} androidAdjustResize>
+			<KeyboardAccessoryView alwaysVisible={true} androidAdjustResize style={{borderTopWidth: 0}}>
 				{({ isKeyboardVisible }) => (
 					<View style={styles.inputView}>
 						<TextInput
-							placeholder="Message"
+							placeholder="Message..."
 							placeholderTextColor="#b2b2b2"
 							selectionColor="#b2b2b2"
 							onChangeText={(currentMessage)=>setCurrentMessage(currentMessage)}
@@ -230,7 +262,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "flex-end",
 		marginLeft: 1/5 * windowWidth,
-		marginVertical: "4%"
+		marginVertical: "6%"
 	},
 
 	receiverBubble: {
@@ -241,9 +273,9 @@ const styles = StyleSheet.create({
 
 	senderBubbleContent: {
 		backgroundColor: '#2464A2',
-		borderTopLeftRadius: 15,
-		borderTopRightRadius: 15,
-		borderBottomLeftRadius: 15,
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
+		borderBottomLeftRadius: 20,
 		borderBottomRightRadius: 2,
 		paddingHorizontal: 15,
 		paddingVertical: 10,
@@ -252,9 +284,9 @@ const styles = StyleSheet.create({
 
 	receiverBubbleContent: {
 		backgroundColor: '#693192',
-		borderTopLeftRadius: 15,
-		borderTopRightRadius: 15,
-		borderBottomRightRadius: 15,
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
+		borderBottomRightRadius: 20,
 		borderBottomLeftRadius: 2,
 		paddingHorizontal: 15,
 		paddingVertical: 10,
