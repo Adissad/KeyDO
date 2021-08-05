@@ -47,6 +47,7 @@ function ConnexionScreen(props) {
     console.log("sign up token", body.token);
     setUserExists(true)
     props.navigation.navigate('Profile')
+     // {name:signUpUsername}
   } else if (body.result == false) {
       setErrorList(body.error)
     }
@@ -54,6 +55,8 @@ function ConnexionScreen(props) {
   // }  else {
   //   setErrorsSignin(body.error)
   // }
+
+ 
 
 
 // if(userExists){
@@ -65,7 +68,8 @@ function ConnexionScreen(props) {
 // });
 
   return (
-    <View style={styles.container}>
+   
+     <View style={styles.container}> 
       <LinearGradient
         colors={["#FF8ABD", "#EF7365"]}
         start={{
@@ -79,8 +83,10 @@ function ConnexionScreen(props) {
         style={styles.box}
       >
 
+<KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : "position"}>
         <View style={{marginTop:1/8*windowHeight, flexDirection:"row", justifyContent: "space-around", alignItems:"center", width:"100%", height:"auto"}}>
-            <Text style={{color:"#FFFFFF", fontSize:20}}>Create an account</Text>
+            <Text style={{color:"#FFFFFF", fontSize:20}}>Creér un compte</Text>
         </View>
 
         <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
@@ -98,21 +104,17 @@ function ConnexionScreen(props) {
         </View>
 
        
-        <View style={{marginTop:1/10*windowHeight, justifyContent:"center" ,flexDirection:"column" }} >
-        <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <View style={{marginTop:1/10*windowHeight, justifyContent:"center" ,flexDirection:"column"}} >
+        
         <Input
           onChangeText={(value) => setSignUpUsername(value)}
           value={signUpUsername}
           style={{ paddingLeft: 20 }}
-          placeholder="Name"
+          placeholder="Nom"
           placeholderTextColor="white"
           color="white"
         />
-        </KeyboardAvoidingView>
-
-<KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        
         <Input
           onChangeText={(value) => setSignUpEmail(value)}
           value={signUpEmail}
@@ -121,21 +123,17 @@ function ConnexionScreen(props) {
           placeholderTextColor="white"
           color="white"
         />
-</KeyboardAvoidingView>
 
-
-<KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <Input
           onChangeText={(value) => setSignUpPassword(value)}
           value={signUpPassword}
           style={{ paddingLeft: 20 }}
-          placeholder="Password"
+          placeholder="Mot de passe"
           secureTextEntry={true}
           placeholderTextColor="white"
           color="white"
         />
-        </KeyboardAvoidingView>
+        
         </View>
         
         {/* {erreurs} */}
@@ -143,9 +141,12 @@ function ConnexionScreen(props) {
         <Button onPress={() => {handleSubmitSignup ()}} buttonStyle={{backgroundColor:"#CF779E"}} title="Connexion" />
         </View>
 
-      </LinearGradient>
+
+      
+      
+    </KeyboardAvoidingView>
+    </LinearGradient>
     </View>
-    
   );
 }
 
@@ -155,7 +156,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     lineHeight: 1.2,
     justifyContent: "center",
-    // fontFamily: ,
   },
 
   box: {

@@ -23,7 +23,7 @@ export default function SettingsScreen(props) {
                 locations={[0, 0.7]}
                 style={styles.box}>
 
-                        <Text h4 style={styles.title}>Settings</Text>
+                        <Text h4 style={styles.title}>Paramètres</Text>
 
                         <TouchableOpacity>
                         <Text style={styles.settings}>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        paddingLeft: 1 / 2.6 * windowWidth,
+        paddingLeft: 1 / 3.4 * windowWidth,
         marginTop: 1 / 12 * windowHeight,
         // paddingBottom: 1 / 50 * windowHeight,
         color: '#FFFFFF',

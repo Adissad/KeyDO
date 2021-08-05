@@ -1,11 +1,10 @@
 import React, { useEffect, useState} from "react";
 import { View, StyleSheet, Text, Dimensions, Button, Image, ScrollView, TouchableOpacity} from "react-native";
-import { Avatar, ListItem } from "react-native-elements";
+import { Avatar, ListItem, Input } from "react-native-elements";
 import Modal from "react-native-modal";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
-import { Input } from "react-native-elements/dist/input/Input";
 import {connect} from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -16,6 +15,7 @@ function ProfileScreen(props) {
   const [isModalVisible, setModalVisible] = useState(false);
   const [userExists, setUserExists] = useState(false)
   const [signUpUsername, setSignUpUsername] = useState('')
+  // props.route.params.name
   const [signUpEmail, setSignUpEmail] = useState('')
   const [signUpPassword, setSignUpPassword] = useState('')
   const [myAvatar, setMyAvatar] = useState('');
@@ -119,6 +119,8 @@ function ProfileScreen(props) {
   // ];
   
 
+  // console.log("coucou quentin",props.route.params.name)
+  // console.log("re", signUpUsername)
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -166,7 +168,7 @@ function ProfileScreen(props) {
         >
           <Button
             buttonStyle={{ backgroundColor: "#693192" }}
-            title="Choose your avatar"
+            title="Choisi ton avatar"
             onPress={toggleModal}
           />
 
@@ -254,7 +256,7 @@ function ProfileScreen(props) {
       </View> */}
 
 
-              <Button title="Done" onPress={toggleModal} />
+              <Button title="Terminé" onPress={toggleModal} />
             </ScrollView>
           </Modal>
         </View>
@@ -262,7 +264,7 @@ function ProfileScreen(props) {
         <View>
           <Input
             //   style={{ paddingLeft: 20 }}
-            placeholder="Name"
+            // placeholder={props.route.params.name}
             onChangeText={(value) => setSignUpUsername(value)}
             value={signUpUsername}
             placeholderTextColor="white"
@@ -310,7 +312,7 @@ function ProfileScreen(props) {
               setSelectedGender(itemValue) 
             }
           >
-            <Picker.Item label="Gender" value="gender" />
+            <Picker.Item label="Genre" value="genre" />
             <Picker.Item label="Femme" value="femme" />
             <Picker.Item label="Homme" value="homme" />
           </Picker>
@@ -318,7 +320,7 @@ function ProfileScreen(props) {
 
           <Input
             //   style={{ paddingLeft: 20 }}
-            placeholder="City"
+            placeholder="Ville"
             placeholderTextColor="white"
             color="white"
             onChangeText={(value) => setUserCity(value)}
@@ -337,7 +339,8 @@ function ProfileScreen(props) {
           }}
         >
           <DropDownPicker
-            placeholder="Select 5 of your favorites musics gender"
+            placeholder="Choisi tes 5 genres de musiques favoris"
+            selected_items_count_text = "{count} genre(s) ont été sélectionnés"
             multiple={true}
             min={0}
             max={5}
@@ -366,7 +369,7 @@ function ProfileScreen(props) {
           }}
         >
           <DropDownPicker
-            placeholder="Select 3 of your favorites interests"
+            placeholder="Choisi tes 3 centres d'intérêts"
             multiple={true}
             min={0}
             max={3}
