@@ -8,8 +8,9 @@ import { Ionicons } from '@expo/vector-icons';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function StartScreen(props) {
 
+export default function StartScreen(props) {
+    
     return (
         <View style={styles.container}>
             <LinearGradient
@@ -35,7 +36,7 @@ export default function StartScreen(props) {
                 } 
                     type='clear'
                     title="Let's Begin"
-                    onPress={() => { props.navigation.navigate('Connexion')}}
+                    onPress={() => { props.navigation.navigate('Connexion') }}
                 />
             </LinearGradient>
         </View>

@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Dimensions,
-  Button,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import { Avatar } from "react-native-elements";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Text, Dimensions, Button, Image, ScrollView, TouchableOpacity } from "react-native";
+import { Avatar, ListItem, Input } from "react-native-elements";
 import Modal from "react-native-modal";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
-import { Input } from "react-native-elements/dist/input/Input";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { Ionicons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -24,12 +15,14 @@ function ProfileScreen(props) {
   const [isModalVisible, setModalVisible] = useState(false);
   const [userExists, setUserExists] = useState(false)
   const [signUpUsername, setSignUpUsername] = useState('')
+  // props.route.params.name
   const [signUpEmail, setSignUpEmail] = useState('')
   const [signUpPassword, setSignUpPassword] = useState('')
-  const [myAvatar, setMyAvatar] = useState(false);
+  const [myAvatar, setMyAvatar] = useState('');
   const [selectedAge, setSelectedAge] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [userCity, setUserCity] = useState('')
+  const [selected, setSelected] = useState([]);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -51,7 +44,7 @@ function ProfileScreen(props) {
     { label: "Variété française", value: "variété française" },
     { label: "Métal", value: "métal" },
     { label: "Funk", value: "funk" },
-    { label: "Folk & Acoustique", value: "folk & acoustique" },
+    { label: "Folk Acoustique", value: "folk acoustique" },
     { label: "Blues", value: "blues" },
     { label: "Country", value: "country" },
     { label: "Afro beat", value: "afro beat" },
@@ -79,19 +72,55 @@ function ProfileScreen(props) {
   // console.log("token ok props",props.token);
   var selection = async (token) => {
     // console.log("funtion token", token)
+
+    const musicToBack = JSON.stringify(valueMusic)
+    const interestToBack = JSON.stringify(valueInterest)
     const data = await fetch('http://172.17.1.106:3000/users/profile', {
       method: 'PUT',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `token=${token}&name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}`
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `token=${token}&avatar=${myAvatar}&name=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}&age=${selectedAge}&gender=${selectedGender}&city=${userCity}&music=${musicToBack}&interest=${interestToBack}`
     })
 
-  const body = await data.json()
-  // if(body.result == true){
-  //   props.addToken(body.token)
-  //   setUserExists(true)}
+    const body = await data.json()
+    // if(body.result == true){
+    //   props.addToken(body.token)
+    //   setUserExists(true)}
+
+    // var dataParse = JSON.parse(data.body)
   }
 
 
+  // useEffect( () => 
+  //   console.log("coucou", myAvatar), (myAvatar)
+  // )
+
+  // const avatarData = [
+  //   { id: '0',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png" },
+  //   { id: '1', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png" },
+  //   { id: '2', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png" },
+  //   { id: '3', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png"},
+  //   { id: '4', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png"},
+  //   { id: '5', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png" },
+  //   { id: '6',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png"},
+  //   { id: '7',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png" },
+  //   { id: '8',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png" },
+  //   { id: '9',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png" },
+  //   { id: '10',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png" },
+  //   { id: '11',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png" },
+  //   { id: '12',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png"},
+  //   { id: '13', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png" },
+  //   { id: '14', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png" },
+  //   { id: '15',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png" },
+  //   { id: '16',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png" },
+  //   { id: '17',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png" },
+  //   { id: '18',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png"},
+  //   { id: '19',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png"},
+  //   { id: '20',  avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png"},
+  // ];
+
+
+  // console.log("coucou quentin",props.route.params.name)
+  // console.log("re", signUpUsername)
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -107,24 +136,29 @@ function ProfileScreen(props) {
         locations={[0, 0.7]}
         style={styles.box}
       >
+
+        <TouchableOpacity>
+          <Ionicons name="ios-settings-outline" onPress={() => { props.navigation.navigate('Settings') }} size={24} color="#FFFFFF" style={{ marginTop: (1 / 16) * windowHeight, marginLeft: (7 / 8) * windowWidth }} />
+        </TouchableOpacity>
+
         <TouchableOpacity>
           <View
             style={{
-              marginTop: (1 / 10) * windowHeight,
+              marginTop: (1 / 22) * windowHeight,
             }}
           >
-            <Avatar
-            onPress={() => {
-              if (myAvatar) {
-              setMyAvatar(true);
-                }}}
+            <Image
+              rounded
+              source={({ myAvatar })}
+              width={20}
+              height={20}
             />
           </View>
         </TouchableOpacity>
 
         <View
           style={{
-            marginTop: (1 / 18) * windowHeight,
+            marginTop: (1 / 30) * windowHeight,
             paddingRight: (1 / 2) * windowWidth,
             flexDirection: "row",
             justifyContent: "space-around",
@@ -140,13 +174,18 @@ function ProfileScreen(props) {
 
           <Modal isVisible={isModalVisible}>
             <ScrollView style={styles.scrollView}>
-              <TouchableOpacity>
-              <Image
+              <TouchableOpacity onPress={item => {
+                setMyAvatar("../assets/woman.png");
+                // console.log('selected', item);
+              }}>
+                <Image
                   rounded
                   source={require("../assets/woman.png")}
                   activeOpacity={0.7}
                   width={20}
                   height={20}
+                  value={myAvatar}
+                  setValue={setMyAvatar}
                 />
               </TouchableOpacity>
 
@@ -154,7 +193,7 @@ function ProfileScreen(props) {
                 <Image
                   rounded
                   source={require("../assets/man.png")}
-                  onPress={() => setMyAvatar(true)}
+                  onPress={() => console.log('wesh', myAvatar)}
                   activeOpacity={0.7}
                   width={20}
                   height={20}
@@ -204,7 +243,18 @@ function ProfileScreen(props) {
                   height={5}
                 />
               </TouchableOpacity>
-              
+
+
+              {/* <View>
+        <TouchableOpacity>
+          <View style={styles.item} bottomDivider>
+            <ListItem.Content >
+              <Avatar rounded size="medium" source={{ uri: avatarData.avatar }} />
+            </ListItem.Content>
+          </View>
+        </TouchableOpacity>
+      </View> */}
+
 
               <Button title="Terminé" onPress={toggleModal} />
             </ScrollView>
@@ -214,16 +264,19 @@ function ProfileScreen(props) {
         <View>
           <Input
             //   style={{ paddingLeft: 20 }}
-            placeholder="Name"
+            // placeholder={props.route.params.name}
+            onChangeText={(value) => setSignUpUsername(value)}
+            value={signUpUsername}
             placeholderTextColor="white"
             color="white"
           />
 
+
           <Picker
             selectedValue={selectedAge}
-            style={{ height: 50, width: 150, color:"#FFFFFF" }}
+            style={{ height: 50, width: 150, color: "#FFFFFF" }}
             onValueChange={(itemValue, itemIndex) =>
-              setSelectedAge(itemValue) 
+              setSelectedAge(itemValue)
             }
           >
             <Picker.Item label="Age" value="age" />
@@ -254,9 +307,9 @@ function ProfileScreen(props) {
 
           <Picker
             selectedValue={selectedGender}
-            style={{ height: 50, width: 150, color:"#FFFFFF" }}
+            style={{ height: 50, width: 150, color: "#FFFFFF" }}
             onValueChange={(itemValue, itemIndex) =>
-              setSelectedGender(itemValue) 
+              setSelectedGender(itemValue)
             }
           >
             <Picker.Item label="Genre" value="genre" />
@@ -264,9 +317,10 @@ function ProfileScreen(props) {
             <Picker.Item label="Homme" value="homme" />
           </Picker>
 
+
           <Input
             //   style={{ paddingLeft: 20 }}
-            placeholder="City"
+            placeholder="Ville"
             placeholderTextColor="white"
             color="white"
             onChangeText={(value) => setUserCity(value)}
@@ -274,28 +328,35 @@ function ProfileScreen(props) {
           />
         </View>
 
-			<View
-				style={{
-					marginTop: (1 / 12) * windowHeight,
-					flexDirection: "row",
-					justifyContent: "space-around",
-					alignItems: "center",
-					width: "100%",
-					height: "auto",
-				}}
-			>
-				<DropDownPicker
-					multiple={true}
-					min={0}
-					max={5}
-					open={openMusic}
-					value={valueMusic}
-					items={selectMusic}
-					setOpen={() => setOpenMusic(!openMusic)}
-					setValue={setValueMusic}
-					setItems={setSelectMusic}
-				/>
-			</View>
+        <View
+          style={{
+            marginTop: (1 / 12) * windowHeight,
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            width: "100%",
+            height: "auto",
+          }}
+        >
+          <DropDownPicker
+            placeholder="Choisi tes 5 genres de musiques favoris"
+            selected_items_count_text="{count} genre(s) ont été sélectionnés"
+            multiple={true}
+            min={0}
+            max={5}
+            open={openMusic}
+            value={valueMusic}
+            items={selectMusic}
+            setOpen={() => setOpenMusic(!openMusic)}
+            setValue={setValueMusic}
+            setItems={setSelectMusic}
+            onChange={item => {
+              setValueMusic(item);
+              console.log('selected', item);
+            }}
+            renderItem={item => _renderItem(item)}
+          />
+        </View>
 
         <View
           style={{
@@ -308,6 +369,7 @@ function ProfileScreen(props) {
           }}
         >
           <DropDownPicker
+            placeholder="Choisi tes 3 centres d'intérêts"
             multiple={true}
             min={0}
             max={3}
@@ -317,11 +379,16 @@ function ProfileScreen(props) {
             setOpen={() => setOpenInterest(!openInterest)}
             setValue={setValueInterest}
             setItems={setselectInterest}
+            onChange={item => {
+              setValueInterest(item);
+              console.log('selected', item);
+            }}
+            renderItem={item => _renderItem(item)}
           />
         </View>
 
-        <View style={{marginTop:1/35*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center"}}>
-        <Button onPress={() => {selection(props.token)}} buttonStyle={{backgroundColor:"#CF779E"}} title="Valider" />
+        <View style={{ marginTop: 1 / 35 * windowHeight, flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+          <Button onPress={() => { selection(props.token), props.navigation.navigate('Home') }} buttonStyle={{ backgroundColor: "#CF779E" }} title="Valider" />
         </View>
 
       </LinearGradient>
@@ -354,20 +421,21 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   //console.log('hi', state);
-  return { token : state.token }
-  }
+  return { token: state.token }
+}
 
 function mapDispatchToProps(dispatch) {
   return {
-    addToken: function(token) {
-      dispatch( {type: 'addToken',
-            addToken: token
-                              })
+    addToken: function (token) {
+      dispatch({
+        type: 'addToken',
+        addToken: token
+      })
     }
   }
- }
+}
 
- export default connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProfileScreen);

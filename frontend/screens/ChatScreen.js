@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {
 	View,
@@ -8,13 +8,14 @@ import {
 	TextInput,
 	Text,
 	Dimensions,
+	SafeAreaView,
 	TouchableOpacity
 } from 'react-native';
 
 import { Button, ListItem } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
-import { KeyboardAccessoryView } from 'react-native-keyboard-accessory';
+import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

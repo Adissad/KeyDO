@@ -30,8 +30,10 @@ export default function SpotifyRedirectionScreen(props) {
           <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
             <FontAwesome name="spotify" size={60} color="#1DB954"/>
           </View>
+          
+          <TouchableOpacity onPress={()=>{props.navigation.navigate('BottomNavigator', (screen='Home'))}}>
 
-          <TouchableOpacity onPress={() =>{props.navigation.navigate('Profile')} }>
+          {/* <TouchableOpacity onPress={() =>{props.navigation.navigate('Profile')} }> */}
           <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
           <FontAwesome name="spinner" size={50} color="#FFFFFF" />
           </View>
