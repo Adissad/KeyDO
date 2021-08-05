@@ -24,9 +24,9 @@ export default function RnBScreen(props) {
     { id: '0', name: 'Jack', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png", gender: 'Homme', age: '35 ans', city: 'Paris', desc: '#Sport #Cuisine #Dance' },
     { id: '1', name: 'Carol', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png", gender: 'Femme', age: '27 ans', city: 'Paris', desc: '#Photographie #Yoga #Cuisine' },
     { id: '2', name: 'Christophe', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '29 ans', city: 'Paris', desc: '#Voyages #Photographie #Dance' },
-    { id: '3', name: 'Adissa', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png", gender: 'Femme', age: '30 ans', city: 'Paris', desc: '#Musées #Voyages #Dance' },
+    { id: '3', name: 'Alicia', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png", gender: 'Femme', age: '30 ans', city: 'Paris', desc: '#Musées #Voyages #Dance' },
     { id: '4', name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Photographie #Art' },
-    { id: '5', name: 'Jay', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '19 ans', city: 'Paris', desc: '#Voyages #Photographie #Dance' },
+    { id: '5', name: 'Tim', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '19 ans', city: 'Paris', desc: '#Voyages #Art #Dance' },
     { id: '6', name: 'Jean', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png", gender: 'Homme', age: '25 ans', city: 'Paris', desc: '#Voyages #Dance #Photographie' },
     { id: '7', name: 'Jonathan', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '32 ans', city: 'Paris', desc: '#Photographie #Voyages #Dance' },
     { id: '8', name: 'Cyprien', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png", gender: 'Homme', age: '29 ans', city: 'Paris', desc: '#Photographie #Théâtre #Cuisine' },
@@ -37,9 +37,9 @@ export default function RnBScreen(props) {
     { id: '13', name: 'Juliette', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Femme', age: '26 ans', city: 'Paris', desc: '#Sport #Voyages #Photographie' },
     { id: '14', name: 'Yann', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png", gender: 'Homme', age: '33 ans', city: 'Paris', desc: '#Yoga #Photographie #Voyages' },
     { id: '15', name: 'Méwen', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png", gender: 'Homme', age: '25 ans', city: 'Paris', desc: '#Voyages #Photographie #Sport' },
-    { id: '16', name: 'Lorenzo', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Sport #Cuisine' },
+    { id: '16', name: 'Masi', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '30 ans', city: 'Paris', desc: '#Voyages #Sport #Cuisine' },
     { id: '17', name: 'Elton', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png", gender: 'Homme', age: '35 ans', city: 'Paris', desc: '#Activité manuelles #Photographie #Art' },
-    { id: '18', name: 'Anaïs', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png", gender: 'Femme', age: '27 ans', city: 'Paris', desc: '#Littérature #Voyages #Dance' },
+    { id: '18', name: 'Clothilde', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png", gender: 'Femme', age: '25 ans', city: 'Paris', desc: '#Littérature #Voyages #Dance' },
     { id: '19', name: 'Julie', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png", gender: 'Femme', age: '25 ans', city: 'Paris', desc: '#Voyages #Photographie #Cuisine' },
     { id: '20', name: 'Willem', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png", gender: 'Homme', age: '34 ans', city: 'Paris', desc: '#Cuisine #Art #Dance' },
   ];
@@ -86,7 +86,7 @@ export default function RnBScreen(props) {
 
 
         <ScrollView>
-          <Modal style={styles.modal} isVisible={isModalVisible} animationIn='fadeIn'>
+          <Modal style={styles.modal} isVisible={isModalVisible} animationIn='fadeIn' animationOut='zoomOut' animationOutTiming={1500}>
             <LinearGradient
               colors={['#2464A2', '#693192']}
               start={{
@@ -101,25 +101,28 @@ export default function RnBScreen(props) {
               locations={[0, 0.5]}
               style={styles.gradient}
             >
-              <Ionicons style={styles.exit} name="close-circle-outline" onPress={toggleModal} />
-              <View>
-                <Text style={{ color: '#FFFFFF', marginLeft: 1 / 2 * windowWidth, fontWeight: 'bold' }}>Demande d'annulation</Text>
-                
-                <View style={{ marginBottom: 1 / 20 * windowHeight }}>
-                  <Avatar rounded size="medium" style={{ backgroundColor: "white", borderRadius: 50, borderWidth: 8, borderColor: "white", height: 100, width: 100, marginLeft: 1 / 10 * windowWidth, marginTop: 1 / 30 * windowHeight }} source={{ uri: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png" }} ></Avatar>
-                </View>
-                
-                <Text style={{ color: '#FFFFFF', marginLeft: 1 / 30 * windowWidth, fontWeight: 'bold' }}>Ajoutez une note pour personnaliser votre demande.</Text>
-                
-                <View>
-                  <Input placeholder="Ajouter une note personnalisée ..." placeholderTextColor="#FFFFFF" color="#FFFFFF" style={styles.input} marginTop={1 / 10 * windowHeight} fontSize={15}></Input>
-                </View>
-            
-                <Button style={{ color: '#FFFFFF', marginLeft: 5 / 50 * windowWidth, marginRight: 5 / 60 * windowWidth, marginTop: 1 / 15 * windowHeight, }} title="Envoyer une demande de connexion" type="clear" />
-            
+              <Ionicons style={styles.exit} name="close-circle-outline" />
+
+              <Text style={{ color: '#FFFFFF', marginLeft: 1 / 2 * windowWidth, fontWeight: 'bold' }} onPress={toggleModal} >Demande d'annulation</Text>
+
+              <Text style={styles.dm}> Discover Match </Text>
+
+
+
+              <View style={{ flexDirection: "row", }}>
+                <Avatar size="medium" style={{ backgroundColor: "white", borderRadius: 50, borderWidth: 8, borderColor: "white", height: 100, width: 100, marginLeft: 1 / 10 * windowWidth, marginTop: 1 / 15 * windowHeight }} source={{ uri: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png" }} ></Avatar>
+                <Avatar size="medium" style={{ backgroundColor: "white", borderRadius: 50, borderWidth: 8, borderColor: "white", height: 100, width: 100, marginLeft: 1 / 4.5 * windowWidth, marginTop: 1 / 15 * windowHeight }} source={{ uri: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png" }} ></Avatar>
               </View>
+
+              <View>
+                <Input placeholder="Ajouter une note personnalisée ..." placeholderTextColor="#FFFFFF" color="#FFFFFF" marginTop={1 / 9 * windowHeight} fontSize={15}></Input>
+              </View>
+
+              <Button style={{ color: '#FFFFFF', marginLeft: 5 / 50 * windowWidth, marginRight: 5 / 60 * windowWidth, marginTop: 1 / 30 * windowHeight, }} title="Envoyer une demande de connexion" type="clear" onPress={toggleModal} />
+
             </LinearGradient>
           </Modal>
+
           {conversationsList}
 
         </ScrollView>
@@ -227,11 +230,12 @@ const styles = StyleSheet.create({
     marginTop: 1 / 5 * windowHeight,
   },
 
+
   exit: {
     color: '#FFFFFF',
     fontSize: 28,
     marginLeft: 4 / 5 * windowWidth,
-    marginTop: 1 / 50 * windowHeight,
+    marginTop: 2 / 90 * windowHeight,
   },
 
   gradient: {
@@ -240,9 +244,13 @@ const styles = StyleSheet.create({
     width: 2 / 4.8 * windowHeight,
   },
 
-  input: {
-
-
+  dm: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+    marginBottom: 1 / 60 * windowHeight,
+    marginTop: 1 / 30 * windowHeight,
   },
 
 });

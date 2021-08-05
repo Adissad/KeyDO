@@ -1,20 +1,21 @@
-let mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
-let options = {
-	connectTimeoutMS: 5000,
-	useUnifiedTopology: true,
-	useNewUrlParser: true
+var options = {
+    connectTimeoutMS: 5000,
+    useUnifiedTopology: true,
+    useNewUrlParser: true
 }
+var dbname = 'KeyDo';
 
-mongoose.connect('mongodb+srv://MewenDEV:MeYendze_06_06_96@learningdevcluster.pe4fm.mongodb.net/KeyDoPerso?retryWrites=true&w=majority',
-	options,
-	function(err){
-		if(err) {
-			console.log(err)
-		} else {
-			console.log('*** DB CONNECTED ***');
-		}
-	}
+mongoose.connect('mongodb+srv://Admin:admin@cluster0.n05jq.mongodb.net/KeyDo?retryWrites=true&w=majority',
+    options,
+    function(err){
+        if (!err) {
+            console.log('Connexion à la base de données:'+ dbname +' est OK');
+        } else {
+        console.log(err);
+    }
+}
 );
 
-module.exports = mongoose;
+module.exports = mongoose
