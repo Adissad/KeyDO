@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Text, StyleSheet, View, ScrollView, ImageBackground, Dimensions, TouchableOpacity } from 'react-native';
+import { Input, Button } from "react-native-elements";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
+import { Avatar, Badge, Icon, withBadge, Divider } from 'react-native-elements';
+import Modal from "react-native-modal";
+import DropDownPicker from "react-native-dropdown-picker";
+import { Picker } from "@react-native-picker/picker";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function HomeScreen(props) {
+    const [isModalVisible, setModalVisible] = useState(false);
+    const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+      };
 
     return (
         <View style={styles.container}>
@@ -23,8 +32,39 @@ export default function HomeScreen(props) {
                 locations={[0, 0.7]}
                 style={styles.box}>
 
-                <Ionicons style={styles.notif} name='ios-notifications-outline' />
-                
+
+<View>
+<TouchableOpacity>
+<View >
+<Ionicons style={styles.notif} onPress={toggleModal} name='ios-notifications-outline' />
+</View>
+</TouchableOpacity>
+<Modal isVisible={isModalVisible}>
+<ScrollView style={styles.scrollView}>
+<LinearGradient
+                colors={['#2464A2', '#693192']}
+                start={{
+                    x: 0.25,
+                    y: 0.25
+                }}
+                end={{
+                    x: 0.8,
+                    y: 0.8
+                }}
+                locations={[0, 0.7]}>
+<Text style={{color:"#FFFFFF", alignItems:"center"}}> Notifications </Text>
+<Text style={{color:"#FFFFFF"}}> Vous avez un nouveau message </Text>
+<Divider style={{color:"#FFFFFF"}} orientation="vertical" width={50} />
+<Text style={{color:"#FFFFFF"}}> Vous avez un nouveau match</Text>
+<Divider style={{color:"#FFFFFF"}} orientation="vertical" width={50} />
+<Text style={{color:"#FFFFFF"}}> Vous avez un nouveau message</Text>
+<Divider style={{color:"#FFFFFF"}} orientation="vertical" width={50} />
+<Button buttonStyle={{ backgroundColor: "#693192" }} title="Terminé" onPress={toggleModal} />
+</LinearGradient>
+ </ScrollView> 
+ </Modal>
+ </View>
+
                 <Text h4 style={styles.title}>Home</Text>
 
                 <ScrollView>
@@ -217,5 +257,14 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         overflow: 'hidden',
     },
+
+    scrollView: {
+        borderRadius:20,
+        marginTop: 1/4*windowHeight,
+        backgroundColor: "#693192",
+        marginBottom: 1/2*windowHeight,
+        alignContent:"center",
+        // marginHorizontal: 20,
+      },
 
 });

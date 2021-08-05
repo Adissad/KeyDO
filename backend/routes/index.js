@@ -2,7 +2,7 @@ let express = require('express');
 let request = require('sync-request');
 let router = express.Router();
 
-let userModel = require('../models/user');
+// let userModel = require('../models/user');
 let messageModel = require('../models/messages');
 
 /**
@@ -30,25 +30,5 @@ router.post('/add-message', async function(req, res, next) {
 });
 
 
-/**
-* TODO if enough time left
-* * UPDATE MESSAGE
-*/
-
-/**
-* TODO if enough time left
-* * DELETE MESSAGE
-*/
-// router.delete('/delete-message/:name', async function(req, res, next) {
-
-//   var returnDb = await movieModel.deleteOne({ movieName: req.params.name})
-
-//   var result = false
-//   if(returnDb.deletedCount == 1){
-//     result = true
-//   }
-
-//   res.json({result})
-// });
 
 module.exports = router;

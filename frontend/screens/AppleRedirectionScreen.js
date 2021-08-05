@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Dimensions} from "react-native";
+import { View, StyleSheet, Text, Dimensions, TouchableOpacity} from "react-native";
 import {Fontisto, FontAwesome } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -7,7 +7,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 
-export default function AppleRedirectionScreen() {
+export default function AppleRedirectionScreen(props) {
     return (
       <View style={styles.container}>
         <LinearGradient
@@ -31,9 +31,11 @@ export default function AppleRedirectionScreen() {
             <Fontisto name="applemusic" size={50} color="#FC3C44" />
           </View>
 
+          <TouchableOpacity onPress={() =>{props.navigation.navigate('Profile')} }>
           <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
           <FontAwesome name="spinner" size={50} color="#FFFFFF" />
           </View>
+          </TouchableOpacity>
           
         </LinearGradient>
       </View>

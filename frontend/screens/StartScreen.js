@@ -33,7 +33,7 @@ export default function StartScreen(props) {
                         size={45}
                         color="#FFFFFF"
                     />
-                }
+                } 
                     type='clear'
                     title="Let's Begin"
                     onPress={() => { props.navigation.navigate('Connexion') }}
