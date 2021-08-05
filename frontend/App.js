@@ -16,6 +16,8 @@ import HomeScreen from './screens/HomeScreen';
 import ChooseMatchScreen from './screens/ChooseMatchScreen';
 import ConvScreen from './screens/ConvScreen';
 import ChatScreen from './screens/ChatScreen';
+import RemyChatScreen from './screens/RemyChatScreen';
+import MasiChatScreen from './screens/MasiChatScreen';
 
 import DanceScreen from './screens/GenresMusic/DanceScreen';
 import RnBScreen from './screens/GenresMusic/RnBScreen';
@@ -91,15 +93,19 @@ const BottomNavigator = () => {
 
 export default function App() {
   return (
-  <Provider store={store}>  
+  <Provider store={store}>
    <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Start" component={StartScreen} />
-        <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="Connexion" component={ConnexionScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Spotify" component={SpotifyRedirectionScreen} />
+        <Stack.Screen name="Apple" component={AppleRedirectionScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
+        <Stack.Screen name="Masi" component={MasiChatScreen} />
+        <Stack.Screen name="Remy" component={RemyChatScreen} />
         <Stack.Screen name="Dance" component={DanceScreen} />
         <Stack.Screen name="RnB" component={RnBScreen} />
         <Stack.Screen name="HipHop" component={HipHopScreen} />
@@ -120,8 +126,6 @@ export default function App() {
         <Stack.Screen name="Afro" component={AfroScreen} />
         <Stack.Screen name="Décennies" component={DécenniesScreen} />
         <Stack.Screen name="Gospel" component={GospelScreen} />
-        <Stack.Screen name="Spotify" component={SpotifyRedirectionScreen} />
-        <Stack.Screen name="Apple" component={AppleRedirectionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   </Provider>
