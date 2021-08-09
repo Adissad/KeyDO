@@ -83,12 +83,12 @@ function ConnexionScreen(props) {
 <KeyboardAvoidingView
     behavior={Platform.OS === "ios" ? "padding" : "position"}>
         <View style={{marginTop:1/8*windowHeight, flexDirection:"row", justifyContent: "space-around", alignItems:"center", width:"100%", height:"auto"}}>
-            <Text style={{color:"#FFFFFF", fontSize:20}}>Creér un compte</Text>
+            <Text style={{color:"#FFFFFF", fontSize:20}}>Créer un compte</Text>
         </View>
 
         <View style={{marginTop:1/9*windowHeight,flexDirection:"row", justifyContent: "space-around", alignItems:"center", height:"auto"}} >
           <FontAwesome name="spotify" size={60} color="#1DB954" 
-          onPress={() => {props.navigation.navigate('BottomNavigator')}} /> 
+          onPress={() => {props.navigation.navigate('Spotify')}} /> 
           <Fontisto name="applemusic" size={50} color="#FC3C44"
           onPress={() => {props.navigation.navigate('Apple')}} />
         </View>

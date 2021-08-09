@@ -11,7 +11,7 @@ import {
 	TouchableOpacity
 } from 'react-native';
 
-import { Button } from 'react-native-elements';
+import { Button, ListItem } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
 import { KeyboardAccessoryView } from 'react-native-keyboard-accessory';
@@ -38,7 +38,7 @@ export default function ChatScreen(props) {
         style={styles.box}>
 
 			<View style={{marginLeft: 1/25 * windowWidth, marginTop: 1/20 * windowHeight}} >
-				<TouchableOpacity onPress={() => { props.navigation.navigate('Match')}} >
+				<TouchableOpacity onPress={() => { props.navigation.navigate('Conv')}} >
 					<Ionicons
 						name= "arrow-back"
 						size= {25}
@@ -47,7 +47,7 @@ export default function ChatScreen(props) {
 				</TouchableOpacity>
 			</View>
 
-			<View style={{marginHorizontal: 1/8 * windowWidth, marginTop: -1/24 * windowHeight}}>
+			<View style={{marginHorizontal: 1/8 * windowWidth, marginTop: -1/90 * windowHeight}}>
 				<Text style={{textAlign: "center", fontSize:20, color:"white"}}>
 					Remy
 				</Text>
@@ -64,6 +64,13 @@ export default function ChatScreen(props) {
 					Échangez 50 messages avant de pouvoir envoyer des photos
 				</Text>
 			</View>
+
+			{/* <View style={styles.senderBubble}>
+						<ListItem.Content style={styles.senderBubbleContent}>
+							<ListItem.Title style={styles.bubbleTitle}>Mathias</ListItem.Title>
+							<ListItem.Subtitle style={styles.bubbleSubtitle}>Hey Christophe, on a un match presque parfait !</ListItem.Subtitle>
+						</ListItem.Content>
+					</View> */}
 
 			</LinearGradient>
 
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
 	},
 
 	msgCounter: {
-		backgroundColor: "green",
+		backgroundColor: "#2464A2",
 		marginHorizontal: 1/5 * windowWidth,
 		borderRadius: 15,
 		marginTop: 1/75 * windowHeight,

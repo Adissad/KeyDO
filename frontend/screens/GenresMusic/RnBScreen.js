@@ -25,7 +25,7 @@ export default function RnBScreen(props) {
     { id: '1', name: 'Carol', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png", gender: 'Femme', age: '27 ans', city: 'Paris', desc: '#Photographie #Yoga #Cuisine' },
     { id: '2', name: 'Christophe', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '29 ans', city: 'Paris', desc: '#Voyages #Photographie #Dance' },
     { id: '3', name: 'Alicia', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/woman_qcdude.png", gender: 'Femme', age: '30 ans', city: 'Paris', desc: '#Musées #Voyages #Dance' },
-    { id: '4', name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Photographie #Art' },
+    { id: '4', name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Photographie #Art' },
     { id: '5', name: 'Tim', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '19 ans', city: 'Paris', desc: '#Voyages #Art #Dance' },
     { id: '6', name: 'Jean', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png", gender: 'Homme', age: '25 ans', city: 'Paris', desc: '#Voyages #Dance #Photographie' },
     { id: '7', name: 'Jonathan', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '32 ans', city: 'Paris', desc: '#Photographie #Voyages #Dance' },
@@ -101,9 +101,9 @@ export default function RnBScreen(props) {
               locations={[0, 0.5]}
               style={styles.gradient}
             >
-              <Ionicons style={styles.exit} name="close-circle-outline" />
+              <Ionicons style={styles.exit} name="close-circle-outline" onPress={toggleModal}/>
 
-              <Text style={{ color: '#FFFFFF', marginLeft: 1 / 2 * windowWidth, fontWeight: 'bold' }} onPress={toggleModal} >Demande d'annulation</Text>
+              {/* <Text style={{ color: '#FFFFFF', marginLeft: 1 / 2 * windowWidth, fontWeight: 'bold' }} onPress={toggleModal} >Demande d'annulation</Text> */}
 
               <Text style={styles.dm}> Discover Match </Text>
 

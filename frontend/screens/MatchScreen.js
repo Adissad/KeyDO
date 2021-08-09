@@ -26,7 +26,7 @@ export default function MatchScreen(props) {
     const [usersList, setUsersList] = useState([]);
 
     const usersData = [
-        { id: '0', name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Photographie #Art' },
+        { id: '0', name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Photographie #Art' },
         { id: '1', name: 'Jack', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png", gender: 'Homme', age: '35 ans', city: 'Paris', desc: '#Sport #Cuisine #Dance' },
         { id: '2', name: 'Carol', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png", gender: 'Femme', age: '27 ans', city: 'Paris', desc: '#Photographie #Yoga #Cuisine' },
         { id: '3', name: 'Christophe', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '29 ans', city: 'Paris', desc: '#Voyages #Photographie #Dance' },
@@ -53,7 +53,7 @@ export default function MatchScreen(props) {
     let matchList = usersData.map((element, i) => {
         return (
             <View key={i}>
-                <TouchableOpacity onPress={() => {props.navigation.navigate('Conv')}}>
+                <TouchableOpacity onPress={() => { props.navigation.navigate('Masi') }}>
                     <View style={styles.item} bottomDivider>
                         <ListItem.Content style={styles.itemContent} >
                             <Avatar rounded size="medium" source={{ uri: element.avatar }} />
@@ -94,9 +94,9 @@ export default function MatchScreen(props) {
                 </Text>
 
 
-                    <Button buttonStyle={styles.NM} type='outline' title='Discover Match' onPress={() => { props.navigation.navigate('Home') }} />
+                <Button buttonStyle={styles.NM} type='outline' title='Discover Match' onPress={() => { props.navigation.navigate('Home') }} />
 
-                    <Button buttonStyle={styles.NM} type='outline' title='Random Match' onPress={toggleModal} />
+                <Button buttonStyle={styles.NM} type='outline' title='Random Match' onPress={toggleModal} />
 
                 <View>
 
@@ -115,21 +115,22 @@ export default function MatchScreen(props) {
                             locations={[0, 0.5]}
                             style={styles.gradient}
                         >
-                            <Text style={{ color: '#FFFFFF', marginLeft: 1 / 2 * windowWidth, marginTop: 1/40*windowHeight, fontWeight: 'bold' }} onPress={toggleModal}>Demande d'annulation</Text>
+
+                            <Ionicons style={styles.exit} name="close-circle-outline" onPress={toggleModal} />
 
                             <Text style={styles.rm}> Random Match </Text>
 
 
-                                <View style={{flexDirection:"row",}}>
-                                    <Avatar size="medium" style={{ backgroundColor: "white", borderRadius: 50, borderWidth: 8, borderColor: "white", height: 100, width: 100, marginLeft: 1 / 10 * windowWidth, marginTop: 1 / 15 * windowHeight }} source={{ uri: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png" }} ></Avatar>
-                                    <Avatar size="medium" style={{ backgroundColor: "white", borderRadius: 50, borderWidth: 8, borderColor: "white", height: 100, width: 100, marginLeft: 1 / 4.5 * windowWidth, marginTop: 1 / 15 * windowHeight}} source={{ uri: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png" }} ></Avatar>
-                                </View>
-                                
-                                <View>
-                                    <Input placeholder="Ajouter une note personnalisée ..." placeholderTextColor="#FFFFFF" color="#FFFFFF" marginTop={1 / 9 * windowHeight} fontSize={15}></Input>
-                                </View>
+                            <View style={{ flexDirection: "row", }}>
+                                <Avatar size="medium" style={{ backgroundColor: "white", borderRadius: 50, borderWidth: 8, borderColor: "white", height: 100, width: 100, marginLeft: 1 / 10 * windowWidth, marginTop: 1 / 15 * windowHeight }} source={{ uri: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/dog_bj575p.png" }} ></Avatar>
+                                <Avatar size="medium" style={{ backgroundColor: "white", borderRadius: 50, borderWidth: 8, borderColor: "white", height: 100, width: 100, marginLeft: 1 / 4.5 * windowWidth, marginTop: 1 / 15 * windowHeight }} source={{ uri: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png" }} ></Avatar>
+                            </View>
 
-                                <Button style={{ color: '#FFFFFF', marginLeft: 5 / 50 * windowWidth, marginRight: 5 / 60 * windowWidth, marginTop: 1 / 30 * windowHeight, }} title="Envoyer une demande de connexion" type="clear" onPress={toggleModal}/>
+                            <View>
+                                <Input placeholder="Ajouter une note personnalisée ..." placeholderTextColor="#FFFFFF" color="#FFFFFF" marginTop={1 / 9 * windowHeight} fontSize={15}></Input>
+                            </View>
+
+                            <Button style={{ color: '#FFFFFF', marginLeft: 5 / 50 * windowWidth, marginRight: 5 / 60 * windowWidth, marginTop: 1 / 30 * windowHeight, }} title="Envoyer une demande de connexion" type="clear" onPress={() => { props.navigation.navigate('Remy') }} />
 
                         </LinearGradient>
                     </Modal>
@@ -140,7 +141,7 @@ export default function MatchScreen(props) {
 
                 </Divider>
 
-                <Text style={{ textAlign: "center", fontSize: 16, color: "white", marginTop:1/80*windowHeight}}>
+                <Text style={{ textAlign: "center", fontSize: 16, color: "white", marginTop: 1 / 80 * windowHeight }}>
                     Historique des Matchs
                 </Text>
 

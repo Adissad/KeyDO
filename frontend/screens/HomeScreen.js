@@ -59,13 +59,18 @@ export default function HomeScreen(props) {
                                 <Divider style={{ color: "#FFFFFF" }} orientation="vertical" width={50} />
                                 <Text style={{ color: "#FFFFFF" }}> Vous avez un nouveau message</Text>
                                 <Divider style={{ color: "#FFFFFF" }} orientation="vertical" width={50} />
-                                <Button buttonStyle={{ backgroundColor: "#693192" }} title="Terminé" onPress={toggleModal} />
+                                <Button buttonStyle={{ backgroundColor: "#693192"}} title="Terminé" onPress={toggleModal} />
                             </LinearGradient>
                         </ScrollView>
                     </Modal>
                 </View>
 
-                <Text h4 style={styles.title}>Home</Text>
+
+                <TouchableOpacity onPress={() => (props.navigation.navigate('Start'))}>
+
+                    <Text h4 style={styles.title}>Home</Text>
+
+                </TouchableOpacity>
 
                 <ScrollView>
 
@@ -227,11 +232,11 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        paddingLeft: 1 / 2.6 * windowWidth,
-        paddingTop: 1 / 800 * windowHeight,
-        paddingBottom: 1 / 50 * windowHeight,
+        paddingLeft: 1 / 2.5 * windowWidth,
+        // marginTop: 1 / 1100 * windowHeight,
+        marginBottom: 1 / 40 * windowHeight,
         color: '#FFFFFF',
-        fontSize: 40,
+        fontSize: 35,
         fontFamily: 'Arial',
     },
 

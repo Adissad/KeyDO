@@ -18,7 +18,7 @@ export default function ConvScreen(props) {
 	const [usersList, setUsersList] = useState([]);
 
 	const usersData = [
-		{ id: '0', name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Photographie #Art' },
+		{ id: '0', name: 'Rémy', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/cat_g0h6co.png", gender: 'Homme', age: '40 ans', city: 'Paris', desc: '#Voyages #Photographie #Art' },
 		{ id: '1', name: 'Jack', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/man_hsazsc.png", gender: 'Homme', age: '35 ans', city: 'Paris', desc: '#Sport #Cuisine #Dance' },
 		{ id: '2', name: 'Carol', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/rabbit_agqvgi.png", gender: 'Femme', age: '27 ans', city: 'Paris', desc: '#Photographie #Yoga #Cuisine' },
 		{ id: '3', name: 'Christophe', avatar: "https://res.cloudinary.com/kiyomira/image/upload/v1627979668/pinguin_sdhh33.png", gender: 'Homme', age: '29 ans', city: 'Paris', desc: '#Voyages #Photographie #Dance' },

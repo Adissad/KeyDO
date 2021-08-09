@@ -138,7 +138,7 @@ function ProfileScreen(props) {
       >
 
         <TouchableOpacity>
-          <Ionicons name="ios-settings-outline" onPress={() => { props.navigation.navigate('Settings') }} size={24} color="#FFFFFF" style={{ marginTop: (1 / 16) * windowHeight, marginLeft: (7 / 8) * windowWidth }} />
+          <Ionicons name="ios-settings-outline" onPress={() => { props.navigation.navigate('Settings') }} size={24} color="#FFFFFF" style={{ marginTop: (1 / 16) * windowHeight, marginLeft: (7 / 8) * windowWidth, }} />
         </TouchableOpacity>
 
         <TouchableOpacity>
@@ -158,17 +158,27 @@ function ProfileScreen(props) {
 
         <View
           style={{
-            marginTop: (1 / 30) * windowHeight,
-            paddingRight: (1 / 2) * windowWidth,
+            marginTop: (2 / 100) * windowHeight,
+            marginRight: (1 / 2) * windowWidth,
             flexDirection: "row",
             justifyContent: "space-around",
             width: "100%",
             height: "auto",
           }}
         >
+          <Image
+            rounded
+            source={require("../assets/dog.png")}
+            activeOpacity={0.7}
+            width={20}
+            height={20}
+            value={myAvatar}
+            setValue={setMyAvatar}
+          />
+
           <Button
             buttonStyle={{ backgroundColor: "#693192" }}
-            title="Choisi ton avatar"
+            title="Choisis ton avatar"
             onPress={toggleModal}
           />
 
@@ -233,17 +243,6 @@ function ProfileScreen(props) {
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity>
-                <Image
-                  rounded
-                  source={require("../assets/pinguin.png")}
-                  onPress={() => console.log("Works6!")}
-                  activeOpacity={0.7}
-                  width={5}
-                  height={5}
-                />
-              </TouchableOpacity>
-
 
               {/* <View>
         <TouchableOpacity>
@@ -265,81 +264,87 @@ function ProfileScreen(props) {
           <Input
             //   style={{ paddingLeft: 20 }}
             // placeholder={props.route.params.name}
+            placeholder="Mathias"
             onChangeText={(value) => setSignUpUsername(value)}
             value={signUpUsername}
             placeholderTextColor="white"
             color="white"
           />
-
-
-          <Picker
-            selectedValue={selectedAge}
-            style={{ height: 50, width: 150, color: "#FFFFFF" }}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectedAge(itemValue)
-            }
-          >
-            <Picker.Item label="Age" value="age" />
-            <Picker.Item label="18 ans" value="18 ans" />
-            <Picker.Item label="19 ans" value="19 ans" />
-            <Picker.Item label="20 ans" value="20 ans" />
-            <Picker.Item label="21 ans" value="21 ans" />
-            <Picker.Item label="22 ans" value="22 ans" />
-            <Picker.Item label="23 ans" value="23 ans" />
-            <Picker.Item label="24 ans" value="24 ans" />
-            <Picker.Item label="25 ans" value="25 ans" />
-            <Picker.Item label="26 ans" value="26 ans" />
-            <Picker.Item label="27 ans" value="27 ans" />
-            <Picker.Item label="28 ans" value="28 ans" />
-            <Picker.Item label="29 ans" value="29 ans" />
-            <Picker.Item label="30 ans" value="30 ans" />
-            <Picker.Item label="31 ans" value="31 ans" />
-            <Picker.Item label="32 ans" value="32 ans" />
-            <Picker.Item label="33 ans" value="33 ans" />
-            <Picker.Item label="34 ans" value="34 ans" />
-            <Picker.Item label="35 ans" value="35 ans" />
-            <Picker.Item label="36 ans" value="36 ans" />
-            <Picker.Item label="37 ans" value="37 ans" />
-            <Picker.Item label="38 ans" value="38 ans" />
-            <Picker.Item label="39 ans" value="39 ans" />
-            <Picker.Item label="40 ans" value="40 ans" />
-          </Picker>
-
-          <Picker
-            selectedValue={selectedGender}
-            style={{ height: 50, width: 150, color: "#FFFFFF" }}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectedGender(itemValue)
-            }
-          >
-            <Picker.Item label="Genre" value="genre" />
-            <Picker.Item label="Femme" value="femme" />
-            <Picker.Item label="Homme" value="homme" />
-          </Picker>
-
-
           <Input
             //   style={{ paddingLeft: 20 }}
-            placeholder="Ville"
+            placeholder="Paris"
             placeholderTextColor="white"
             color="white"
             onChangeText={(value) => setUserCity(value)}
             value={userCity}
           />
+
+          <View style={{flexDirection:"row", }}>
+
+            <Picker
+              selectedValue={selectedAge}
+              style={{ marginLeft:30 ,width: 150, color: "#FFFFFF", backgroundColor:"#FFFFFF11", borderRadius:8}}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedAge(itemValue)
+              }
+            >
+              <Picker.Item label="Age" value="age" />
+              <Picker.Item label="18 ans" value="18 ans" />
+              <Picker.Item label="19 ans" value="19 ans" />
+              <Picker.Item label="20 ans" value="20 ans" />
+              <Picker.Item label="21 ans" value="21 ans" />
+              <Picker.Item label="22 ans" value="22 ans" />
+              <Picker.Item label="23 ans" value="23 ans" />
+              <Picker.Item label="24 ans" value="24 ans" />
+              <Picker.Item label="25 ans" value="25 ans" />
+              <Picker.Item label="26 ans" value="26 ans" />
+              <Picker.Item label="27 ans" value="27 ans" />
+              <Picker.Item label="28 ans" value="28 ans" />
+              <Picker.Item label="29 ans" value="29 ans" />
+              <Picker.Item label="30 ans" value="30 ans" />
+              <Picker.Item label="31 ans" value="31 ans" />
+              <Picker.Item label="32 ans" value="32 ans" />
+              <Picker.Item label="33 ans" value="33 ans" />
+              <Picker.Item label="34 ans" value="34 ans" />
+              <Picker.Item label="35 ans" value="35 ans" />
+              <Picker.Item label="36 ans" value="36 ans" />
+              <Picker.Item label="37 ans" value="37 ans" />
+              <Picker.Item label="38 ans" value="38 ans" />
+              <Picker.Item label="39 ans" value="39 ans" />
+              <Picker.Item label="40 ans" value="40 ans" />
+            </Picker>
+
+            <Picker
+              selectedValue={selectedGender}
+              style={{marginLeft:60 ,width: 150, color: "#FFFFFF", backgroundColor:"#FFFFFF11", borderRadius:8}}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedGender(itemValue)
+              }
+            >
+              <Picker.Item label="Genre" value="genre" />
+              <Picker.Item label="Femme" value="femme" />
+              <Picker.Item label="Homme" value="homme" />
+            </Picker>
+
+          </View>
+
+
         </View>
 
         <View
           style={{
-            marginTop: (1 / 12) * windowHeight,
+            marginTop: (1 / 20) * windowHeight,
             flexDirection: "row",
-            justifyContent: "space-around",
-            alignItems: "center",
-            width: "100%",
+            // justifyContent: "space-around",
+            // alignItems: "center",
+            width: "80%",
             height: "auto",
+            zIndex:1,
+            marginLeft:40,
           }}
         >
           <DropDownPicker
-            placeholder="Choisi tes 5 genres de musiques favoris"
+            placeholder="Choisis tes 5 genres de musiques favoris"
             selected_items_count_text="{count} genre(s) ont été sélectionnés"
             multiple={true}
             min={0}
@@ -360,16 +365,17 @@ function ProfileScreen(props) {
 
         <View
           style={{
-            marginTop: (1 / 10) * windowHeight,
+            marginTop: (1 / 40) * windowHeight,
             flexDirection: "row",
             justifyContent: "space-around",
-            alignItems: "center",
-            width: "100%",
+            // alignItems: "center",
+            width: "80%",
             height: "auto",
+            marginLeft:40,
           }}
         >
           <DropDownPicker
-            placeholder="Choisi tes 3 centres d'intérêts"
+            placeholder="Choisis tes 3 centres d'intérêts"
             multiple={true}
             min={0}
             max={3}
